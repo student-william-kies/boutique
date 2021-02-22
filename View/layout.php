@@ -15,28 +15,45 @@
 
     <!-- Header -->
     <header>
-        <section class="container-fluid header__section">
-            <section class="container header__mainInfos">
+        <section class="container-fluid header__bg">
+            <section class="container header__section">
+                <img src="https://www.countryflags.io/fr/shiny/64.png">
+                <p><span>Boutique Française Officielle</span></p>
+                <a href="" id="contact"><i class="fas fa-address-book"></i><span>Contact</span></a>
+            </section>
+            <section class="container header__container">
                 <nav class="navbar navbar-expand-lg navbar-light">
-                    <section class="container-fluid">
-                        <a class="navbar-brand" href="#"><img src="" alt="logo" id="logo"></a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <!-- First Navbar -->
+                    <section class="container-fluid first__ul">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <img src="" alt="logo">
+                            <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-phone-square"></i>04.56.92.14.36</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-user-circle"></i> Compte</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-shopping-basket"></i>Panier</a></li>
+                        </ul>
+                    </section>
+
+                    <!-- Second Navbar -->
+                    <section class="container-fluid second__ul">
                         <section class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Figurines</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#">07.65.45.89.99</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#">Mon Compte</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#">Panier</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#">Nouveautés</a></li>
+                                <li class="nav-item btn-primary" id="figurines"><a class="nav-link" href="#"><i class="fas fa-align-left"></i>Figurines</a></li>
                             </ul>
-                            <form class="d-flex">
-                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                <button class="btn btn-outline-success" type="submit">loupe</button>
-                            </form>
                         </section>
                     </section>
+
+                    <!-- Third Navbar -->
+                    <section class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item"><a class="nav-link" href="#">Nouveautés</a></li>
+                        </ul>
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="search" placeholder="Recherche" aria-label="Search">
+                            <button class="btn btn-outline-primary" type="submit"><i class="fas fa-search"></i></button>
+                        </form>
+                    </section>
+
                 </nav>
             </section>
         </section>
