@@ -6,8 +6,11 @@ require_once ('../../autoload.php');
 
 <?php ob_start(); ?>
 
-<section class="container-fluid">
+<!-- Empty section for the pictures -->
+<section class="container-fluid main__section"></section>
 
+<section class="container-fluid main__section">
+    <p>test</p>
 </section>
 
 <?php $content = ob_get_clean(); ?>
