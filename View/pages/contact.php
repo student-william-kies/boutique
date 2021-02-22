@@ -1,17 +1,17 @@
-<?php
+<?php require_once ('../../autoload.php'); ?>
 
-$css = "css/contact.css";
+<?php $css = "css/contact.css"; ?>
 
-ob_start();
+<?php ob_start(); ?>
 
-?>
 
-<main>
-    <article>
         <section class="container-fluid">
             <section class="main-content">
-
+                <p>HELOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO</p>
             </section>
         </section>
-    </article>
-</main>
+
+
+<?php $content = ob_get_clean(); ?>
+
+<?php require ('../layout.php'); ?>

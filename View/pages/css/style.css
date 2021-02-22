@@ -1,0 +1,157 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+.header__bg{
+    background-color: #242424;
+    height: 17vh;
+    margin-top: -2%;
+}
+
+.header__section{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: #ffffff;
+    font-weight: bold;
+    margin-left: 35%;
+    margin-top: 2%;
+}
+
+.header__section img{
+    width: 2%;
+    height: 3%;
+    margin-right: 0.2%;
+}
+
+.header__section p{
+    margin-right: 1.2%;
+}
+
+#logo{
+    width: 100%;
+    margin-bottom: -20%;
+}
+
+/*-- French store text --*/
+
+.header__section p:hover span{
+    display: none;
+}
+
+.header__section p:hover:after{
+    content: "Votre commande livrée en 72h !";
+}
+
+/*-- Contact link --*/
+
+#contact{
+    text-decoration: none;
+    list-style: none;
+    color: #ffffff;
+}
+
+#contact:hover i{
+    color: #428BCA;
+}
+
+#contact:hover span{
+    display: none;
+}
+
+#contact:hover:after{
+    content: "Du lundi au vendredi de 9h à 17h";
+}
+
+/*-- End Contact link --*/
+
+.header__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 18vh;
+    font-weight: bold;
+    background-color: #F3F3F3;
+    border: solid 1px #c6c1c1;
+    border-radius: 4px;
+}
+
+/*-- Navbar(figurines) --*/
+
+.first__ul img{
+    margin-top: -20%;
+}
+
+#figurines{
+    text-align: center;
+    width: 200px;
+}
+
+#figurines a{
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 16px;
+    font-weight: lighter;
+}
+
+/*-- Navbar(news, search) --*/
+
+.second__ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    margin-top: 5%;
+    margin-right: -25.7%;
+}
+
+.second__ul ul{
+    margin-left: 5%;
+}
+
+.second__ul form input{
+    width: 200px;
+}
+
+/*-- Navbar(phone, account and shopping basket) --*/
+
+.third__ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    margin-top: -7%;
+    margin-right: -25%;
+}
+
+#phone{
+    margin-right: 5%;
+    margin-left: -40%;
+    font-size: 20px;
+}
+
+#phone a{
+    color: #428BCA;
+}
+
+#account{
+    margin-right: 5%;
+    font-size: 20px;
+}
+
+#account a{
+    color: #428BCA;
+}
+
+#shopping{
+    font-size: 20px;
+}
+
+#shopping a{
+    color: #428BCA;
+}
