@@ -2,7 +2,7 @@
 
 namespace Model;
 
-require_once('../Model.php');
+require_once('Model.php');
 
 class Produits extends Model{
 

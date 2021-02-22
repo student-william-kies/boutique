@@ -2,7 +2,7 @@
 
 namespace Controller;
 
-require_once ('../autoload.php');
+require_once ('../../autoload.php');
 
 class Produits{
 
