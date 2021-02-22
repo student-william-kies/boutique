@@ -34,6 +34,11 @@ html{
     margin-right: 1.2%;
 }
 
+#logo{
+    width: 100%;
+    margin-bottom: -20%;
+}
+
 /*-- French store text --*/
 
 .header__section p:hover span{
@@ -64,6 +69,8 @@ html{
     content: "Du lundi au vendredi de 9h à 17h";
 }
 
+/*-- End Contact link --*/
+
 .header__container{
     display: flex;
     flex-direction: column;
@@ -75,22 +82,76 @@ html{
     border-radius: 4px;
 }
 
-/*-- Navbar(phone, account and shopping basket) --*/
-
-.first__ul{
-    display: flex;
-    flex-direction: column;
-    justify-content: right;
-    margin-top: -10%;
-}
-
 /*-- Navbar(figurines) --*/
 
-.second__ul{
+.first__ul img{
+    margin-top: -20%;
+}
 
+#figurines{
+    text-align: center;
+    width: 200px;
 }
 
 #figurines a{
     color: #ffffff;
-    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 16px;
+    font-weight: lighter;
+}
+
+/*-- Navbar(news, search) --*/
+
+.second__ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    margin-top: 5%;
+    margin-right: -25.7%;
+}
+
+.second__ul ul{
+    margin-left: 5%;
+}
+
+.second__ul form input{
+    width: 200px;
+}
+
+/*-- Navbar(phone, account and shopping basket) --*/
+
+.third__ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    margin-top: -10%;
+    margin-right: -25%;
+}
+
+#phone{
+    margin-right: 5%;
+    margin-left: -40%;
+    font-size: 20px;
+}
+
+#phone a{
+    color: #428BCA;
+}
+
+#account{
+    margin-right: 5%;
+    font-size: 20px;
+}
+
+#account a{
+    color: #428BCA;
+}
+
+#shopping{
+    font-size: 20px;
+}
+
+#shopping a{
+    color: #428BCA;
 }

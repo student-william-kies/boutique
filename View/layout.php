@@ -2,7 +2,7 @@
 <html lang="fr">
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-        <title>Unleashed Manga - Figurines de Collection, Manga, Hunter X Hunter, Attack On Titan, Monster Hunter World...</title>
+        <title>Unleashed Store - Figurines de Collection, Manga, Hunter X Hunter, Attack On Titan, Monster Hunter World...</title>
         <!-- CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
         <link rel="stylesheet" href="css/style.css">
@@ -26,32 +26,28 @@
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <!-- First Navbar -->
                     <section class="container-fluid first__ul">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <img src="" alt="logo">
-                            <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-phone-square"></i>04.56.92.14.36</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-user-circle"></i> Compte</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-shopping-basket"></i>Panier</a></li>
-                        </ul>
+                        <img src="images/logo__store.svg" id="logo" alt="logo">
                     </section>
 
                     <!-- Second Navbar -->
-                    <section class="container-fluid second__ul">
-                        <section class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                <li class="nav-item btn-primary" id="figurines"><a class="nav-link" href="#"><i class="fas fa-align-left"></i>Figurines</a></li>
-                            </ul>
-                        </section>
+                    <section class="container-fluid second__ul" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item btn-primary" id="figurines"><a class="nav-link" href="#">Figurines</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Nouveautés</a></li>
+                        </ul>
+                        <form action="" method="get" class="d-flex">
+                            <input class="form-control me-2" type="search" placeholder="Recherche" aria-label="Search">
+                            <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+                        </form>
                     </section>
 
                     <!-- Third Navbar -->
-                    <section class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <section class="container-fluid third__ul">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item"><a class="nav-link" href="#">Nouveautés</a></li>
+                            <li class="nav-item" id="phone"><a class="nav-link" href="#"><i class="fas fa-phone-square"></i> 04.56.92.14.36</a></li>
+                            <li class="nav-item" id="account"><a class="nav-link" href="#"><i class="fas fa-user-circle"></i> Mon Compte</a></li>
+                            <li class="nav-item" id="shopping"><a class="nav-link" href="#"><i class="fas fa-shopping-basket"></i> Panier</a></li>
                         </ul>
-                        <form class="d-flex">
-                            <input class="form-control me-2" type="search" placeholder="Recherche" aria-label="Search">
-                            <button class="btn btn-outline-primary" type="submit"><i class="fas fa-search"></i></button>
-                        </form>
                     </section>
 
                 </nav>
