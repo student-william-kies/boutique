@@ -1,0 +1,67 @@
+
+
+body{
+    background-image: none;
+    background-color: white;
+}
+
+.main-content{
+    color: black;
+    margin-top: 5%;
+    display: grid;
+    grid-template-columns: 5% 10% 10% 5% 70%;
+    grid-template-rows: 20vh 20vh 20vh 3% 20vh 20vh 20vh 20vh;
+}
+
+.filters{
+    border: solid 1px #9d9a9a;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 4;
+}
+
+.filter-title{
+    padding: 2%;
+    font-size: 20px;
+    color: white;
+    background-color: #242424;
+}
+
+.filters h2{
+    font-weight: bold;
+    padding: 2%;
+    font-size: 16px;
+}
+
+.new-product{
+    border: solid 1px #9d9a9a;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 5;
+    grid-row-end: 8;
+}
+
+.banner{
+    grid-column-start: 5;
+    grid-column-end: 6;
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+
+.last-articles{
+    margin: 5%;
+}
+
+.last-articles h2{
+    font-size: 22px;
+}
+
+.last-articles a{
+    text-decoration: none;
+    color: black;
+}
+
+.all-products{
+
+}

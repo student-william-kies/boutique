@@ -8,6 +8,11 @@ html{
     scroll-behavior: smooth;
 }
 
+body{
+    background-image: url("../images/home__bg.svg");
+    background-repeat: no-repeat;
+}
+
 .header__bg{
     background-color: #242424;
     height: 17vh;
@@ -20,7 +25,6 @@ html{
     justify-content: center;
     color: #ffffff;
     font-weight: bold;
-    margin-left: 35%;
     margin-top: 2%;
 }
 
@@ -36,7 +40,8 @@ html{
 
 #logo{
     width: 100%;
-    margin-bottom: -20%;
+    margin-bottom: -19%;
+    margin-left: -6%;
 }
 
 /*-- French store text --*/
@@ -80,6 +85,7 @@ html{
     background-color: #F3F3F3;
     border: solid 1px #c6c1c1;
     border-radius: 4px;
+    z-index: 1;
 }
 
 /*-- Navbar(figurines) --*/
@@ -126,12 +132,11 @@ html{
     flex-direction: column;
     justify-content: right;
     margin-top: -7%;
-    margin-right: -25%;
 }
 
 #phone{
     margin-right: 5%;
-    margin-left: -40%;
+    margin-left: -10%;
     font-size: 20px;
 }
 
@@ -154,4 +159,10 @@ html{
 
 #shopping a{
     color: #428BCA;
+}
+
+/*-- Home.php --*/
+
+.main__section{
+    height: 100vh;
 }
