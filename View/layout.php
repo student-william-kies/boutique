@@ -26,7 +26,7 @@
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <!-- First Navbar -->
                     <section class="container-fluid first__ul">
-                        <img src="images/logo__store.svg" id="logo" alt="logo">
+                        <a href="home.php"><img src="images/logo__store.svg" id="logo" alt="logo"></a>
                     </section>
 
                     <!-- Second Navbar -->
@@ -45,7 +45,12 @@
                     <section class="container-fluid third__ul">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item" id="phone"><a class="nav-link" href="#"><i class="fas fa-phone-square"></i> 04.56.92.14.36</a></li>
-                            <li class="nav-item" id="account"><a class="nav-link" href="#"><i class="fas fa-user-circle"></i> Mon Compte</a></li>
+                            <li class="nav-item dropdown" id="account"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user-circle"></i> Mon Compte</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="inscription.php">Inscription</a></li>
+                                    <li><a class="dropdown-item" href="connexion.php">Connexion</a></li>
+                                </ul>
+                            </li>
                             <li class="nav-item" id="shopping"><a class="nav-link" href="#"><i class="fas fa-shopping-basket"></i> Panier</a></li>
                         </ul>
                     </section>
