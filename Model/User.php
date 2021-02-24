@@ -15,11 +15,6 @@ class User extends \Model
     public function alreadyUsed($table, $column, $var): bool|\PDOStatement
     {
         $query = $this -> pdo -> prepare('SELECT '. $column . ' FROM ' . $table . ' WHERE ' . $column . ' = ' . $var);
-
-        $query -> bindParam(":tab", $table);
-        $query -> bindParam(':col', $column);
-        $query -> bindParam(":var", $var);
-
         $query -> execute();
 
         return $query;

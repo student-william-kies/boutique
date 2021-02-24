@@ -1,6 +1,7 @@
 <?php
 namespace Controller;
 require_once ('Controller.php');
+require ('Http.php');
 
 class User extends Controller
 {
@@ -55,6 +56,19 @@ class User extends Controller
         }
     }
 
+    /**
+     * Permet de gérer et ajouter en base de données un utilisateur
+     *
+     * @param $prenom
+     * @param $nom
+     * @param $password
+     * @param $confirmPassword
+     * @param $email
+     * @param $phone
+     * @param $address
+     * @param $city
+     * @param $codep
+     */
     public function manageUser($prenom, $nom, $password, $confirmPassword, $email, $phone, $address, $city, $codep)
     {
         /*
@@ -105,10 +119,10 @@ class User extends Controller
                                             {
                                                 if (empty($phone) && empty($address) && empty($city) && empty($codep))
                                                 {
-                                                    $phone = 0000000000;
-                                                    $address = "";
-                                                    $city = "";
-                                                    $codep = 00000;
+                                                    $phone = 0;
+                                                    $address = "null";
+                                                    $city = "null";
+                                                    $codep = 0;
                                                 }
 
                                                 $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
@@ -116,7 +130,7 @@ class User extends Controller
                                                 $insertUser -> insert($prenom, $nom, $hashedPassword, $email, $phone, $address, $city, $codep, $id_droits);
 
                                                 echo ('Bien joué ! Compte créer');
-//                                                    Http::redirect('connexion.php');
+                                                Http::redirect('connexion.php');
 
                                             } else echo $error = "<p>Erreur: Les mots de passe ne sont pas indentique.</p>";
 //                                        } else echo $error = "<p>Erreur: L'email est déjà utilisé !</p>";
@@ -128,5 +142,29 @@ class User extends Controller
                 } else echo $error = "<p>Erreur: Vos informations (Mot de passe) doivent avoir un minimum de 5 caractères.</p>";
             } else echo $error = "<p>Erreur: Vos informations (Prenom, Nom) doivenr avoir un minimum de 3 caractères.</p>";
         } else echo $error = "<p>Erreur: Veuillez remplir le formulaire.</p>";
+    }
+
+    public function displayConnectingUser()
+    {
+        /*
+         * Affichage du formulaire de connexion
+         */
+        echo ('
+        <form action="" method="post">
+        
+            <div class="input-group">
+                <span class="input-group-text">E-mail</span>
+                <input type="email" name="email" aria-label="email" class="form-control" placeholder="E-mail" required>
+            </div>
+            <div class="input-group">
+                <span class="input-group-text">Mot de passe</span>
+                <input type="password" name="password" aria-label="password" class="form-control" placeholder="Mot de passe" required>
+            </div>
+            
+            <input type="submit" name="validCreateUser" aria-label="trueRegister" class="form" value="Connexion">
+        </form>
+        ');
+
+
     }
 }
