@@ -82,49 +82,51 @@ class User extends Controller
             /*
              * Limite minimum de caractères (Normalement un mot de passe standard doit être composé d'un minimum de 12 caractères :) )
              */
-            if (($lenPassword >= 5) && ($lenConfirmPassword >= 5) && ($lenEmail >= 20))
+            if (($lenPrenom >= 3) && ($lenNom >= 3))
             {
-                if (($lenPrenom <= 13) && ($lenNom <= 45) && ($lenPassword <= 30) && ($lenConfirmPassword <= 30) && ($lenEmail <= 130))
+                if (($lenPassword >= 5) && ($lenConfirmPassword >= 5))
                 {
-                    $emailExist = new \Model\User();
-                    $emailExist -> alreadyUsed('utilisateurs', 'email', $email); // Vérification si l'email existe ou pas
-
-                    if (!$email)
+                    if (($lenEmail >= 20))
                     {
-                        if ($confirmPassword === $password)
+                        if (($lenPrenom <= 13))
                         {
-                            $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
-                            $insertUser = new \Model\User();
-                            $insertUser -> insert($prenom, $nom, $hashedPassword, $email, $phone, $address, $city, $codep, $id_droits);
+                            if (($lenNom <= 45))
+                            {
+                                if (($lenPassword <= 30) && ($lenConfirmPassword <= 30))
+                                {
+                                    if (($lenEmail <= 130))
+                                    {
+//                                        $emailExist = new \Model\User();
+//                                        $emailExist -> alreadyUsed('utilisateurs', 'email', $email); // Vérification si l'email existe ou pas
 
-                            echo ('Bien joué ! Compte créer');
-                            /* Si tout marche ici, on redirige vers la page de connexion */
-                        }
-                        else
-                        {
-                            $error = "<p>Erreur: Les mots de passe ne sont pas indentiques, veuillez réessayer.</p>";
-                        }
-                    }
-                    else
-                   {
-                       $error = "<p>Erreur: Cet adresse e-mail existe déjà !</p>";
-                   }
-                }
-                else
-                {
-                    $error = "<p>Erreur: Vos informations ne doivent pas dépassées un certains nombres de caractères.</p>";
-                }
-            }
-            else
-            {
-                $error = "<p>Erreur: Vos informations doivent avoir un minimum de caractères.</p>";
-            }
-        }
-        else
-        {
-            $error = "<p>Erreur: Veuillez remplir le formulaire.</p>";
-        }
+//                                        if (!$email)
+//                                        {
+                                            if ($confirmPassword === $password)
+                                            {
+                                                if (empty($phone) && empty($address) && empty($city) && empty($codep))
+                                                {
+                                                    $phone = 0000000000;
+                                                    $address = "";
+                                                    $city = "";
+                                                    $codep = 00000;
+                                                }
 
-        echo $error = "";
+                                                $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+                                                $insertUser = new \Model\User();
+                                                $insertUser -> insert($prenom, $nom, $hashedPassword, $email, $phone, $address, $city, $codep, $id_droits);
+
+                                                echo ('Bien joué ! Compte créer');
+//                                                    Http::redirect('connexion.php');
+
+                                            } else echo $error = "<p>Erreur: Les mots de passe ne sont pas indentique.</p>";
+//                                        } else echo $error = "<p>Erreur: L'email est déjà utilisé !</p>";
+                                    } else echo $error = "<p>Erreur: Votre information (E-mail) doit avoir 130 caractères maximum.</p>";
+                                } else echo $error = "<p>Erreur: Vos information (Mot de passe) doivent avoir 30 caractères maximum.</p>";
+                            } else echo $error = "<p>Erreur: Votre information (Nom) doit avoir 45 caractères maximum.</p>";
+                        } else echo $error = "<p>Erreur: Votre information (Prenom) doit avoir 13 caractères maximum.</p>";
+                    } else echo $error = "<p>Erreur: Votre information (E-mail) doit avoir un minimum de 20 caractères.</p>";
+                } else echo $error = "<p>Erreur: Vos informations (Mot de passe) doivent avoir un minimum de 5 caractères.</p>";
+            } else echo $error = "<p>Erreur: Vos informations (Prenom, Nom) doivenr avoir un minimum de 3 caractères.</p>";
+        } else echo $error = "<p>Erreur: Veuillez remplir le formulaire.</p>";
     }
 }
