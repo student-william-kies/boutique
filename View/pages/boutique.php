@@ -25,7 +25,12 @@
                     <img class="banner-img" src="images/banner.jpg" alt="banner">
                 </section>
                 <section class="all-products">
-
+                    <?php
+                    $allProducts = new \Controller\Boutique();
+                    $allProducts ->getAllProducts();
+                    $addTocart = new Controller\Boutique();
+                    $addTocart ->addTocart();
+                    ?>
                 </section>
             </section>
         </section>
