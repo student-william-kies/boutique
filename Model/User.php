@@ -1,5 +1,7 @@
 <?php
 namespace Model;
+use PDOStatement;
+
 require_once ('Model.php');
 
 class User extends \Model
@@ -10,17 +12,44 @@ class User extends \Model
      * @param $table
      * @param $column
      * @param $var
-     * @return false|\PDOStatement
+     * @return mixed
      */
-    public function alreadyUsed($table, $column, $var): bool|\PDOStatement
+    public function alreadyUsed($table, $column, $var)
     {
-        $query = $this -> pdo -> prepare('SELECT '. $column . ' FROM ' . $table . ' WHERE ' . $column . ' = ' . $var);
-        $query -> execute();
+        $query = $this -> pdo -> prepare(" SELECT " . $column . " FROM " . $table . " WHERE " . $column . " = ?");
+        $query -> execute([
+            $var
+        ]);
 
-        return $query;
+        return $query -> fetch(\PDO::FETCH_ASSOC);
     }
 
-    public function insert($prenom, $nom, $password, $email, $phone, $address, $city, $codep, $id_droits): bool|\PDOStatement
+    public function getEmail($var)
+    {
+        $query = $this -> pdo -> prepare("SELECT email FROM utilisateurs WHERE email = :email");
+        $query -> execute([
+            "email" => $var
+        ]);
+
+        $result = $query -> fetchAll(\PDO::FETCH_ASSOC);
+        return $result[0]['email'];
+    }
+
+    /**
+     * Enregistre un utilisateur en base de données
+     *
+     * @param $prenom
+     * @param $nom
+     * @param $password
+     * @param $email
+     * @param $phone
+     * @param $address
+     * @param $city
+     * @param $codep
+     * @param $id_droits
+     * @return false|PDOStatement
+     */
+    public function insert($prenom, $nom, $password, $email, $phone, $address, $city, $codep, $id_droits)
     {
         $query = $this -> pdo -> prepare("INSERT INTO utilisateurs (prenom, nom, password, email, telephone, adresse, ville, codep, id_droits)
                                                             VALUES (:prenom, :nom, :password, :email, :phone, :adresse, :ville, :codep, :droit)");

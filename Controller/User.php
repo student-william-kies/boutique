@@ -120,8 +120,8 @@ class User extends Controller
                                                 if (empty($phone) && empty($address) && empty($city) && empty($codep))
                                                 {
                                                     $phone = 0;
-                                                    $address = "null";
-                                                    $city = "null";
+                                                    $address = "";
+                                                    $city = "";
                                                     $codep = 0;
                                                 }
 
@@ -129,7 +129,6 @@ class User extends Controller
                                                 $insertUser = new \Model\User();
                                                 $insertUser -> insert($prenom, $nom, $hashedPassword, $email, $phone, $address, $city, $codep, $id_droits);
 
-                                                echo ('Bien joué ! Compte créer');
                                                 Http::redirect('connexion.php');
 
                                             } else echo $error = "<p>Erreur: Les mots de passe ne sont pas indentique.</p>";
@@ -154,17 +153,41 @@ class User extends Controller
         
             <div class="input-group">
                 <span class="input-group-text">E-mail</span>
-                <input type="email" name="email" aria-label="email" class="form-control" placeholder="E-mail" required>
+                <input type="email" name="connectEmail" aria-label="email" class="form-control" placeholder="E-mail" required>
             </div>
             <div class="input-group">
                 <span class="input-group-text">Mot de passe</span>
-                <input type="password" name="password" aria-label="password" class="form-control" placeholder="Mot de passe" required>
+                <input type="password" name="connectPassword" aria-label="password" class="form-control" placeholder="Mot de passe" required>
             </div>
             
-            <input type="submit" name="validCreateUser" aria-label="trueRegister" class="form" value="Connexion">
+            <input type="submit" name="connectUser" aria-label="trueRegister" class="form" value="Connexion">
         </form>
         ');
 
-
+        if (isset($_POST['connectUser']))
+        {
+            $this -> connectUser($_POST['connectEmail'], $_POST['connectPassword']);
+        }
     }
+
+    public function connectUser($email, $password)
+    {
+        /*
+         * Sécurisation des données
+         */
+        $this -> secure($email);
+        $this -> secure($password);
+
+        if (!empty($email) && !empty($password))
+        {
+            session_start();
+
+            $getEmail = new \Model\User();
+            $getEmail -> getEmail($email);
+
+        } else echo $error = "<p>Erreur: Veuillez remplir le formulaire.</p>";
+    }
+
+
+
 }
