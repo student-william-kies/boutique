@@ -49,7 +49,7 @@
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <?php if (!isset($_SESSION['id'])){ echo ('<li><a class="dropdown-item" href="inscription.php">Inscription</a></li>'); } ?>
                                     <?php if (!isset($_SESSION['id'])){ echo ('<li><a class="dropdown-item" href="connexion.php">Connexion</a></li>'); } ?>
-                                    <?php if (isset($_SESSION['id'])){ echo ('<form method="POST" action="home.php"><li><a class="dropdown-item" href=""><input type="submit" name="logout" value="Déconnexion" class="btn"></a></li></form>'); } ?>
+                                    <?php if (isset($_SESSION['id'])){ echo ('<form method="POST" action="home.php"><li><a class="dropdown-item" href=""><input type="submit" name="logout" value="Déconnexion" class=""></a></li></form>'); } ?>
                                     <?php if (isset($_SESSION['id'])){ echo ('<li><a class="dropdown-item" href="profil.php">' . $_SESSION['prenom']. ' ' . $_SESSION['nom'] . '</a></li>'); } ?>
                                 </ul>
                             </li>
