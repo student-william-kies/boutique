@@ -166,24 +166,24 @@ class User extends Controller
 
         if (isset($_POST['connectUser']))
         {
-            $this -> connectUser($_POST['connectEmail'], $_POST['connectPassword']);
+            $this -> connectingUser($_POST['connectEmail'], $_POST['connectPassword']);
         }
     }
 
-    public function connectUser($email, $password)
+    public function connectingUser($email, $password)
     {
-        /*
-         * Sécurisation des données
-         */
-        $this -> secure($email);
-        $this -> secure($password);
-
         if (!empty($email) && !empty($password))
         {
+            /*
+            * Sécurisation des données
+            */
+            $this -> secure($email);
+            $this -> secure($password);
+
             session_start();
 
-            $getEmail = new \Model\User();
-            $getEmail -> getEmail($email);
+            $connect = new \Model\User();
+            $connect -> connect($email, $password);
 
         } else echo $error = "<p>Erreur: Veuillez remplir le formulaire.</p>";
     }

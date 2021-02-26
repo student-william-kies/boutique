@@ -1,4 +1,15 @@
 <?php
+require ('../../Controller/Http.php');
+use Controller\Http;
+
+session_start();
+
+if (isset($_POST['logout'])){
+
+    session_destroy();
+    Http::redirect('connexion.php');
+    exit();
+}
 
 ?>
 
@@ -10,7 +21,11 @@
 <section class="container-fluid main__section"></section>
 
 <section class="container-fluid main__section">
-    <p>test</p>
+    <p>Affichage des nouveautés</p>
+</section>
+
+<section class="container-fluid main__section">
+    <p>Liens des éseaux</p>
 </section>
 
 <?php $content = ob_get_clean(); ?>
