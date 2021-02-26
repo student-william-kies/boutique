@@ -24,7 +24,7 @@ class Boutique{
          * @return mixed
          */
 
-        if(isset($_POST['add'])){
+        if(isset($_POST['hiddenAdd'])){
 
             $addTocart = new \Model\Boutique();
             $addTocart ->addTocart();

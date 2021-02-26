@@ -13,6 +13,15 @@
                 <section class="filters">
                     <h1 class="filter-title">FILTRES</h1>
                     <h2>Prix</h2>
+                    <form class="form-group" method="post">
+                        <section class="row-items">
+                            <label for="min">Prix Min. :</label>
+                            <input class="form-control form-control-sm" type="number" name="min" min="0" value="1">
+                            <label for="max">Prix Max. :</label>
+                            <input class="form-control form-control-sm" type="number" name="max" max="100000" value="999">
+                        </section>
+                        <hr>
+                    </form>
                 </section>
                 <section class="new-product">
                     <h1 class="filter-title">NOUVEAUTES</h1>
@@ -28,8 +37,8 @@
                     <?php
                     $allProducts = new \Controller\Boutique();
                     $allProducts ->getAllProducts();
-                    $addTocart = new Controller\Boutique();
-                    $addTocart ->addTocart();
+                    //$addTocart = new \Controller\Boutique();
+                    //$addTocart ->addTocart();
                     ?>
                 </section>
             </section>

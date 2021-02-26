@@ -67,7 +67,8 @@ class Boutique extends \Model{
                     <a href="produit.php?id=' . $_GET['id_produit'] . '"><h2>' . ucfirst($articles['nom']) . '</h2></a>
                     <p>' . $articles['prix'] . '€</p>
                     <form method="post" name="add">
-                    <button type="submit" name="add">Ajouter au panier</button>
+                    <input type="submit" name="add" value=" Ajouter au panier">
+                    <input type="hidden" name="hiddenAdd" value="'. $articles['id_produit'] .'">
                     </form>
                     </section>';
         }
@@ -78,10 +79,10 @@ class Boutique extends \Model{
         for($i=1; $i<=$nbPage; $i++){
 
             if($i==$cPage){
-                echo "<a class='nPagesA'>$i</a>";
+                echo "<section class='pageNumber'><a class='pageNumber'>$i</a></section>";
             }
             else{
-                echo " <a class='nPages' href=\"boutique.php?p=$i\">$i</a>  ";
+                echo " <section class='pageNumber'><a c href=\"boutique.php?p=$i\">$i</a>  </section> ";
             }
         }
 
@@ -96,17 +97,20 @@ class Boutique extends \Model{
 
         // On récupère ici tous les articles.
 
-        $query = $this->pdo-> prepare("SELECT * FROM `produits`");
+        $query = $this->pdo-> prepare("SELECT id_produit FROM `produits`");
         $query->execute();
-        $article = $query->fetchAll(\PDO::FETCH_ASSOC);
+        $articles = $query->fetch(\PDO::FETCH_ASSOC);
 
-        $_GET['id_produit'] = @$article['id_produit'];
+        $_GET['id_produit'] = @$articles['id_produit'];
 
-        var_dump($article);
+        var_dump($articles);
 
 
-        $query2 = "INSERT INTO `panier` (id_produit, prix, quantité) VALUES " . $article['id_produit'] . "," . $article['prix'] ."," .$article['quantite']. " ";
-        $query2->execute();
+        $query2 = $this->pdo->prepare("INSERT INTO `panier` ('id_produit') VALUES (:id_produit)");
+        $query2 ->bindValue('id_produit', $articles['id_produit'], \PDO::PARAM_INT);
+        $query2->execute([
+            'id_produit'=> $articles['id_produit']
+        ]);
 
     }
 }

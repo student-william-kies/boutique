@@ -8,7 +8,7 @@ body{
     margin-top: 5%;
     display: grid;
     grid-template-columns: 16% 16% 16% 16% 16% 16%;
-    grid-template-rows: 20vh 20vh 20vh 20vh;
+    grid-template-rows: 20vh 20vh 20vh 20vh 20vh;
 }
 
 .info-content{
@@ -62,4 +62,10 @@ label{
     grid-column-end: 3;
     grid-row-start: 2;
     grid-row-end: 4;
+}
+
+.sav{
+    grid-column-start: 3;
+    grid-column-end: 7;
+    grid-row-start: 5;
 }
