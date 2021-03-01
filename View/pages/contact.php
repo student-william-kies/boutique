@@ -56,9 +56,18 @@
                             <p>Présente sur le marché depuis 2021, la SARL UNLEASHED-STORE a pour activité la vente de figurines, dérivés des mangas et des jeux vidéo.
                                 La SARL UNLEASHED-STORE garantie que ses articles sont neufs et officiels.</p>
                             <h2>2. Evènements</h2>
-                            <p>La SARL SHIN SEKAI est présente à de nombreux salons qui se déroulent tout au long de l'année en France (Japan Expo, Paris Manga, TGS, Japan Touch,
-                                Japan Sud...) mais aussi en Belgique (MIA, Retro MIA, Japan Belgique...). Ces évènements permettent aux clients de rencontrer toute l'équipe SHIN SEKAI
+                            <p>La SARL SHIN UNLEASHED-STORE est présente à de nombreux salons qui se déroulent tout au long de l'année en France (Japan Expo, Paris Manga, TGS, Japan Touch,
+                                Japan Sud...) mais aussi en Belgique (MIA, Retro MIA, Japan Belgique...). Ces évènements permettent aux clients de rencontrer notre équipe
                                 et surtout de pouvoir découvrir toutes les nouveautés en direct !</p>
+                            <h2>3. Informations</h2>
+                            <p>Siège social : 13100 AIX-EN-PROVENCE<br>
+                                Entrepôt : 13300 SALON-DE-PROVENCE<br>
+                                contact@unleashed-store.fr / 07 86 92 73 36<br>
+                                SIRET n°800 680 566 00030<br>
+                                TVA : FR13 800 680 566<br>
+                                Date de création : 02/2021<br>
+                                Dénomination sociale : SARL UNLEASHED-STORE<br>
+                                Dénomination du site internet : UNLEASHED-STORE</p>
 
                         </section>
                         <section class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">

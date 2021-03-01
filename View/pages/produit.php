@@ -10,6 +10,14 @@
     <article>
         <section class="container-fluid">
             <section class="main-content">
+                <?php
+
+                $photos = new Controller\Boutique();
+                $photos->displayImage();
+
+
+                ?>
+
 
             </section>
         </section>

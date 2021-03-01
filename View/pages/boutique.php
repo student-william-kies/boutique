@@ -37,6 +37,7 @@
                     <?php
                     $allProducts = new \Controller\Boutique();
                     $allProducts ->getAllProducts();
+                    // En suspens pour le moment.
                     //$addTocart = new \Controller\Boutique();
                     //$addTocart ->addTocart();
                     ?>
