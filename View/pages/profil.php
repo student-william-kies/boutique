@@ -17,50 +17,52 @@ if (isset($_POST['logout'])){
 
 <?php ob_start(); ?>
 
+<h2 id="text__profil">Votre compte</h2>
 <section class="container profil__section">
 
-    <a href="" class="container upleft">
-        <section>
+    <a href="identity.php" class="container upleft">
+        <section class="ico__text">
             <i class="fas fa-user"></i>
             <p><strong>Informations</strong></p>
         </section>
     </a>
 
     <a href="" class="container upmid">
-        <section>
+        <section class="ico__text">
             <i class="fas fa-map-marker-alt"></i>
             <p><strong>Adresse</strong></p>
         </section>
     </a>
 
     <a href="" class="container upright">
-        <section>
+        <section class="ico__text">
             <i class="fas fa-calendar-alt"></i>
             <p><strong>Historique des commandes</strong></p>
         </section>
     </a>
 
     <a href="" class="container downleft">
-        <section>
+        <section class="ico__text">
             <i class="fas fa-clipboard"></i>
             <p><strong>Factures</strong></p>
         </section>
     </a>
 
     <a href="" class="container downmid">
-        <section>
+        <section class="ico__text">
             <i class="far fa-credit-card"></i>
             <p><strong>Moyens de paiement</strong></p>
         </section>
     </a>
 
     <a href="" class="container downright">
-        <section>
+        <section class="ico__text">
             <i class="fas fa-comments"></i>
             <p><strong>Mes Avis</strong></p>
         </section>
     </a>
 </section>
+
 <section class="container form__deco">
     <form method="POST" action="">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">

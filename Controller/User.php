@@ -6,13 +6,10 @@ require ('Http.php');
 class User extends Controller
 {
     /**
-     * Méthode qui vas afficher le formulaire d'inscription
+     * Méthode qui vas afficher le formulaire d'inscription et inscrire un utilisateur
      */
     public function displayCreatingUser()
     {
-        /*
-         * Affichage du formulaire d'inscription
-         */
         echo ('
         <form action="" method="post">
             <div class="input-group">
@@ -93,9 +90,6 @@ class User extends Controller
             $lenConfirmPassword = strlen($confirmPassword);
             $lenEmail = strlen($email);
 
-            /*
-             * Limite minimum de caractères (Normalement un mot de passe standard doit être composé d'un minimum de 12 caractères :) )
-             */
             if (($lenPrenom >= 3) && ($lenNom >= 3))
             {
                 if (($lenPassword >= 5) && ($lenConfirmPassword >= 5))
@@ -110,11 +104,11 @@ class User extends Controller
                                 {
                                     if (($lenEmail <= 130))
                                     {
-//                                        $emailExist = new \Model\User();
-//                                        $emailExist -> alreadyUsed('utilisateurs', 'email', $email); // Vérification si l'email existe ou pas
+                                        $emailExist = new \Model\User();
+                                        $emailExist -> alreadyUsed('utilisateurs', 'email', $email);
 
-//                                        if (!$email)
-//                                        {
+                                        if ($emailExist)
+                                        {
                                             if ($confirmPassword === $password)
                                             {
                                                 if (empty($phone) && empty($address) && empty($city) && empty($codep))
@@ -132,7 +126,7 @@ class User extends Controller
                                                 Http::redirect('connexion.php');
 
                                             } else echo $error = "<p>Erreur: Les mots de passe ne sont pas indentique.</p>";
-//                                        } else echo $error = "<p>Erreur: L'email est déjà utilisé !</p>";
+                                        } else echo $error = "<p>Erreur: L'email est déjà utilisé !</p>";
                                     } else echo $error = "<p>Erreur: Votre information (E-mail) doit avoir 130 caractères maximum.</p>";
                                 } else echo $error = "<p>Erreur: Vos information (Mot de passe) doivent avoir 30 caractères maximum.</p>";
                             } else echo $error = "<p>Erreur: Votre information (Nom) doit avoir 45 caractères maximum.</p>";
@@ -143,11 +137,11 @@ class User extends Controller
         } else echo $error = "<p>Erreur: Veuillez remplir le formulaire.</p>";
     }
 
+    /**
+     * Affiche le formulaire de connexion d'un utilisateur et le connecte sous des conditions de vérifications
+     */
     public function displayConnectingUser()
     {
-        /*
-         * Affichage du formulaire de connexion
-         */
         echo ('
         <form action="" method="post">
         
@@ -160,7 +154,7 @@ class User extends Controller
                 <input type="password" name="connectPassword" aria-label="password" class="form-control" placeholder="Mot de passe" required>
             </div>
             
-            <input type="submit" name="connectUser" aria-label="trueRegister" class="form" value="Connexion">
+            <input type="submit" name="connectUser" value="Connexion">
         </form>
         ');
 
@@ -170,13 +164,16 @@ class User extends Controller
         }
     }
 
+    /**
+     * Permet de gérer et connecter un utilisateur
+     *
+     * @param $email
+     * @param $password
+     */
     public function connectingUser($email, $password)
     {
         if (!empty($email) && !empty($password))
         {
-            /*
-            * Sécurisation des données
-            */
             $this -> secure($email);
             $this -> secure($password);
 
@@ -188,6 +185,107 @@ class User extends Controller
         } else echo $error = "<p>Erreur: Veuillez remplir le formulaire.</p>";
     }
 
+    public function displayIdentity()
+    {
+        echo ('
+        <form action="" method="post">
+            <div class="form-group row div__prenom">
+                <label for="updatePrenom" class="col-sm-2 col-form-label">Prénom</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="updatePrenom" name="updatePrenom" value="' . $_SESSION['prenom'] . '">
+                </div>
+            </div>
+    
+            <div class="form-group row div__nom">
+                <label for="updateNom" class="col-sm-2 col-form-label">Nom</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="updateNom" name="updateNom" value="' . $_SESSION['nom'] . '">
+                </div>
+            </div>
+    
+            <div class="form-group row div__mail">
+                <label for="updateEmail" class="col-sm-2 col-form-label">E-mail</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" id="updateEmail" name="updateEmail" value="' . $_SESSION['email'] . '">
+                </div>
+            </div>
+    
+            <div class="form-group row div__password">
+                <label for="updatePassword" class="col-sm-2 col-form-label">New MDP</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="updatePassword" name="updatePassword" placeholder="Nouveau Mot de passe">
+                </div>
+            </div>
+    
+            <div class="form-group row div__password2">
+                <label for="confirmUpdatePassword" class="col-sm-2 col-form-label">Confirm New MDP</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="confirmUpdatePassword" name="confirmUpdatePassword" placeholder="Confirmer Nouveau Mot de passe">
+                </div>
+            </div>
 
+            <label></label>
+            <input type="submit" id="update" name="update" value="Enregistrer">
+        </form>
+    ');
 
+        if (isset($_POST['update']))
+        {
+            $this -> updatingUser($_POST['updatePrenom'], $_POST['updateNom'], $_POST['updateEmail'], $_POST['updatePassword'], $_POST['confirmUpdatePassword']);
+        }
+    }
+
+    public function updatingUser($prenom, $nom, $email, $password, $confirmPassword)
+    {
+        if (isset($_SESSION['id']) && isset($_POST['update']))
+        {
+            if (!empty($prenom) && !empty($nom) && !empty($email) && !empty($password) && !empty($confirmPassword))
+            {
+                $this -> secure($prenom);
+                $this -> secure($nom);
+                $this -> secure($email);
+                $this -> secure($password);
+                $this -> secure($confirmPassword);
+
+                $updateHashedPassword = password_hash($password, PASSWORD_BCRYPT);
+
+                if ($password === $confirmPassword)
+                {
+                    $emailExist = new \Model\User();
+                    $emailExist -> alreadyUsed('utilisateurs','email', $email);
+
+                    if (!$emailExist)
+                    {
+                        echo $log = "<p>Erreur: Adresse mail déjà existante.</p>";
+                    }
+                    else
+                    {
+                        $updateUser = new \Model\User();
+                        $updateUser -> update($prenom, $nom, $email, $updateHashedPassword);
+
+                        $_SESSION['prenom'] = $prenom;
+                        $_SESSION['nom'] = $nom;
+                        $_SESSION['email'] = $email;
+                        $_SESSION['password'] = $updateHashedPassword;
+
+//                        session_destroy();
+//                        Http::redirect('connexion.php');
+
+                        echo $log = "<p>Bravo pd</p>";
+                    }
+                } else echo $log = "<p>Erreur: Mots de passe non identique.</p>";
+            }
+            else
+            {
+                $emptyValue = new \Model\User();
+
+                $emptyValue -> emptyValue('utilisateurs','prenom', $_SESSION['prenom']);
+                $emptyValue -> emptyValue('utilisateurs','nom', $_SESSION['nom']);
+                $emptyValue -> emptyValue('utilisateurs','email', $_SESSION['email']);
+                $emptyValue -> emptyValue('utilisateurs','password', $_SESSION['password']);
+
+                echo $log = "<p>Modifications enregistrées.</p>";
+            }
+        }
+    }
 }

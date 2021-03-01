@@ -17,12 +17,28 @@ class User extends \Model
      */
     public function alreadyUsed($table, $column, $var)
     {
-        $query = $this -> pdo -> prepare(" SELECT " . $column . " FROM " . $table . " WHERE " . $column . " = ?");
+        $query = $this->pdo->prepare("SELECT " . $column . " FROM " . $table . " WHERE " . $column . " = :var");
         $query -> execute([
-            $var
+            "var" => $var
         ]);
 
-        return $query -> fetch(\PDO::FETCH_ASSOC);
+        return $query -> fetch();
+    }
+
+    /**
+     * Permet d'attribuer les données utilisateurs de base non modifiées
+     *
+     * @param $table
+     * @param $column
+     * @param $var
+     */
+    public function emptyValue($table, $column, $var)
+    {
+        $query = $this -> pdo -> prepare("UPDATE " . $table . " SET " . $column . " = :var WHERE id = :id");
+        $query -> execute([
+            "var" => $var,
+            "id" => $_SESSION['id']
+        ]);
     }
 
     /**
@@ -58,6 +74,12 @@ class User extends \Model
         return $query;
     }
 
+    /**
+     * Connecte un utilisateur inscrit en base de données
+     *
+     * @param $email
+     * @param $password
+     */
     public function connect($email, $password)
     {
         $getPassword = $this -> pdo -> prepare("SELECT password FROM utilisateurs WHERE email = :email");
@@ -98,5 +120,22 @@ class User extends \Model
                 }
             } else echo $error = "<p>Erreur: Mot de passe incorrect.</p>";
         } else echo $error = "<p>Erreur: Utilisateur introuvable.</p>";
+    }
+
+    public function update($prenom, $nom, $email, $password)
+    {
+        $query = $this -> pdo -> prepare("UPDATE utilisateurs SET prenom = :prenom, nom = :nom, email = :email, password = :password WHERE id = :id");
+        $query -> execute([
+            "prenom" => $prenom,
+            "nom" => $nom,
+            "email" => $email,
+            "password" => $password,
+            "id" => $_SESSION['id']
+        ]);
+
+        $_SESSION['prenom'] = $prenom;
+        $_SESSION['nom'] = $nom;
+        $_SESSION['email'] = $email;
+        $_SESSION['password'] = $password;
     }
 }
