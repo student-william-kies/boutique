@@ -1,0 +1,11 @@
+body{
+    background-image: none;
+    background-color: white;
+}
+
+.main-content{
+    color: black;
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+}

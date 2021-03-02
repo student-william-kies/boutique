@@ -12,13 +12,8 @@
             <section class="main-content">
                 <?php
 
-                $photos = new Controller\Boutique();
-                $photos->displayImage();
-
 
                 ?>
-
-
             </section>
         </section>
     </article>

@@ -12,15 +12,17 @@
             <section class="main-content">
                 <section class="filters">
                     <h1 class="filter-title">FILTRES</h1>
-                    <h2>Prix</h2>
-                    <form class="form-group" method="post">
-                        <section class="row-items">
-                            <label for="min">Prix Min. :</label>
-                            <input class="form-control form-control-sm" type="number" name="min" min="0" value="1">
-                            <label for="max">Prix Max. :</label>
-                            <input class="form-control form-control-sm" type="number" name="max" max="100000" value="999">
+                    <form action="boutique.php" method="get">
+                        <section class="box">
+                            <select name="Choix">
+                                <option>Choisissez votre catégorie</option>
+                                <?php
+                                    $displayChoice = new \Controller\Boutique();
+                                    $displayChoice->categorieChoice();
+                                ?>
+                            </select>
+                            <input class="valid" type="submit" name="search" value="Go !">
                         </section>
-                        <hr>
                     </form>
                 </section>
                 <section class="new-product">
@@ -35,11 +37,19 @@
                 </section>
                 <section class="all-products">
                     <?php
-                    $allProducts = new \Controller\Boutique();
-                    $allProducts ->getAllProducts();
-                    // En suspens pour le moment.
-                    //$addTocart = new \Controller\Boutique();
-                    //$addTocart ->addTocart();
+                        //if(isset($_GET['search'])){
+                            $categorieProducts = new \Controller\Boutique();
+                            $categorieProducts->searchCategorie();
+                        //}
+                        //else{
+                            $allProducts = new \Model\Boutique();
+                            $allProducts ->displayAllProducts();
+                        //}
+
+                        // En suspens pour le moment.
+                        //$addTocart = new \Controller\Boutique();
+                        //$addTocart ->addTocart();
+
                     ?>
                 </section>
             </section>

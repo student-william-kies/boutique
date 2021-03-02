@@ -17,9 +17,14 @@ class Boutique extends \Model{
 
         while ($count = $last->fetch(\PDO::FETCH_ASSOC)){
 
-            $_GET['id'] = @$count['id'];
+            $_GET['id_produits'] = $count['id_produits'];
 
-            echo '<section class="last-articles"><a href=""><h2>' .ucfirst($count['nom']). '</h2><p>' .$count['prix']. '€</p></a></section>';
+            echo '<section class="last-articles">
+                    <a href="produit.php?id=' . $_GET['id_produits'] . '">
+                    <img class="img-newProduits" src='. $count['photo1'] .'>
+                    <h2>' .ucfirst($count['nom']). '</h2><p>' .$count['prix']. '€</p>
+                    </a>
+                    </section>';
 
         }
         return $count;
@@ -27,41 +32,15 @@ class Boutique extends \Model{
 
 
     /**
-     * Permet de sélectionner tous les produits.
+     * Permet d'afficher tous les articles avec le système de pagination.
      * @return mixed
      */
 
-    public function selectAllProduct($id){
-
-        $query = $this->pdo-> prepare("SELECT id_produits FROM produits WHERE id_produits= :id");
-        $query->execute([
-            'id'=>$id
-        ]);
-
-        $result = $query->fetch(\PDO::FETCH_ASSOC);
-
-        $_GET['id_produits'] = $result['id_produits'];
-
-        var_dump($_GET['id_produits']);
-
-        return $result;
-
-
-    }
-
-
-    /**
-     * Permet de compter et sélectionener tous les produits. Et par la suite créer la pagination.
-     * @return mixed
-     */
-
-    public function getAllProducts(){
+    public function displayAllProducts(){
 
         //Permet de compter tous les produits et de les assigner à une variable afin d'initier la pagination.
 
-        $query = $this->pdo-> prepare("SELECT COUNT(id_produits) as nbArt FROM produits");
-        $query->execute();
-        $data = $query->fetch(\PDO::FETCH_ASSOC);
+        $data = $this->pdo-> query("SELECT COUNT(id_produits) as nbArt FROM produits")->fetch(\PDO::FETCH_ASSOC);
 
         $nbArt = $data['nbArt'];
         $perPage = 9;
@@ -80,15 +59,14 @@ class Boutique extends \Model{
 
         //On récupère ici tous les articles et on les affiches avec une limite définie au dessus par page.
 
-        $query = $this->pdo-> prepare("SELECT * FROM `produits` ORDER BY id_produits DESC LIMIT ".(($cPage-1)*$perPage).",$perPage");
-        $query->execute();
-        $article = $query->fetchAll(\PDO::FETCH_ASSOC);
+        $article = $this->pdo-> query("SELECT * FROM `produits` ORDER BY id_produits DESC LIMIT ".(($cPage-1)*$perPage).",$perPage")->fetchAll(\PDO::FETCH_ASSOC);
 
         foreach($article as $articles) {
 
             $_GET['id_produits'] = $articles['id_produits'];
 
             echo '<section class="flex-items">
+                    <img class="img-produits" src='. $articles['photo1'] .'>
                     <a href="produit.php?id=' . $_GET['id_produits'] . '"><h2>' . ucfirst($articles['nom']) . '</h2></a>
                     <p>' . $articles['prix'] . '€</p>
                     <form method="post" name="add">
@@ -106,10 +84,9 @@ class Boutique extends \Model{
                 echo "<section class='pageNumber'><a class='pageNumber'>$i</a></section>";
             }
             else{
-                echo " <section class='pageNumber'><a c href=\"boutique.php?p=$i\">$i</a>  </section> ";
+                echo " <section class='pageNumber'><a href=\"boutique.php?p=$i\">$i</a>  </section> ";
             }
         }
-
     }
 
 
@@ -140,19 +117,60 @@ class Boutique extends \Model{
 
 
     /**
-     * Permet de récupérer les photos en bdd et les assignées à l'id de l'article correspondant.
+     * Permet d'intégrer les catégories dans les options de filtres.
      * @return mixed
      */
 
-    public function displayImage($url){
+    public function categorieChoice(){
 
-        $query = $this->pdo-> prepare("SELECT :chemin FROM photos WHERE id_produit= :id");
-        $query->execute([
-            'chemin'=>$url,
-            'id'=>$_GET['id']
-        ]);
+        $sql = "SELECT * FROM categories";
 
-        return $query->fetch();
+        $query=$this->pdo->prepare($sql);
+        $query->execute();
+
+        $i=0;
+
+        while ($result = $query->fetch(\PDO::FETCH_ASSOC)){
+
+            $tab[$i][]=$result['id_categorie'];
+            $tab[$i][]=$result['nom'];
+            $i++;
+        }
+        return $tab;
+    }
+
+
+    //A REPRENDRE ICI 02/03/2021
+
+    /**
+     * Permet de selectionner les articles d'intégrer les catégories dans les options de filtres.
+     * @return mixed
+     */
+
+    public function searchCategorie(){
+
+        $sql = "SELECT * FROM produits AS p INNER JOIN categories AS c ON p.id_cat = c.id_categorie";
+
+        $result = $this->pdo-> prepare($sql);
+        $result->execute();
+
+        $i =0;
+
+        while ($fetch = $result->fetch(\PDO::FETCH_ASSOC)){
+
+            $tableau[$i][] = $fetch['id_produits'];
+            $tableau[$i][] = $fetch['id_cat'];
+            $tableau[$i][] = $fetch['nom'];
+            $tableau[$i][] = $fetch['description'];
+            $tableau[$i][] = $fetch['prix'];
+            $tableau[$i][] = $fetch['quantite_stock'];
+            $tableau[$i][] = $fetch['stock_status'];
+            $tableau[$i][] = $fetch['id_produits'];
+            $tableau[$i][] = $fetch['photo1'];
+
+            $i++;
+        }
+        return $tableau;
 
     }
 }

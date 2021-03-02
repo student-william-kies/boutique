@@ -1,5 +1,4 @@
 
-
 body{
     background-image: none;
     background-color: white;
@@ -9,14 +8,14 @@ body{
     color: black;
     margin-top: 5%;
     display: grid;
-    grid-template-columns: 5% 10% 10% 3% 70%;
+    grid-template-columns: 5% 20% 3% 70%;
     grid-template-rows: 40vh 20vh 3% 60vh 20vh;
 }
 
 .filters{
     border: solid 1px #9d9a9a;
     grid-column-start: 2;
-    grid-column-end: 4;
+    grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 3;
 }
@@ -35,15 +34,16 @@ body{
 }
 
 .new-product{
+   text-align: center;
     border: solid 1px #9d9a9a;
     grid-column-start: 2;
-    grid-column-end: 4;
+    grid-column-end: 3;
     grid-row-start: 4;
-    grid-row-end: 5;
+    grid-row-end: 7;
 }
 
 .banner{
-    grid-column-start: 5;
+    grid-column-start: 4;
     grid-row-start: 1;
 }
 
@@ -61,7 +61,7 @@ body{
 }
 
 .all-products{
-    grid-column-start: 5;
+    grid-column-start: 4;
     grid-row-start: 2;
     display: flex;
     flex-wrap: wrap;
@@ -80,5 +80,15 @@ body{
 
 .filters form input{
     width: 30%;
+}
+
+.img-produits{
+    width: 200px;
+    height: 200px;
+}
+
+.img-newProduits{
+    width: 100px;
+    height: 100px;
 }
 

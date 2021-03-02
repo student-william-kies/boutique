@@ -2,21 +2,7 @@
 
 namespace Controller;
 
-
-
 class Boutique{
-
-    /**
-     * Permet de sélectionener tous les produits. Et par la suite créer la pagination.
-     * @return mixed
-     */
-
-    public function getAllProducts(){
-
-        $allProducts = new \Model\Boutique();
-        $allProducts ->getAllProducts();
-    }
-
 
     /**
      * Permet d'ajouter un article au panier.
@@ -33,20 +19,22 @@ class Boutique{
         }
     }
 
+    public function categorieChoice(){
 
-    /**
-     * Permet d'afficher les images.
-     * @return mixed
-     */
+        $displayCategorie = new \Model\Boutique();
+        $option= $displayCategorie->categorieChoice();
 
-    public function displayImage(){
+        $i=0;
 
-        //Dans un premier temps on récupère l'article lié à la page.
+        foreach ($option as $value){
 
-        $result = new \Model\Boutique();
-        $result->selectAllProduct($_GET['id']);
+            echo '<option value="'.$value[1].'">' . $value[1] . '</option>';
 
-        // Appeler displayImage du model
+        }
+        $i++;
+    }
+
+    public function searchCategorie(){
 
     }
 }
