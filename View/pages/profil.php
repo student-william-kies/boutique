@@ -27,7 +27,7 @@ if (isset($_POST['logout'])){
         </section>
     </a>
 
-    <a href="" class="container upmid">
+    <a href="address.php" class="container upmid">
         <section class="ico__text">
             <i class="fas fa-map-marker-alt"></i>
             <p><strong>Adresse</strong></p>

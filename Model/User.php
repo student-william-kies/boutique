@@ -55,7 +55,7 @@ class User extends \Model
      * @param $id_droits
      * @return false|PDOStatement
      */
-    public function insert($prenom, $nom, $password, $email, $phone, $address, $city, $codep, $id_droits)
+    public function insertUser($prenom, $nom, $password, $email, $phone, $address, $city, $codep, $id_droits)
     {
         $query = $this -> pdo -> prepare("INSERT INTO utilisateurs (prenom, nom, password, email, telephone, adresse, ville, codep, id_droits)
                                                             VALUES (:prenom, :nom, :password, :email, :phone, :adresse, :ville, :codep, :droit)");
@@ -118,10 +118,18 @@ class User extends \Model
 
                     Http::redirect('home.php');
                 }
-            } else echo $error = "<p>Erreur: Mot de passe incorrect.</p>";
-        } else echo $error = "<p>Erreur: Utilisateur introuvable.</p>";
+            } else echo $log = "<p>Erreur: Mot de passe incorrect.</p>";
+        } else echo $log = "<p>Erreur: Utilisateur introuvable.</p>";
     }
 
+    /**
+     * Permet à l'utilisateur de modifier ses informations personnelles
+     *
+     * @param $prenom
+     * @param $nom
+     * @param $email
+     * @param $password
+     */
     public function update($prenom, $nom, $email, $password)
     {
         $query = $this -> pdo -> prepare("UPDATE utilisateurs SET prenom = :prenom, nom = :nom, email = :email, password = :password WHERE id = :id");
@@ -137,5 +145,24 @@ class User extends \Model
         $_SESSION['nom'] = $nom;
         $_SESSION['email'] = $email;
         $_SESSION['password'] = $password;
+    }
+
+    public function updateAddress($phone, $address, $city, $codep)
+    {
+        $query = $this -> pdo -> prepare("UPDATE utilisateurs SET telephone = :phone, adresse = :adresse, ville = :ville, codep = :codep WHERE id = :id");
+        $query -> execute([
+            "phone" => $phone,
+            "adresse" => $address,
+            "ville" => $city,
+            "codep" => $codep,
+            "id" => $_SESSION['id']
+        ]);
+
+        $_SESSION['telephone'] = $phone;
+        $_SESSION['adresse'] = $address;
+        $_SESSION['ville'] = $city;
+        $_SESSION['codep'] = $codep;
+
+        return $query;
     }
 }
