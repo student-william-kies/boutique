@@ -111,8 +111,8 @@ class User extends Controller
                                                 if (empty($phone) && empty($address) && empty($city) && empty($codep))
                                                 {
                                                     $phone = 0;
-                                                    $address = "";
-                                                    $city = "";
+                                                    $address = 0;
+                                                    $city = 0;
                                                     $codep = 0;
                                                 }
 
@@ -189,21 +189,21 @@ class User extends Controller
             <div class="form-group row div__prenom">
                 <label for="updatePrenom" class="col-sm-2 col-form-label">Prénom</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="updatePrenom" name="updatePrenom" value="' . $_SESSION['prenom'] . '">
+                    <input type="text" class="form-control" id="updatePrenom" name="updatePrenom" value="' . $_SESSION['utilisateur']['prenom'] . '">
                 </div>
             </div>
     
             <div class="form-group row div__nom">
                 <label for="updateNom" class="col-sm-2 col-form-label">Nom</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="updateNom" name="updateNom" value="' . $_SESSION['nom'] . '">
+                    <input type="text" class="form-control" id="updateNom" name="updateNom" value="' . $_SESSION['utilisateur']['nom'] . '">
                 </div>
             </div>
     
             <div class="form-group row div__mail">
                 <label for="updateEmail" class="col-sm-2 col-form-label">E-mail</label>
                 <div class="col-sm-10">
-                    <input type="email" class="form-control" id="updateEmail" name="updateEmail" value="' . $_SESSION['email'] . '">
+                    <input type="email" class="form-control" id="updateEmail" name="updateEmail" value="' . $_SESSION['utilisateur']['email'] . '">
                 </div>
             </div>
     
@@ -240,48 +240,47 @@ class User extends Controller
         $this -> secure($password);
         $this -> secure($confirmPassword);
 
-        if (isset($_SESSION['id']))
+        $updateValue = new \Model\User();
+        $emptyValue = new \Model\User();
+
+        if (!empty($prenom))
         {
-            if (!empty($prenom) && !empty($nom) && !empty($email) && !empty($password) && !empty($confirmPassword))
+            $updateValue -> updateValue('utilisateurs', 'prenom', $prenom);
+            session_destroy();
+            Http::redirect('connexion.php');
+        } else $emptyValue -> emptyValue('utilisateurs', 'prenom', $_SESSION['utilisateur']['prenom']); session_destroy(); Http::redirect('connexion.php');
+
+        if (!empty($nom))
+        {
+            $updateValue -> updateValue('utilisateurs', 'nom', $nom);
+            session_destroy();
+            Http::redirect('connexion.php');
+        } else $emptyValue -> emptyValue('utilisateurs', 'nom', $_SESSION['utilisateur']['nom']); session_destroy(); Http::redirect('connexion.php');
+
+        if (!empty($email))
+        {
+            $emailExist = new \Model\User();
+            $emailExist -> alreadyUsed('utilisateurs', 'email', $email);
+
+            if (!$emailExist)
             {
-                $updateHashedPassword = password_hash($password, PASSWORD_BCRYPT);
-
-                if ($password === $confirmPassword)
-                {
-                    $emailExist = new \Model\User();
-                    $emailExist -> alreadyUsed('utilisateurs','email', $email);
-
-                    if (!$emailExist)
-                    {
-                        echo $log = "<p>Erreur: Adresse mail déjà existante.</p>";
-                    }
-                    else
-                    {
-                        $updateUser = new \Model\User();
-                        $updateUser -> update($prenom, $nom, $email, $updateHashedPassword);
-
-                        $_SESSION['prenom'] = $prenom;
-                        $_SESSION['nom'] = $nom;
-                        $_SESSION['email'] = $email;
-                        $_SESSION['password'] = $updateHashedPassword;
-
-                        session_destroy();
-                        Http::redirect('connexion.php');
-                    }
-                } else echo $log = "<p>Erreur: Mots de passe non identique.</p>";
+                $updateValue -> updateValue('utilisateurs', 'email', $email);
+                session_destroy();
+                Http::redirect('connexion.php');
             }
-            else
+        } else $emptyValue -> emptyValue('utilisateurs', 'email', $_SESSION['utilisateur']['email']); session_destroy(); Http::redirect('connexion.php');
+
+        if (!empty($password) && !empty($confirmPassword))
+        {
+            $updateHashedPassword = password_hash($password, PASSWORD_BCRYPT);
+
+            if ($password === $confirmPassword)
             {
-                $emptyValue = new \Model\User();
-
-                $emptyValue -> emptyValue('utilisateurs','prenom', $_SESSION['prenom']);
-                $emptyValue -> emptyValue('utilisateurs','nom', $_SESSION['nom']);
-                $emptyValue -> emptyValue('utilisateurs','email', $_SESSION['email']);
-                $emptyValue -> emptyValue('utilisateurs','password', $_SESSION['password']);
-
-                echo $log = "<p>Modifications enregistrées.</p>";
-            }
-        }
+                $updateValue -> updateValue('utilisateurs', 'password', $updateHashedPassword);
+                session_destroy();
+                Http::redirect('connexion.php');
+            } else echo  $log = "<p>Erreur: Les mots de passe ne correspondent pas.</p>";
+        } else $emptyValue -> emptyValue('utilisateurs', 'password', $_SESSION['utilisateur']['password']); session_destroy(); Http::redirect('connexion.php');
     }
 
     public function displayAddress()
@@ -292,28 +291,28 @@ class User extends Controller
             <div class="form-group row div__phone">
                 <label for="phone" class="col-sm-2 col-form-label">Téléphone</label>
                 <div class="col-sm-10">
-                    <input type="tel" class="form-control" name="phone" value="' . $_SESSION['telephone'] . '">
+                    <input type="tel" class="form-control" name="phone" value="' . $_SESSION['utilisateur']['telephone'] . '">
                 </div>
             </div>
     
             <div class="form-group row div__address">
                 <label for="address" class="col-sm-2 col-form-label">Adresse</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="address" name="address" value="' . $_SESSION['adresse'] . '">
+                    <input type="text" class="form-control" id="address" name="address" value="' . $_SESSION['utilisateur']['adresse'] . '">
                 </div>
             </div>
             
             <div class="form-group row div__city">
                 <label for="city" class="col-sm-2 col-form-label">Ville</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="city" name="city" value="' . $_SESSION['ville'] . '">
+                    <input type="text" class="form-control" id="city" name="city" value="' . $_SESSION['utilisateur']['ville'] . '">
                 </div>
             </div>
             
             <div class="form-group row div__codep">
                 <label for="codep" class="col-sm-2 col-form-label">Code Postal</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" id="codep" name="codep" value="' . $_SESSION['codep'] . '">
+                    <input type="number" class="form-control" id="codep" name="codep" value="' . $_SESSION['utilisateur']['codep'] . '">
                 </div>
             </div>
 
@@ -330,7 +329,7 @@ class User extends Controller
 
     public function creatingAddress($phone, $address, $city, $codep)
     {
-        if (isset($_SESSION['id']) && isset($_POST['insertAddress']))
+        if (isset($_SESSION['utilisateur']['id']) && isset($_POST['insertAddress']))
         {
             $this -> secure($phone);
             $this -> secure($address);
@@ -350,10 +349,10 @@ class User extends Controller
             {
                 $emptyValue = new \Model\User();
 
-                $emptyValue -> emptyValue('utilisateurs','telephone', $_SESSION['telephone']);
-                $emptyValue -> emptyValue('utilisateurs','adresse', $_SESSION['adresse']);
-                $emptyValue -> emptyValue('utilisateurs','ville', $_SESSION['ville']);
-                $emptyValue -> emptyValue('utilisateurs','codep', $_SESSION['codep']);
+                $emptyValue -> emptyValue('utilisateurs','telephone', $_SESSION['utilisateur']['telephone']);
+                $emptyValue -> emptyValue('utilisateurs','adresse', $_SESSION['utilisateur']['adresse']);
+                $emptyValue -> emptyValue('utilisateurs','ville', $_SESSION['utilisateur']['ville']);
+                $emptyValue -> emptyValue('utilisateurs','codep', $_SESSION['utilisateur']['codep']);
 
                 echo $log = "<p>Modifications enregistrées.</p>";
             }

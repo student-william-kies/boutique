@@ -25,6 +25,29 @@ class User extends \Model
         return $query -> fetch();
     }
 
+//    public function sameValue($table, $column)
+//    {
+//        $query = $this -> pdo -> prepare("SELECT " . $column . " FROM " . $table . " WHERE id = :id");
+//        $query -> execute([
+//            "id" => $_SESSION['utilisateur']['id']
+//        ]);
+//
+//        return $query -> fetch();
+//    }
+
+    public function updateValue($table, $column, $var)
+    {
+        $query = $this -> pdo -> prepare("UPDATE " . $table . " SET " . $column . " = :var WHERE id = :id");
+        $query -> execute([
+            "var" => $var,
+            "id" => $_SESSION['utilisateur']['id']
+        ]);
+
+        $_SESSION[" . $column . "] = $var;
+
+        return $query;
+    }
+
     /**
      * Permet d'attribuer les données utilisateurs de base non modifiées
      *
@@ -37,7 +60,7 @@ class User extends \Model
         $query = $this -> pdo -> prepare("UPDATE " . $table . " SET " . $column . " = :var WHERE id = :id");
         $query -> execute([
             "var" => $var,
-            "id" => $_SESSION['id']
+            "id" => $_SESSION['utilisateur']['id']
         ]);
     }
 
@@ -95,6 +118,7 @@ class User extends \Model
 
             if (password_verify($password, $checkPassword))
             {
+
                 $data = $this -> pdo -> prepare("SELECT * FROM utilisateurs WHERE email = :email AND password = :password");
                 $data -> execute([
                     "email" => $email,
@@ -103,48 +127,12 @@ class User extends \Model
 
                 $infoUser = $data -> fetch(\PDO::FETCH_ASSOC);
 
-                if ($data -> rowCount())
-                {
-                    $_SESSION['id'] = $infoUser['id'];
-                    $_SESSION['prenom'] = $infoUser['prenom'];
-                    $_SESSION['nom'] = $infoUser['nom'];
-                    $_SESSION['password'] = $infoUser['password'];
-                    $_SESSION['email'] = $infoUser['email'];
-                    $_SESSION['telephone'] = $infoUser['telephone'];
-                    $_SESSION['adresse'] = $infoUser['adresse'];
-                    $_SESSION['ville'] = $infoUser['ville'];
-                    $_SESSION['codep'] = $infoUser['codep'];
-                    $_SESSION['id_droits'] = $infoUser['id_droits'];
+                $_SESSION['utilisateur'] = $infoUser;
 
-                    Http::redirect('home.php');
-                }
+                Http::redirect('home.php');
+
             } else echo $log = "<p>Erreur: Mot de passe incorrect.</p>";
         } else echo $log = "<p>Erreur: Utilisateur introuvable.</p>";
-    }
-
-    /**
-     * Permet à l'utilisateur de modifier ses informations personnelles
-     *
-     * @param $prenom
-     * @param $nom
-     * @param $email
-     * @param $password
-     */
-    public function update($prenom, $nom, $email, $password)
-    {
-        $query = $this -> pdo -> prepare("UPDATE utilisateurs SET prenom = :prenom, nom = :nom, email = :email, password = :password WHERE id = :id");
-        $query -> execute([
-            "prenom" => $prenom,
-            "nom" => $nom,
-            "email" => $email,
-            "password" => $password,
-            "id" => $_SESSION['id']
-        ]);
-
-        $_SESSION['prenom'] = $prenom;
-        $_SESSION['nom'] = $nom;
-        $_SESSION['email'] = $email;
-        $_SESSION['password'] = $password;
     }
 
     public function updateAddress($phone, $address, $city, $codep)
@@ -158,10 +146,10 @@ class User extends \Model
             "id" => $_SESSION['id']
         ]);
 
-        $_SESSION['telephone'] = $phone;
-        $_SESSION['adresse'] = $address;
-        $_SESSION['ville'] = $city;
-        $_SESSION['codep'] = $codep;
+        $_SESSION['utilisateur']['telephone'] = $phone;
+        $_SESSION['utilisateur']['adresse'] = $address;
+        $_SESSION['utilisateur']['ville'] = $city;
+        $_SESSION['utilisateur']['codep'] = $codep;
 
         return $query;
     }

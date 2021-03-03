@@ -47,10 +47,10 @@
                             <li class="nav-item" id="phone"><a class="nav-link" href="#"><i class="fas fa-phone-square"></i> 04.56.92.14.36</a></li>
                             <li class="nav-item dropdown" id="account"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user-circle"></i> Mon Compte</a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <?php if (!isset($_SESSION['id'])){ echo ('<li><a class="dropdown-item" href="inscription.php">Inscription</a></li>'); } ?>
-                                    <?php if (!isset($_SESSION['id'])){ echo ('<li><a class="dropdown-item" href="connexion.php">Connexion</a></li>'); } ?>
-                                    <?php if (isset($_SESSION['id'])){ echo ('<form method="POST" action="home.php"><li><a class="dropdown-item" href=""><input type="submit" name="logout" value="Déconnexion" class=""></a></li></form>'); } ?>
-                                    <?php if (isset($_SESSION['id'])){ echo ('<li><a class="dropdown-item" href="profil.php">' . $_SESSION['prenom']. ' ' . $_SESSION['nom'] . '</a></li>'); } ?>
+                                    <?php if (!isset($_SESSION['utilisateur']['id'])){ echo ('<li><a class="dropdown-item" href="inscription.php">Inscription</a></li>'); } ?>
+                                    <?php if (!isset($_SESSION['utilisateur']['id'])){ echo ('<li><a class="dropdown-item" href="connexion.php">Connexion</a></li>'); } ?>
+                                    <?php if (isset($_SESSION['utilisateur']['id'])){ echo ('<form method="POST" action="home.php"><li><a class="dropdown-item" href=""><input type="submit" name="logout" value="Déconnexion" class=""></a></li></form>'); } ?>
+                                    <?php if (isset($_SESSION['utilisateur']['id'])){ echo ('<li><a class="dropdown-item" href="profil.php">' . $_SESSION['utilisateur']['prenom']. ' ' . $_SESSION['utilisateur']['nom'] . '</a></li>'); } ?>
                                 </ul>
                             </li>
                             <li class="nav-item" id="shopping"><a class="nav-link" href="#"><i class="fas fa-shopping-basket"></i> Panier</a></li>
