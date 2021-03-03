@@ -22,7 +22,7 @@ class Boutique extends \Model{
             echo '<section class="last-articles">
                     <a href="produit.php?id=' . $_GET['id_produits'] . '">
                     <img class="img-newProduits" src='. $count['photo1'] .'>
-                    <h2>' .ucfirst($count['nom']). '</h2><p>' .$count['prix']. '€</p>
+                    <h2>' .ucfirst($count['titre']). '</h2><p>' .$count['prix']. '€</p>
                     </a>
                     </section>';
 
@@ -67,8 +67,8 @@ class Boutique extends \Model{
 
             echo '<section class="flex-items">
                     <img class="img-produits" src='. $articles['photo1'] .'>
-                    <a href="produit.php?id=' . $_GET['id_produits'] . '"><h2>' . ucfirst($articles['nom']) . '</h2></a>
-                    <p>' . $articles['prix'] . '€</p>
+                    <a href="produit.php?id=' . $_GET['id_produits'] . '"><h2>' . ucfirst($articles['titre']) . '</h2></a>
+                    <p>'. $articles['stock_status'] .'</p><p>' . $articles['prix'] . '€</p>
                     <form method="post" name="add">
                     <input type="submit" name="add" value=" Ajouter au panier">
                     <input type="hidden" name="hiddenAdd" value="'. $articles['id_produits'] .'">
@@ -140,18 +140,18 @@ class Boutique extends \Model{
     }
 
 
-    //A REPRENDRE ICI 02/03/2021
-
     /**
      * Permet de selectionner les articles d'intégrer les catégories dans les options de filtres.
      * @return mixed
      */
 
-    public function searchCategorie(){
+    public function searchCategorie($nom){
 
-        $sql = "SELECT * FROM produits AS p INNER JOIN categories AS c ON p.id_cat = c.id_categorie";
+        $sql = "SELECT * FROM produits AS p INNER JOIN categories AS c ON c.nom=:nom WHERE p.id_cat = c.id_categorie";
 
         $result = $this->pdo-> prepare($sql);
+        $result->bindValue(':nom', $nom);
+
         $result->execute();
 
         $i =0;
@@ -159,19 +159,14 @@ class Boutique extends \Model{
         while ($fetch = $result->fetch(\PDO::FETCH_ASSOC)){
 
             $tableau[$i][] = $fetch['id_produits'];
-            $tableau[$i][] = $fetch['id_cat'];
-            $tableau[$i][] = $fetch['nom'];
-            $tableau[$i][] = $fetch['description'];
+            $tableau[$i][] = $fetch['titre'];
             $tableau[$i][] = $fetch['prix'];
-            $tableau[$i][] = $fetch['quantite_stock'];
             $tableau[$i][] = $fetch['stock_status'];
-            $tableau[$i][] = $fetch['id_produits'];
             $tableau[$i][] = $fetch['photo1'];
 
             $i++;
         }
         return $tableau;
-
     }
 }
 

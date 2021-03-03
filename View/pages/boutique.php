@@ -37,19 +37,8 @@
                 </section>
                 <section class="all-products">
                     <?php
-                        //if(isset($_GET['search'])){
-                            $categorieProducts = new \Controller\Boutique();
-                            $categorieProducts->searchCategorie();
-                        //}
-                        //else{
-                            $allProducts = new \Model\Boutique();
-                            $allProducts ->displayAllProducts();
-                        //}
-
-                        // En suspens pour le moment.
-                        //$addTocart = new \Controller\Boutique();
-                        //$addTocart ->addTocart();
-
+                        $addTocart = new \Controller\Boutique();
+                        $addTocart ->searchCategorie();
                     ?>
                 </section>
             </section>
