@@ -8,6 +8,7 @@ class Boutique extends \Model{
 
     /**
      * Permet de sélectionner les 3 derniers produits.
+     *
      * @return mixed
      */
 
@@ -33,7 +34,7 @@ class Boutique extends \Model{
 
     /**
      * Permet d'afficher tous les articles avec le système de pagination.
-     * @return mixed
+     *
      */
 
     public function displayAllProducts(){
@@ -91,34 +92,9 @@ class Boutique extends \Model{
 
 
     /**
-     * Permet d'ajouter un article au panier.
-     * @return mixed
-     */
-
-    public function addTocart(){
-
-        // On récupère ici tous les articles.
-
-        $query = $this->pdo-> query("SELECT id_produits, prix, quantite_stock FROM produits");
-        $articles = $query->fetchAll();
-
-        $_GET[1]['id_produits'] = $articles[1]['id_produits'];
-        $_GET[1]['prix'] = $articles[1]['prix'];
-        $_GET[1]['quantite_stock'] = $articles[1]['quantite_stock'];
-
-
-        $query2 = $this->pdo->prepare("INSERT INTO panier (id_produit, prix, quantite) VALUES (:id_produits, :prix, :quantite_stock)");
-        $query2->execute([
-            'id_produits'=> $_GET[1]['id_produits'],
-            'prix'=> $_GET[1]['prix'],
-            'quantite_stock'=> 1
-        ]);
-    }
-
-
-    /**
      * Permet d'intégrer les catégories dans les options de filtres.
-     * @return mixed
+     *
+     * @return array
      */
 
     public function categorieChoice(){
@@ -142,7 +118,9 @@ class Boutique extends \Model{
 
     /**
      * Permet de selectionner les articles d'intégrer les catégories dans les options de filtres.
-     * @return mixed
+     *
+     * @param $nom
+     * @return array
      */
 
     public function searchCategorie($nom){
@@ -156,17 +134,78 @@ class Boutique extends \Model{
 
         $i =0;
 
-        while ($fetch = $result->fetch(\PDO::FETCH_ASSOC)){
+            while ($fetch = $result->fetch(\PDO::FETCH_ASSOC)){
 
-            $tableau[$i][] = $fetch['id_produits'];
-            $tableau[$i][] = $fetch['titre'];
-            $tableau[$i][] = $fetch['prix'];
-            $tableau[$i][] = $fetch['stock_status'];
-            $tableau[$i][] = $fetch['photo1'];
+                $tableau[$i][] = $fetch['id_produits'];
+                $tableau[$i][] = $fetch['titre'];
+                $tableau[$i][] = $fetch['prix'];
+                $tableau[$i][] = $fetch['stock_status'];
+                $tableau[$i][] = $fetch['photo1'];
+
+                $i++;
+            }
+            return $tableau;
+    }
+
+
+
+    //REPRENDRE ICI
+    public function quantityChoice(){
+
+        $stockDispo = $this->pdo-> query("SELECT * FROM `produits` WHERE quantite_stock > 0");
+
+        $i =0;
+
+        while ($count = $stockDispo->fetch(\PDO::FETCH_ASSOC)){
+
+            $tableau[$i][] = $count['id_produits'];
+            $tableau[$i][] = $count['titre'];
+            $tableau[$i][] = $count['prix'];
+            $tableau[$i][] = $count['stock_status'];
+            $tableau[$i][] = $count['photo1'];
 
             $i++;
         }
+        var_dump($tableau);
         return $tableau;
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //A REVOIR 04/03/2021
+    /**
+     * Permet d'ajouter un article de la page boutique directement dans le panier.
+     *
+     */
+
+    public function addToCart(){
+
+        $allProducts = $this->pdo-> query("SELECT * FROM produits");
+        $test = $allProducts->fetchAll(\PDO::FETCH_ASSOC);
+        var_dump($test);
+
+        $query = $this->pdo->prepare("INSERT INTO panier (id_produit) VALUES (:id_produits)");
+        $query->execute([
+            'id_produits'=> $_GET['id_produits']
+        ]);
+
+        var_dump($_GET['id_produits']);
     }
 }
 

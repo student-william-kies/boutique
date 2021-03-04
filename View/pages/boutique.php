@@ -15,7 +15,7 @@
                     <form action="boutique.php" method="get">
                         <section class="box">
                             <select name="Choix">
-                                <option>Choisissez votre catégorie</option>
+                                <option name="allProducts">Tous les produits</option>
                                 <?php
                                     $displayChoice = new \Controller\Boutique();
                                     $displayChoice->categorieChoice();
@@ -37,8 +37,12 @@
                 </section>
                 <section class="all-products">
                     <?php
-                        $addTocart = new \Controller\Boutique();
-                        $addTocart ->searchCategorie();
+                        $resultProducts = new \Controller\Boutique();
+                        $resultProducts ->searchCategorie();
+
+                        $test = new \Model\Boutique();
+                        $test->quantityChoice();
+
                     ?>
                 </section>
             </section>

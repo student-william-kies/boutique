@@ -5,19 +5,8 @@ namespace Controller;
 class Boutique{
 
     /**
-     * Permet d'ajouter un article au panier.
-     * @return mixed
+     * Permet d'afficher dans l'option le nom des catégories.
      */
-
-    public function addTocart(){
-
-        if(isset($_POST['hiddenAdd'])){
-
-            $addTocart = new \Model\Boutique();
-            $addTocart ->addTocart();
-
-        }
-    }
 
     public function categorieChoice(){
 
@@ -34,33 +23,70 @@ class Boutique{
         $i++;
     }
 
+    /**
+     * Permet de gérer l'affichage des produits filtrés ou pas.
+     */
+
     public function searchCategorie(){
 
         if(isset($_GET['search'])){
 
-            $display = new \Model\Boutique();
-            $result = $display->searchCategorie($_GET['Choix']);
+            if($_GET['Choix'] != ($_GET['Choix'] ===  "Tous les produits")){
 
+                $display = new \Model\Boutique();
+                $result = $display->searchCategorie($_GET['Choix']);
 
-            foreach ($result as $value){
+                foreach ($result as $value) {
 
-                $_GET['id_produits'] = $value[0];
+                    $_GET['id_produits'] = $value[0];
 
-                echo '<section class="flex-items">
-                    <img class="img-produits" src='. $value[4] .'>
-                    <a href="produit.php?id=' . $_GET['id_produits'] . '"><h2>' . ucfirst($value[1]) . '</h2></a>
-                    <p>'. $value[3] .'</p><p>' . $value[2] . '€</p>
-                    <form method="post" name="add">
-                    <input type="submit" name="add" value=" Ajouter au panier">
-                    <input type="hidden" name="hiddenAdd" value="'. $value[0] .'">
-                    </form>
-                    </section>';
+                    echo '<section class="flex-items">
+                        <img class="img-produits" src=' . $value[4] . '>
+                        <a href="produit.php?id=' . $_GET['id_produits'] . '"><h2>' . ucfirst($value[1]) . '</h2></a>
+                        <p>' . $value[3] . '</p><p>' . $value[2] . '€</p>
+                        <form method="post" name="add">
+                        <input type="submit" name="add" value=" Ajouter au panier">
+                        <input type="hidden" name="hiddenAdd" value="' . $value[0] . '">
+                        </form>
+                        </section>';
+                }
             }
-            if($value['']){
-                $affichageA = new \Model\Boutique();
-                $affichageA ->displayAllProducts();
-            }
+            elseif($_GET['Choix'] === "Tous les produits"){
 
+                $displayAll = new \Model\Boutique();
+                $displayAll->displayAllProducts();
+
+            }
+        }
+        else{
+            $displayAll = new \Model\Boutique();
+            $displayAll->displayAllProducts();
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //A REVOIR 04/03/2021
+    public function addToCart(){
+
+        if(isset($_POST['hiddenAdd'])){
+
+            $addCart = new \Model\Boutique();
+            $addCart->addToCart();
         }
     }
 }
