@@ -25,16 +25,31 @@ class User extends \Model
         return $query -> fetch();
     }
 
-//    public function sameValue($table, $column)
-//    {
-//        $query = $this -> pdo -> prepare("SELECT " . $column . " FROM " . $table . " WHERE id = :id");
-//        $query -> execute([
-//            "id" => $_SESSION['utilisateur']['id']
-//        ]);
-//
-//        return $query -> fetch();
-//    }
+    /**
+     * Permet de recupérer une données précise en base de données
+     *
+     * @param $column
+     * @return mixed
+     */
+    public function sameValue($column)
+    {
+        $query = $this -> pdo -> prepare("SELECT " . $column . " FROM utilisateurs WHERE id = :id");
+        $query -> execute([
+            "id" => $_SESSION['utilisateur']['id']
+        ]);
+        $tab = $query -> fetch();
 
+        return $tab[$column];
+    }
+
+    /**
+     * Permet de modifier les infos utilisateurs
+     *
+     * @param $table
+     * @param $column
+     * @param $var
+     * @return false|PDOStatement
+     */
     public function updateValue($table, $column, $var)
     {
         $query = $this -> pdo -> prepare("UPDATE " . $table . " SET " . $column . " = :var WHERE id = :id");
@@ -43,25 +58,9 @@ class User extends \Model
             "id" => $_SESSION['utilisateur']['id']
         ]);
 
-        $_SESSION[" . $column . "] = $var;
+        $_SESSION["utilisateur"][$column] = $var;
 
         return $query;
-    }
-
-    /**
-     * Permet d'attribuer les données utilisateurs de base non modifiées
-     *
-     * @param $table
-     * @param $column
-     * @param $var
-     */
-    public function emptyValue($table, $column, $var)
-    {
-        $query = $this -> pdo -> prepare("UPDATE " . $table . " SET " . $column . " = :var WHERE id = :id");
-        $query -> execute([
-            "var" => $var,
-            "id" => $_SESSION['utilisateur']['id']
-        ]);
     }
 
     /**

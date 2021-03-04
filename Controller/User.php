@@ -5,6 +5,13 @@ require ('Http.php');
 
 class User extends Controller
 {
+//    public $log = "";
+//
+//    public function echoThisLog()
+//    {
+//        echo  $this -> log;
+//    }
+
     /**
      * Méthode qui vas afficher le formulaire d'inscription et inscrire un utilisateur
      */
@@ -222,7 +229,7 @@ class User extends Controller
             </div>
 
             <label></label>
-            <input type="submit" id="update" name="update" value="Enregistrer">
+            <input type="submit" id="update" name="update" value="Mettre à jour">
         </form>
     ');
 
@@ -240,47 +247,23 @@ class User extends Controller
         $this -> secure($password);
         $this -> secure($confirmPassword);
 
-        $updateValue = new \Model\User();
-        $emptyValue = new \Model\User();
+        $sameValue = new \Model\User();
+        $getPrenom = $sameValue -> sameValue('prenom');
 
-        if (!empty($prenom))
+        $updateValue = new \Model\User();
+
+        if ($prenom != $getPrenom)
         {
             $updateValue -> updateValue('utilisateurs', 'prenom', $prenom);
-            session_destroy();
-            Http::redirect('connexion.php');
-        } else $emptyValue -> emptyValue('utilisateurs', 'prenom', $_SESSION['utilisateur']['prenom']); session_destroy(); Http::redirect('connexion.php');
+            $_SESSION['utilisateur']['prenom'] = $prenom;
 
-        if (!empty($nom))
+            Http::redirect('identity.php');
+        }
+        else
         {
-            $updateValue -> updateValue('utilisateurs', 'nom', $nom);
-            session_destroy();
-            Http::redirect('connexion.php');
-        } else $emptyValue -> emptyValue('utilisateurs', 'nom', $_SESSION['utilisateur']['nom']); session_destroy(); Http::redirect('connexion.php');
+            $updateValue -> updateValue('utilisateurs', 'prenom', $_SESSION['utilisateur']['prenom']);
 
-        if (!empty($email))
-        {
-            $emailExist = new \Model\User();
-            $emailExist -> alreadyUsed('utilisateurs', 'email', $email);
-
-            if (!$emailExist)
-            {
-                $updateValue -> updateValue('utilisateurs', 'email', $email);
-                session_destroy();
-                Http::redirect('connexion.php');
-            }
-        } else $emptyValue -> emptyValue('utilisateurs', 'email', $_SESSION['utilisateur']['email']); session_destroy(); Http::redirect('connexion.php');
-
-        if (!empty($password) && !empty($confirmPassword))
-        {
-            $updateHashedPassword = password_hash($password, PASSWORD_BCRYPT);
-
-            if ($password === $confirmPassword)
-            {
-                $updateValue -> updateValue('utilisateurs', 'password', $updateHashedPassword);
-                session_destroy();
-                Http::redirect('connexion.php');
-            } else echo  $log = "<p>Erreur: Les mots de passe ne correspondent pas.</p>";
-        } else $emptyValue -> emptyValue('utilisateurs', 'password', $_SESSION['utilisateur']['password']); session_destroy(); Http::redirect('connexion.php');
+        }
     }
 
     public function displayAddress()
