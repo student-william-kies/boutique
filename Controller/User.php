@@ -248,10 +248,9 @@ class User extends Controller
         $this -> secure($confirmPassword);
 
         $sameValue = new \Model\User();
-        $getPrenom = $sameValue -> sameValue('prenom');
-
         $updateValue = new \Model\User();
 
+        $getPrenom = $sameValue -> sameValue('prenom');
         if ($prenom != $getPrenom)
         {
             $updateValue -> updateValue('utilisateurs', 'prenom', $prenom);
@@ -262,7 +261,54 @@ class User extends Controller
         else
         {
             $updateValue -> updateValue('utilisateurs', 'prenom', $_SESSION['utilisateur']['prenom']);
+            Http::redirect('identity.php');
+        }
 
+        $getNom = $sameValue -> sameValue('nom');
+        if ($nom != $getNom)
+        {
+            $updateValue -> updateValue('utilisateurs', 'nom', $nom);
+            $_SESSION['utilisateur']['nom'] = $nom;
+
+            Http::redirect('identity.php');
+        }
+        else
+        {
+            $updateValue -> updateValue('utilisateurs', 'nom', $_SESSION['utilisateur']['nom']);
+            Http::redirect('identity.php');
+        }
+
+        $getEmail = $sameValue -> sameValue('email');
+        if ($email != $getEmail)
+        {
+            $updateValue -> updateValue('utilisateurs', 'email', $email);
+            $_SESSION['utilisateur']['email'] = $email;
+
+            Http::redirect('identity.php');
+        }
+        else
+        {
+            $updateValue -> updateValue('utilisateurs', 'email', $_SESSION['utilisateur']['email']);
+            Http::redirect('identity.php');
+        }
+
+        $getPassword = $sameValue -> sameValue('password');
+        if ($password != $getPassword)
+        {
+            if ($password === $confirmPassword)
+            {
+                $updateHashedPassword = password_hash($password, PASSWORD_BCRYPT);
+
+                $updateValue -> updateValue('utilisateurs', 'password', $updateHashedPassword);
+                $_SESSION['utilisateur']['password'] = $updateHashedPassword;
+
+                Http::redirect('identity.php');
+            } else echo $log = "<p>Erreur: Les mots de passe ne sont pas identiques.</p>";
+        }
+        else
+        {
+            $updateValue -> updateValue('utilisateurs', 'password', $_SESSION['utilisateur']['password']);
+            Http::redirect('identity.php');
         }
     }
 
