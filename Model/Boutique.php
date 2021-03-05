@@ -152,7 +152,7 @@ class Boutique extends \Model{
     //REPRENDRE ICI
     public function quantityChoice(){
 
-        $stockDispo = $this->pdo-> query("SELECT * FROM `produits` WHERE quantite_stock > 0");
+        $stockDispo = $this->pdo-> query("SELECT * FROM produits WHERE quantite_stock > 0");
 
         $i =0;
 
@@ -173,28 +173,8 @@ class Boutique extends \Model{
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //A REVOIR 04/03/2021
-    /**
-     * Permet d'ajouter un article de la page boutique directement dans le panier.
-     *
-     */
-
-    public function addToCart(){
+    //A REVOIR 04/03/2021 car non fonctionnelle.
+    /*public function addToCart(){
 
         $allProducts = $this->pdo-> query("SELECT * FROM produits");
         $test = $allProducts->fetchAll(\PDO::FETCH_ASSOC);
@@ -206,7 +186,7 @@ class Boutique extends \Model{
         ]);
 
         var_dump($_GET['id_produits']);
-    }
+    }*/
 }
 
 ?>

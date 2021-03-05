@@ -68,7 +68,6 @@
                                 Date de création : 02/2021<br>
                                 Dénomination sociale : SARL UNLEASHED-STORE<br>
                                 Dénomination du site internet : UNLEASHED-STORE</p>
-
                         </section>
                         <section class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
 

@@ -4,6 +4,7 @@ namespace Controller;
 
 class Boutique{
 
+
     /**
      * Permet d'afficher dans l'option le nom des catégories.
      */
@@ -22,6 +23,7 @@ class Boutique{
         }
         $i++;
     }
+
 
     /**
      * Permet de gérer l'affichage des produits filtrés ou pas.
@@ -65,30 +67,15 @@ class Boutique{
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //A REVOIR 04/03/2021
-    public function addToCart(){
+    //A REVOIR 04/03/2021 car non fonctionnelle.
+    /*public function addToCart(){
 
         if(isset($_POST['hiddenAdd'])){
 
             $addCart = new \Model\Boutique();
             $addCart->addToCart();
         }
-    }
+    }*/
 }
 
 ?>

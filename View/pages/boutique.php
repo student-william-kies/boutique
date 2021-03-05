@@ -42,7 +42,6 @@
 
                         $test = new \Model\Boutique();
                         $test->quantityChoice();
-
                     ?>
                 </section>
             </section>
