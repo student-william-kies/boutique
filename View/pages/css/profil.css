@@ -64,27 +64,6 @@ body{
     margin-left: 0;
 }
 
-.downmid{
-    background-color: #ebebf1;
-    text-align: center;
-    text-decoration: none;
-    font-size: 18px;
-    color: #403c3c;
-    width: 30%;
-    height: 20vh;
-}
-
-.downright{
-    background-color: #ebebf1;
-    text-align: center;
-    text-decoration: none;
-    font-size: 18px;
-    color: #403c3c;
-    width: 30%;
-    height: 20vh;
-    margin-right: 0;
-}
-
 .form__deco{
     width: 10%;
 }

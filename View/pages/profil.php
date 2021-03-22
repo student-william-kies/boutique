@@ -36,31 +36,27 @@ if (isset($_POST['logout'])){
 
     <a href="" class="container upright">
         <section class="ico__text">
-            <i class="fas fa-calendar-alt"></i>
-            <p><strong>Historique des commandes</strong></p>
+            <i class="fas fa-history"></i>
+            <p><strong>Historique d'achat</strong></p>
         </section>
     </a>
 
-    <a href="" class="container downleft">
+    <?php
+    if (isset($_SESSION['utilisateur']['id']))
+    {
+    if ($_SESSION['utilisateur']['id_droits'] == 1337 || $_SESSION['utilisateur']['id_droits'] == 42)
+    {
+    echo ('
+    <a href="admin.php" class="container downleft">
         <section class="ico__text">
             <i class="fas fa-clipboard"></i>
-            <p><strong>Factures</strong></p>
+            <p><strong>Administrations</strong></p>
         </section>
     </a>
-
-    <a href="" class="container downmid">
-        <section class="ico__text">
-            <i class="far fa-credit-card"></i>
-            <p><strong>Moyens de paiement</strong></p>
-        </section>
-    </a>
-
-    <a href="" class="container downright">
-        <section class="ico__text">
-            <i class="fas fa-comments"></i>
-            <p><strong>Mes Avis</strong></p>
-        </section>
-    </a>
+    ');
+    }
+    }
+    ?>
 </section>
 
 <section class="container form__deco">

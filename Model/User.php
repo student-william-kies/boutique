@@ -134,6 +134,15 @@ class User extends \Model
         } else echo $log = "<p>Erreur: Utilisateur introuvable.</p>";
     }
 
+    /**
+     * Permet de modifier les informations sur l'adresse
+     *
+     * @param $phone
+     * @param $address
+     * @param $city
+     * @param $codep
+     * @return false|PDOStatement
+     */
     public function updateAddress($phone, $address, $city, $codep)
     {
         $query = $this -> pdo -> prepare("UPDATE utilisateurs SET telephone = :phone, adresse = :adresse, ville = :ville, codep = :codep WHERE id = :id");
@@ -142,7 +151,7 @@ class User extends \Model
             "adresse" => $address,
             "ville" => $city,
             "codep" => $codep,
-            "id" => $_SESSION['id']
+            "id" => $_SESSION['utilisateur']['id']
         ]);
 
         $_SESSION['utilisateur']['telephone'] = $phone;
@@ -151,5 +160,26 @@ class User extends \Model
         $_SESSION['utilisateur']['codep'] = $codep;
 
         return $query;
+    }
+
+    /**
+     * Affiche tout les utilisateurs présent en base de données
+     *
+     * @return array
+     */
+    public function displayManageUser()
+    {
+        $query = $this -> pdo -> prepare("SELECT * FROM utilisateurs");
+        $query -> execute();
+
+        return $query -> fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function deleteManageUser($id)
+    {
+        $query = $this -> pdo -> prepare("DELETE FROM utilisateurs WHERE id = :id");
+        $query -> execute([
+            "id" => $id
+        ]);
     }
 }

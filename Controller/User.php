@@ -377,14 +377,16 @@ class User extends Controller
             else
             {
                 $emptyValue = new \Model\User();
-
-                $emptyValue -> emptyValue('utilisateurs','telephone', $_SESSION['utilisateur']['telephone']);
-                $emptyValue -> emptyValue('utilisateurs','adresse', $_SESSION['utilisateur']['adresse']);
-                $emptyValue -> emptyValue('utilisateurs','ville', $_SESSION['utilisateur']['ville']);
-                $emptyValue -> emptyValue('utilisateurs','codep', $_SESSION['utilisateur']['codep']);
+                $emptyValue -> updateAddress($_SESSION['utilisateur']['telephone'], $_SESSION['utilisateur']['adresse'], $_SESSION['utilisateur']['ville'], $_SESSION['utilisateur']['codep']);
 
                 echo $log = "<p>Modifications enregistrées.</p>";
             }
         }
+    }
+
+    public function deletingUser($id)
+    {
+        $deleteUser = new \Model\User();
+        $deleteUser -> deleteManageUser($id);
     }
 }
