@@ -14,6 +14,7 @@
                     <h1 class="filter-title">FILTRES</h1>
                     <form action="boutique.php" method="get">
                         <section class="box">
+                            <p>Quelle catégorie souhaitez vous voir ?</p>
                             <select name="Choix">
                                 <option name="allProducts">Tous les produits</option>
                                 <?php
@@ -21,6 +22,10 @@
                                     $displayChoice->categorieChoice();
                                 ?>
                             </select>
+                            <section>
+                                <label for="hide">Masquer les produits indisponibles</label>
+                                <input type="checkbox" id="hide" name="hide">
+                            </section>
                             <input class="valid" type="submit" name="search" value="Go !">
                         </section>
                     </form>
@@ -38,10 +43,16 @@
                 <section class="all-products">
                     <?php
                         $resultProducts = new \Controller\Boutique();
-                        $resultProducts ->searchCategorie();
 
-                        $test = new \Model\Boutique();
-                        $test->quantityChoice();
+                        if(!isset($_GET['hide'])){
+                            $resultProducts ->searchCategorie();
+                        }
+                        else{
+                            //$test = new \Model\Boutique();
+                            //$test->hideProductWithCat($_GET['Choix']);
+                            $resultProducts->hideSearchCategorie();
+                        }
+
                     ?>
                 </section>
             </section>

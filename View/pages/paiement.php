@@ -1,3 +1,11 @@
+<?php require ('../../Controller/Boutique.php'); ?>
+
+<?php require ('../../Model/Boutique.php'); ?>
+
+<?php $css = "css/paiement.css"; ?>
+
+<?php ob_start(); ?>
+
 <?php
     if(isset($_POST['prix']) && !empty($_POST['prix'])){
 
@@ -13,28 +21,38 @@
             'currency' => 'eur',
         ]);
     }
-    else{
+   /* else{
         header('Location: ../../index.php');
-    }
+    }*/
 ?>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>index</title>
-    </head>
-    <body>
+
         <main>
-            <form method="post">
-                <div id="errors"></div> <!-- Contiendra les messages d'erreurs de paiement. -->
-                <input id="cardholder-name" type="text" placeholder="Titulaire de la carte">
-                <div id="card-element"></div> <!-- Contiendra le formulaire de saisie des informations de carte. -->
-                <div id="card-errors" role="alert"></div>
-                <button id="card-button" type="button" data-secret="<?= $intent['client_secret'] ?>">Valider le paiement</button>
-            </form>
+            <section class="container-fluid">
+                <section class="main-content">
+                    <form method="post">
+                        <h2>Informations de paiement <i class="fab fa-cc-stripe"></i></h2><br>
+                        <input id="cardholder-name" type="text" placeholder="Titulaire de la carte" required><br>
+                        <div id="card-element"></div><br> <!-- Contiendra le formulaire de saisie des informations de carte. -->
+                        <div id="card-errors" role="alert"></div><br>
+                        <div id="errors"></div><br> <!-- Contiendra les messages d'erreurs de paiement. -->
+                        <button id="card-button" type="button" class="btn btn-primary" data-secret="<?= $intent['client_secret'] ?>">Valider le paiement</button>
+                    </form>
+                    <section class="secur-text">
+                        <p><i class="fab fa-cc-stripe"></i> Unleashed-store utilise stripe, qui vous garantit une sécurité maximale.<br></p>
+                        <p>
+                            <i class="fas fa-lock"></i> Nous vous garantissons la sécurité de vos données.<br><br>
+                            <i class="fas fa-check-double"></i> Les données sont obligatoires afin de fournir les services souscrits, préparer votre commande<br>
+                            et vous adresser des communications et offres commerciales sur les produits et services<br>
+                            d'Unleashed-store.<br><br>
+                        </p>
+                        <p>
+                            <i class="far fa-check-circle"></i> En cliquant sur VALIDER , vous acceptez les Conditions Générales de Vente.
+                        </p>
+                    </section>
+                </section>
+            </section>
         </main>
-        <script src="https://js.stripe.com/v3/"></script>
-        <script src="js/scripts_paiement.js"></script>
-        <script src="js/scripts.js"></script>
-    </body>
-</html>
+
+<?php $content = ob_get_clean(); ?>
+
+<?php require ('../layout.php'); ?>

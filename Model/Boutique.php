@@ -31,6 +31,21 @@ class Boutique extends \Model{
         return $count;
     }
 
+    /**
+     * Permet de récupérer tous les produits.
+     */
+
+    public function getAllProduct($id){
+
+        $query = $this->pdo->prepare("SELECT * FROM produits WHERE id_produits =:id");
+        $query ->execute([
+            "id"=>$id
+        ]);
+
+        return $query->fetchAll();
+
+    }
+
 
     /**
      * Permet d'afficher tous les articles avec le système de pagination.
@@ -147,46 +162,56 @@ class Boutique extends \Model{
             return $tableau;
     }
 
+    //Fonction OK, complete controlleur
 
+    /*public function hideProduct($nom){
 
-    //REPRENDRE ICI
-    public function quantityChoice(){
-
-        $stockDispo = $this->pdo-> query("SELECT * FROM produits WHERE quantite_stock > 0");
+        $sql = $this->pdo->prepare("SELECT * FROM produits WHERE quantite_stock > 0");
+        $sql->execute();
 
         $i =0;
 
-        while ($count = $stockDispo->fetch(\PDO::FETCH_ASSOC)){
+        $this->searchCategorie($nom);
 
-            $tableau[$i][] = $count['id_produits'];
-            $tableau[$i][] = $count['titre'];
-            $tableau[$i][] = $count['prix'];
-            $tableau[$i][] = $count['stock_status'];
-            $tableau[$i][] = $count['photo1'];
+        while ($fetch = $sql->fetch(\PDO::FETCH_ASSOC)){
+
+            $tableau[$i][] = $fetch['id_produits'];
+            $tableau[$i][] = $fetch['titre'];
+            $tableau[$i][] = $fetch['prix'];
+            $tableau[$i][] = $fetch['stock_status'];
+            $tableau[$i][] = $fetch['photo1'];
 
             $i++;
         }
-        var_dump($tableau);
+
         return $tableau;
 
+    }*/
+
+    public function hideProductWithCat($nom){
+
+       $sql = $this->pdo->prepare("SELECT * FROM produits AS p INNER JOIN categories AS c ON c.nom=:nom WHERE p.id_cat = c.id_categorie AND p.quantite_stock >0");
+       $sql->execute([
+           'nom'=>$nom
+       ]);
+
+        $i =0;
+
+        while ($fetch = $sql->fetch(\PDO::FETCH_ASSOC)){
+
+            $tableau[$i][] = $fetch['id_produits'];
+            $tableau[$i][] = $fetch['titre'];
+            $tableau[$i][] = $fetch['prix'];
+            $tableau[$i][] = $fetch['stock_status'];
+            $tableau[$i][] = $fetch['photo1'];
+
+            $i++;
+        }
+        
+        return $tableau;
 
     }
 
-
-    //A REVOIR 04/03/2021 car non fonctionnelle.
-    /*public function addToCart(){
-
-        $allProducts = $this->pdo-> query("SELECT * FROM produits");
-        $test = $allProducts->fetchAll(\PDO::FETCH_ASSOC);
-        var_dump($test);
-
-        $query = $this->pdo->prepare("INSERT INTO panier (id_produit) VALUES (:id_produits)");
-        $query->execute([
-            'id_produits'=> $_GET['id_produits']
-        ]);
-
-        var_dump($_GET['id_produits']);
-    }*/
 }
 
 ?>

@@ -4,7 +4,6 @@ namespace Controller;
 
 class Boutique{
 
-
     /**
      * Permet d'afficher dans l'option le nom des catégories.
      */
@@ -66,16 +65,33 @@ class Boutique{
         }
     }
 
+    //Fonction OK Affichage produits dispo
 
-    //A REVOIR 04/03/2021 car non fonctionnelle.
-    /*public function addToCart(){
+   public function hideSearchCategorie(){
 
-        if(isset($_POST['hiddenAdd'])){
+        if(isset($_GET['search'])){
 
-            $addCart = new \Model\Boutique();
-            $addCart->addToCart();
+            $test = new \Model\Boutique();
+            $result=$test->hideProductWithCat($_GET['Choix']);
+
+
+            foreach ($result as $value) {
+
+                $_GET['id_produits'] = $value[0];
+
+                echo '<section class="flex-items">
+                        <img class="img-produits" src=' . $value[4] . '>
+                        <a href="produit.php?id=' . $_GET['id_produits'] . '"><h2>' . ucfirst($value[1]) . '</h2></a>
+                        <p>' . $value[3] . '</p><p>' . $value[2] . '€</p>
+                        <form method="post" name="add">
+                        <input type="submit" name="add" value=" Ajouter au panier">
+                        <input type="hidden" name="hiddenAdd" value="' . $value[0] . '">
+                        </form>
+                        </section>';
+            }
+
         }
-    }*/
+    }
 }
 
 ?>

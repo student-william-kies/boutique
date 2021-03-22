@@ -11,8 +11,12 @@
         <section class="container-fluid">
             <section class="main-content">
                 <?php
+                    $getAll = new \Model\Boutique();
+                    $product = $getAll->getAllProduct($_GET['id']);
 
+                    var_dump($product);
 
+                    echo " <h2> " .$product[0]['titre']. " </h2> ";
                 ?>
             </section>
         </section>
