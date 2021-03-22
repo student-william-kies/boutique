@@ -45,13 +45,15 @@
                         $resultProducts = new \Controller\Boutique();
 
                         if(!isset($_GET['hide'])){
+
                             $resultProducts ->searchCategorie();
+
                         }
                         else{
-                            //$test = new \Model\Boutique();
-                            //$test->hideProductWithCat($_GET['Choix']);
+
                             $resultProducts->hideSearchCategorie();
                         }
+
 
                     ?>
                 </section>

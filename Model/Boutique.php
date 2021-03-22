@@ -75,7 +75,7 @@ class Boutique extends \Model{
 
         //On récupère ici tous les articles et on les affiches avec une limite définie au dessus par page.
 
-        $article = $this->pdo-> query("SELECT * FROM `produits` ORDER BY id_produits DESC LIMIT ".(($cPage-1)*$perPage).",$perPage")->fetchAll(\PDO::FETCH_ASSOC);
+        $article = $this->pdo-> query("SELECT * FROM produits ORDER BY id_produits DESC LIMIT ".(($cPage-1)*$perPage).",$perPage")->fetchAll(\PDO::FETCH_ASSOC);
 
         foreach($article as $articles) {
 
@@ -162,32 +162,6 @@ class Boutique extends \Model{
             return $tableau;
     }
 
-    //Fonction OK, complete controlleur
-
-    /*public function hideProduct($nom){
-
-        $sql = $this->pdo->prepare("SELECT * FROM produits WHERE quantite_stock > 0");
-        $sql->execute();
-
-        $i =0;
-
-        $this->searchCategorie($nom);
-
-        while ($fetch = $sql->fetch(\PDO::FETCH_ASSOC)){
-
-            $tableau[$i][] = $fetch['id_produits'];
-            $tableau[$i][] = $fetch['titre'];
-            $tableau[$i][] = $fetch['prix'];
-            $tableau[$i][] = $fetch['stock_status'];
-            $tableau[$i][] = $fetch['photo1'];
-
-            $i++;
-        }
-
-        return $tableau;
-
-    }*/
-
     public function hideProductWithCat($nom){
 
        $sql = $this->pdo->prepare("SELECT * FROM produits AS p INNER JOIN categories AS c ON c.nom=:nom WHERE p.id_cat = c.id_categorie AND p.quantite_stock >0");
@@ -207,11 +181,8 @@ class Boutique extends \Model{
 
             $i++;
         }
-        
         return $tableau;
-
     }
-
 }
 
 ?>

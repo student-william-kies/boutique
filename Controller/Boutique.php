@@ -65,15 +65,12 @@ class Boutique{
         }
     }
 
-    //Fonction OK Affichage produits dispo
-
    public function hideSearchCategorie(){
 
         if(isset($_GET['search'])){
 
             $test = new \Model\Boutique();
             $result=$test->hideProductWithCat($_GET['Choix']);
-
 
             foreach ($result as $value) {
 
@@ -89,7 +86,6 @@ class Boutique{
                         </form>
                         </section>';
             }
-
         }
     }
 }
