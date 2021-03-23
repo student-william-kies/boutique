@@ -49,9 +49,14 @@
                             $resultProducts ->searchCategorie();
 
                         }
-                        else{
+                        elseif(isset($_GET['hide']) && ($_GET['Choix'] !== "Tous les produits")){
 
-                            $resultProducts->hideSearchCategorie();
+                            $resultProducts->hideSearchCategorieWithCat();
+
+                        }
+                        elseif(isset($_GET['hide']) && ($_GET['Choix'] === "Tous les produits")){
+
+                            $resultProducts->hideSearchCategorieWithoutCat();
                         }
 
 

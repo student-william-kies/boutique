@@ -65,14 +65,14 @@ class Boutique{
         }
     }
 
-   public function hideSearchCategorie(){
+   public function hideSearchCategorieWithCat(){
 
         if(isset($_GET['search'])){
 
             $test = new \Model\Boutique();
             $result=$test->hideProductWithCat($_GET['Choix']);
 
-            foreach ($result as $value) {
+            foreach($result as $value){
 
                 $_GET['id_produits'] = $value[0];
 
@@ -86,6 +86,17 @@ class Boutique{
                         </form>
                         </section>';
             }
+        }
+   }
+
+    public function hideSearchCategorieWithoutCat(){
+
+        if(isset($_GET['search']) && ($_GET['Choix'] === "Tous les produits") && (isset($_GET['hide']))){
+
+            $displayAll = new \Model\Boutique();
+            $displayAll->hideProductWithoutCat();
+
+
         }
     }
 }
