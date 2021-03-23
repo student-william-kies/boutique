@@ -26,6 +26,13 @@
                                 <label for="hide">Masquer les produits indisponibles</label>
                                 <input type="checkbox" id="hide" name="hide">
                             </section>
+                            <section>
+                                <select name="prix" >
+                                    <option value="trier">Trier par</option>
+                                    <option value="croissant" >Croissant</option>
+                                    <option value="decroissant" >Décroissant</option>
+                                </select>
+                            </section>
                             <input class="valid" type="submit" name="search" value="Go !">
                         </section>
                     </form>
@@ -44,20 +51,23 @@
                     <?php
                         $resultProducts = new \Controller\Boutique();
 
-                        if(!isset($_GET['hide'])){
+                        if((!isset($_GET['hide']))){
 
                             $resultProducts ->searchCategorie();
-
                         }
-                        elseif(isset($_GET['hide']) && ($_GET['Choix'] !== "Tous les produits")){
+                        elseif(($_GET['Choix'] !== "Tous les produits")){
 
                             $resultProducts->hideSearchCategorieWithCat();
 
                         }
-                        elseif(isset($_GET['hide']) && ($_GET['Choix'] === "Tous les produits")){
+                        elseif(($_GET['Choix'] === "Tous les produits")){
 
                             $resultProducts->hideSearchCategorieWithoutCat();
                         }
+
+                            $resultProducts->searchCategorieWithPrice();
+
+
 
 
                     ?>

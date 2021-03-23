@@ -31,6 +31,7 @@ class Boutique extends \Model{
         return $count;
     }
 
+
     /**
      * Permet de récupérer tous les produits.
      */
@@ -162,6 +163,13 @@ class Boutique extends \Model{
             return $tableau;
     }
 
+
+    /**
+     * @param $nom
+     * @return array
+     *  Sélectionne tous les articles disponibles présents dans une catégorie.
+     */
+
     public function hideProductWithCat($nom){
 
        $sql = $this->pdo->prepare("SELECT * FROM produits AS p INNER JOIN categories AS c ON c.nom=:nom WHERE p.id_cat = c.id_categorie AND p.quantite_stock >0");
@@ -183,6 +191,11 @@ class Boutique extends \Model{
         }
         return $tableau;
     }
+
+
+    /**
+     * Permet d'afficher tous les articles avec le système de pagination, ET les articles indisponibles cachés.
+     */
 
     public function hideProductWithoutCat(){
 
@@ -232,9 +245,38 @@ class Boutique extends \Model{
                 echo "<section class='pageNumber'><a class='pageNumber'>$i</a></section>";
             }
             else{
-                echo " <section class='pageNumber'><a href=\"boutique.php?p=$i\">$i</a>  </section> ";
+                echo " <section class='pageNumber'><a href=\"boutique.php?p=$i\Choix=Tous+les+produits&hide=on&search=Go+%21\">$i</a>  </section> ";
             }
         }
+    }
+
+
+    /**
+     * @param $order
+     * @return array
+     * Sélectionne tous les articles par ordre choisis.
+     */
+
+    public function orderPrice($order){
+
+        $sql = $this->pdo->prepare("SELECT * FROM produits ORDER BY prix $order");
+        $sql->execute();
+
+        $i =0;
+
+        while ($fetch = $sql->fetch(\PDO::FETCH_ASSOC)){
+
+            $tableau[$i][] = $fetch['id_produits'];
+            $tableau[$i][] = $fetch['titre'];
+            $tableau[$i][] = $fetch['prix'];
+            $tableau[$i][] = $fetch['stock_status'];
+            $tableau[$i][] = $fetch['photo1'];
+
+            $i++;
+        }
+
+        return $tableau;
+
     }
 }
 
