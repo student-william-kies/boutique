@@ -91,6 +91,7 @@ class Boutique{
                         </section>';
                     }
             }
+            
             if(($_GET['Choix'] == "Tous les produits") && ($_GET['prix']) == "trier"){
 
                 $displayAll = new \Model\Boutique();
