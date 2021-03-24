@@ -1,19 +1,17 @@
 <?php
-
 require_once ('Database.php');
 
-    abstract class Model{
+abstract class Model
+{
+    protected $pdo;
 
-        protected $pdo;
-
-        /**
-         * Connexion à la base de données
-         *
-         * Model constructor
-         */
-
-        public function __construct(){
-
-            $this -> pdo = Database::getPdo();
-        }
+    /**
+     * Connexion à la base de données
+     *
+     * Model constructor
+     */
+    public function __construct()
+    {
+        $this -> pdo = Database::getPdo();
     }
+}
