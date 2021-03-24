@@ -67,9 +67,6 @@
 
                             $resultProducts->searchCategorieWithPrice();
 
-
-
-
                     ?>
                 </section>
             </section>

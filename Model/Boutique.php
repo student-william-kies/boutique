@@ -278,6 +278,8 @@ class Boutique extends \Model{
         return $tableau;
 
     }
+
+
 }
 
 ?>
