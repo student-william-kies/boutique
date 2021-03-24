@@ -167,7 +167,7 @@ class User extends \Model
      *
      * @return array
      */
-    public function displayManageUser()  
+    public function displayManageUser()
     {
         $query = $this -> pdo -> prepare("SELECT * FROM utilisateurs");
         $query -> execute();

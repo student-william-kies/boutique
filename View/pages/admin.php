@@ -1,6 +1,7 @@
 <?php
 require ('../../Controller/User.php');
 require ('../../Model/User.php');
+require ('../../Model/Product.php');
 use Controller\Http;
 
 session_start();
@@ -32,38 +33,27 @@ if (isset($_POST['logout'])){
                     <section class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-articles-tab">
                         <table>
                             <thead>
-                            <th>id_produits</th>
-                            <th>id_cat</th>
+                            <th>Icone</th>
                             <th>Titre</th>
                             <th>Description</th>
                             <th>Prix</th>
-                            <th>Quantite_stock</th>
-                            <th>Stock_status</th>
-                            <th>Photo1</th>
-                            <th>Photo2</th>
-                            <th>Photo3</th>
                             </thead>
                             <tbody>
                             <?php
-                            $userManager = new \Model\User();
-                            $users = $userManager -> displayManageUser();
+                            $productManager = new \Model\Product();
+                            $products = $productManager -> displayManageProduct();
 
-                            foreach ($users as $allUsers)
+                            foreach ($products as $allProducts)
                             {
                                 echo ('<form action="" class="user_table" method="get">
                                            <tr>
-                                               <td style="text-align: center">' . $allUsers['id'] . '</td>
-                                               <td style="padding-left: 0.2%; text-align: center;">' . $allUsers['prenom'] . '</td>
-                                               <td style="padding-left: 0.2%; text-align: center;">' . $allUsers['nom'] . '</td>
-                                               <td style="padding-left: 0.2%; text-align: center;">' . $allUsers['email'] . '</td>
-                                               <td style="padding-left: 0.2%; text-align: center;">' . $allUsers['telephone'] . '</td>
-                                               <td style="padding-left: 0.2%; text-align: center;">' . $allUsers['adresse'] . '</td>
-                                               <td style="padding-left: 0.2%; text-align: center;">' . $allUsers['ville'] . '</td>
-                                               <td style="padding-left: 0.2%; text-align: center;">' . $allUsers['codep'] . '</td>
-                                               <td style="padding-left: 0.2%; text-align: center;">' . $allUsers['id_droits'] . '</td>
+                                               <td style="text-align: center; width: 10%;"><img src=' . $allProducts['photo1']  . ' style="width: 30%"></td>
+                                               <td style="text-align: center;">' . $allProducts['titre'] . '</td>
+                                               <td style="padding-left: 0.2%; text-align: center;">' . $allProducts['description'] . '</td>
+                                               <td style="padding-left: 0.2%; text-align: center;">' . $allProducts['prix'] . ' €</td>
                                                <td style="border: none" class="d-flex flex-row justify-center">                                                         
-                                                   <input type="submit" class="btn btn-danger input-User" id="delete_User" name="deleteUser" onclick="return confirm(\'Etes vous sûre de vouloir supprimer le compte selectionné ?\');" value="-">
-                                                   <input type="hidden" id="hiddenDeleteUser" name="hiddenDeleteUser" value="' . $allUsers['id'] . '">
+                                                   <a href="modifyProducts.php?id_produits=' . $allProducts['id_produits'] . '" type="submit" class="btn btn-primary" id="modify_Product"><i class="fas fa-pencil-alt"></i></a>
+                                                   <input type="hidden" id="hiddenModifyProduct" name="hiddenModifyProduct" value="' . $allProducts['id_produits'] . '">
                                                </td>
                                            </tr>
                                            </form>');
