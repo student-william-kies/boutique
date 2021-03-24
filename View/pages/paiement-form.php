@@ -6,15 +6,33 @@
 
 <?php ob_start(); ?>
 
-    <section class="container-fluid">
-        <section class="main-content">
+<section class="container-fluid">
+    <section class="container main-content">
+        <section class="adding-products">
+            <p>Affichage de produits</p>
+            <p>Affichage de produits</p>
+            <p>Affichage de produits</p>
+            <p>Affichage de produits</p>
+            <p>Affichage de produits</p>
+            <p>Affichage de produits</p>
+            <p>Affichage de produits</p>
+            <p>Affichage de produits</p>
+            <p>Affichage de produits</p>
+            <p>Affichage de produits</p>
+            <p>Affichage de produits</p>
+            <p>Affichage de produits</p>
+        </section>
+        <section class="form-paiement-section">
             <form action="paiement.php" method="post">
-                <label for="prix">Prix</label>
-                <input type="text" name="prix" id="prix">
-                <button>Procéder au paiement</button>
+                <label for="prix">
+                    <p><strong>Total</strong></p>
+                    <input type="text" name="prix" id="prix">
+                    <button class="btn btn-primary">Payer</button>
+                </label>
             </form>
         </section>
     </section>
+</section>
 
 <?php $content = ob_get_clean(); ?>
 

@@ -10,29 +10,29 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <!-- ICO -->
-        <link rel="icon" href="">
+        <link rel="icon" href="images/logo__store.svg">
     </head>
 
     <!-- Header -->
     <header>
         <section class="container-fluid header__bg">
             <section class="container header__section">
-                <img src="https://www.countryflags.io/fr/shiny/64.png">
+                <img src="https://www.countryflags.io/fr/shiny/64.png" alt="CountryFlag">
                 <p><span>Boutique Française Officielle</span></p>
-                <a href="" id="contact"><i class="fas fa-address-book"></i> <span>Contact</span></a>
+                <a href="contact.php" id="contact"><i class="fas fa-address-book"></i><span>Contact</span></a>
             </section>
             <section class="container header__container">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <!-- First Navbar -->
                     <section class="container-fluid first__ul">
-                        <img src="images/logo__store.svg" id="logo" alt="logo">
+                        <a href="home.php"><img src="images/logo__store.svg" id="logo" alt="logo"></a>
                     </section>
 
                     <!-- Second Navbar -->
                     <section class="container-fluid second__ul" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item btn-primary" id="figurines"><a class="nav-link" href="#">Figurines</a></li>
+                            <li class="nav-item btn-primary" id="figurines"><a class="nav-link" href="boutique.php">Figurines</a></li>
                             <li class="nav-item"><a class="nav-link" href="#">Nouveautés</a></li>
                         </ul>
                         <form action="" method="get" class="d-flex">
@@ -45,8 +45,15 @@
                     <section class="container-fluid third__ul">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item" id="phone"><a class="nav-link" href="#"><i class="fas fa-phone-square"></i> 04.56.92.14.36</a></li>
-                            <li class="nav-item" id="account"><a class="nav-link" href="#"><i class="fas fa-user-circle"></i> Mon Compte</a></li>
-                            <li class="nav-item" id="shopping"><a class="nav-link" href="#"><i class="fas fa-shopping-basket"></i> Panier</a></li>
+                            <li class="nav-item dropdown" id="account"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user-circle"></i> Mon Compte</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <?php if (!isset($_SESSION['utilisateur']['id'])){ echo ('<li><a class="dropdown-item" href="inscription.php">Inscription</a></li>'); } ?>
+                                    <?php if (!isset($_SESSION['utilisateur']['id'])){ echo ('<li><a class="dropdown-item" href="connexion.php">Connexion</a></li>'); } ?>
+                                    <?php if (isset($_SESSION['utilisateur']['id'])){ echo ('<form method="POST" action="home.php"><li><a class="dropdown-item" href=""><input type="submit" name="logout" value="Déconnexion" class=""></a></li></form>'); } ?>
+                                    <?php if (isset($_SESSION['utilisateur']['id'])){ echo ('<li><a class="dropdown-item" href="profil.php">' . $_SESSION['utilisateur']['prenom']. ' ' . $_SESSION['utilisateur']['nom'] . '</a></li>'); } ?>
+                                </ul>
+                            </li>
+                            <li class="nav-item" id="shopping"><a class="nav-link" href="paiement-form.php"><i class="fas fa-shopping-basket"></i> Panier</a></li>
                         </ul>
                     </section>
 
