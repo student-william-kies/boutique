@@ -85,7 +85,7 @@ class Boutique extends \Model{
             echo '<section class="flex-items">
                     <img class="img-produits" src='. $articles['photo1'] .'>
                     <a href="produit.php?id=' . $_GET['id_produits'] . '"><h2>' . ucfirst($articles['titre']) . '</h2></a>
-                    <p>'. $articles['stock_status'] .'</p><p>' . $articles['prix'] . '€</p>
+                    <p>' . $articles['prix'] . '€</p>
                     <form method="post" name="add">
                     <input type="submit" name="add" value=" Ajouter au panier">
                     <input type="hidden" name="hiddenAdd" value="'. $articles['id_produits'] .'">
@@ -155,7 +155,6 @@ class Boutique extends \Model{
                 $tableau[$i][] = $fetch['id_produits'];
                 $tableau[$i][] = $fetch['titre'];
                 $tableau[$i][] = $fetch['prix'];
-                $tableau[$i][] = $fetch['stock_status'];
                 $tableau[$i][] = $fetch['photo1'];
 
                 $i++;
@@ -184,7 +183,6 @@ class Boutique extends \Model{
             $tableau[$i][] = $fetch['id_produits'];
             $tableau[$i][] = $fetch['titre'];
             $tableau[$i][] = $fetch['prix'];
-            $tableau[$i][] = $fetch['stock_status'];
             $tableau[$i][] = $fetch['photo1'];
 
             $i++;
@@ -229,7 +227,7 @@ class Boutique extends \Model{
             echo '<section class="flex-items">
                     <img class="img-produits" src='. $articles['photo1'] .'>
                     <a href="produit.php?id=' . $_GET['id_produits'] . '"><h2>' . ucfirst($articles['titre']) . '</h2></a>
-                    <p>'. $articles['stock_status'] .'</p><p>' . $articles['prix'] . '€</p>
+                    <p>' . $articles['prix'] . '€</p>
                     <form method="post" name="add">
                     <input type="submit" name="add" value=" Ajouter au panier">
                     <input type="hidden" name="hiddenAdd" value="'. $articles['id_produits'] .'">
@@ -269,13 +267,22 @@ class Boutique extends \Model{
             $tableau[$i][] = $fetch['id_produits'];
             $tableau[$i][] = $fetch['titre'];
             $tableau[$i][] = $fetch['prix'];
-            $tableau[$i][] = $fetch['stock_status'];
             $tableau[$i][] = $fetch['photo1'];
 
             $i++;
         }
 
         return $tableau;
+
+    }
+
+    public function addToCart(){
+
+        $data= $_GET['id_produits'];
+
+        $sql = $this->pdo->prepare( "SELECT * FROM produits WHERE id_produits = $data");
+        $sql->execute();
+        $sql->fetch(\PDO::FETCH_ASSOC);
 
     }
 }

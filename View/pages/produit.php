@@ -14,18 +14,21 @@
                     $getAll = new \Model\Boutique();
                     $product = $getAll->getAllProduct($_GET['id']);
 
-                    var_dump($product);
+                    //var_dump($product);
 
-                    echo
-                    '<section class="flex-items">
-                        <img class="img-produits" src=' .$product[0]['photo1']. '>
-                        <a href="produit.php?id=' . $_GET['id_produits'] . '"><h2>' . ucfirst($value[1]) . '</h2></a>
-                        <p>' . $value[3] . '</p><p>' . $value[2] . '€</p>
-                        <form method="post" name="add">
-                        <input type="submit" name="add" value=" Ajouter au panier">
-                        <input type="hidden" name="hiddenAdd" value="' . $value[0] . '">
-                        </form>
-                        </section>';
+                echo
+                    '<section class="img-item">
+                        <img class="img-fluid img-produit" src=' .$product[0]['photo1']. '>
+                     </section>
+                     <section class="title-item">
+                        <h2>' .ucfirst($product[0]["titre"]). '</h2>
+                        <p>' .$product[0]['description']. '</p>
+                        <hr>
+                        <p class="price-size">' .$product[0]['prix']. '€</p>
+                        <section>
+                            <img src="images">
+                        </section>
+                     </section>';
                 ?>
             </section>
         </section>

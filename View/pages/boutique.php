@@ -6,6 +6,8 @@
 
 <?php ob_start(); ?>
 
+<?php session_start() ?>
+
 <link rel="stylesheet" href="css/boutique.css">
 
 <main>
@@ -73,6 +75,7 @@
 
                             $resultProducts->searchCategorieWithPrice();
 
+                        $resultProducts->addToCart();
 
 
 
