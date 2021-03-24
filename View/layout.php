@@ -17,9 +17,9 @@
     <header>
         <section class="container-fluid header__bg">
             <section class="container header__section">
-                <img src="https://www.countryflags.io/fr/shiny/64.png">
+                <img src="https://www.countryflags.io/fr/shiny/64.png" alt="CountryFlag">
                 <p><span>Boutique Française Officielle</span></p>
-                <a href="" id="contact"><i class="fas fa-address-book"></i><span>Contact</span></a>
+                <a href="contact.php" id="contact"><i class="fas fa-address-book"></i><span>Contact</span></a>
             </section>
             <section class="container header__container">
                 <nav class="navbar navbar-expand-lg navbar-light">
@@ -32,7 +32,7 @@
                     <!-- Second Navbar -->
                     <section class="container-fluid second__ul" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item btn-primary" id="figurines"><a class="nav-link" href="#">Figurines</a></li>
+                            <li class="nav-item btn-primary" id="figurines"><a class="nav-link" href="boutique.php">Figurines</a></li>
                             <li class="nav-item"><a class="nav-link" href="#">Nouveautés</a></li>
                         </ul>
                         <form action="" method="get" class="d-flex">
@@ -53,7 +53,7 @@
                                     <?php if (isset($_SESSION['utilisateur']['id'])){ echo ('<li><a class="dropdown-item" href="profil.php">' . $_SESSION['utilisateur']['prenom']. ' ' . $_SESSION['utilisateur']['nom'] . '</a></li>'); } ?>
                                 </ul>
                             </li>
-                            <li class="nav-item" id="shopping"><a class="nav-link" href="#"><i class="fas fa-shopping-basket"></i> Panier</a></li>
+                            <li class="nav-item" id="shopping"><a class="nav-link" href="paiement-form.php"><i class="fas fa-shopping-basket"></i> Panier</a></li>
                         </ul>
                     </section>
 
@@ -79,5 +79,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <script src="https://js.stripe.com/v3/"></script>
     <script src="js/scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </html>

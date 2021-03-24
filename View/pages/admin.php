@@ -44,7 +44,31 @@ if (isset($_POST['logout'])){
                             <th>Photo3</th>
                             </thead>
                             <tbody>
+                            <?php
+                            $userManager = new \Model\User();
+                            $users = $userManager -> displayManageUser();
 
+                            foreach ($users as $allUsers)
+                            {
+                                echo ('<form action="" class="user_table" method="get">
+                                           <tr>
+                                               <td style="text-align: center">' . $allUsers['id'] . '</td>
+                                               <td style="padding-left: 0.2%; text-align: center;">' . $allUsers['prenom'] . '</td>
+                                               <td style="padding-left: 0.2%; text-align: center;">' . $allUsers['nom'] . '</td>
+                                               <td style="padding-left: 0.2%; text-align: center;">' . $allUsers['email'] . '</td>
+                                               <td style="padding-left: 0.2%; text-align: center;">' . $allUsers['telephone'] . '</td>
+                                               <td style="padding-left: 0.2%; text-align: center;">' . $allUsers['adresse'] . '</td>
+                                               <td style="padding-left: 0.2%; text-align: center;">' . $allUsers['ville'] . '</td>
+                                               <td style="padding-left: 0.2%; text-align: center;">' . $allUsers['codep'] . '</td>
+                                               <td style="padding-left: 0.2%; text-align: center;">' . $allUsers['id_droits'] . '</td>
+                                               <td style="border: none" class="d-flex flex-row justify-center">                                                         
+                                                   <input type="submit" class="btn btn-danger input-User" id="delete_User" name="deleteUser" onclick="return confirm(\'Etes vous sûre de vouloir supprimer le compte selectionné ?\');" value="-">
+                                                   <input type="hidden" id="hiddenDeleteUser" name="hiddenDeleteUser" value="' . $allUsers['id'] . '">
+                                               </td>
+                                           </tr>
+                                           </form>');
+                            }
+                            ?>
                             </tbody>
                         </table>
                     </section>

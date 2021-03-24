@@ -2,9 +2,11 @@
 
 <?php require ('../../Model/Boutique.php'); ?>
 
-<?php $css = "css/boutique.css"; ?>
+<?php $css = "boutique/View/pages/css/boutique.css"; ?>
 
 <?php ob_start(); ?>
+
+<link rel="stylesheet" href="css/boutique.css">
 
 <main>
     <article>
@@ -15,23 +17,27 @@
                     <form action="boutique.php" method="get">
                         <section class="box">
                             <p>Quelle catégorie souhaitez vous voir ?</p>
-                            <select name="Choix">
-                                <option name="allProducts">Tous les produits</option>
-                                <?php
-                                    $displayChoice = new \Controller\Boutique();
-                                    $displayChoice->categorieChoice();
-                                ?>
-                            </select>
+                            <label>
+                                <select name="Choix">
+                                    <option name="allProducts">Tous les produits</option>
+                                    <?php
+                                        $displayChoice = new \Controller\Boutique();
+                                        $displayChoice->categorieChoice();
+                                    ?>
+                                </select>
+                            </label>
                             <section>
                                 <label for="hide">Masquer les produits indisponibles</label>
                                 <input type="checkbox" id="hide" name="hide">
                             </section>
                             <section>
-                                <select name="prix" >
-                                    <option value="trier">Trier par</option>
-                                    <option value="croissant" >Croissant</option>
-                                    <option value="decroissant" >Décroissant</option>
-                                </select>
+                                <label>
+                                    <select name="prix" >
+                                        <option value="trier">Trier par</option>
+                                        <option value="croissant" >Croissant</option>
+                                        <option value="decroissant" >Décroissant</option>
+                                    </select>
+                                </label>
                             </section>
                             <input class="valid" type="submit" name="search" value="Go !">
                         </section>

@@ -31,7 +31,7 @@
                 <section class="main-content">
                     <form method="post">
                         <h2>Informations de paiement <i class="fab fa-cc-stripe"></i></h2><br>
-                        <input id="cardholder-name" type="text" placeholder="Titulaire de la carte" required><br>
+                        <label for="cardholder-name"></label><input id="cardholder-name" type="text" placeholder="Titulaire de la carte" required><br>
                         <div id="card-element"></div><br> <!-- Contiendra le formulaire de saisie des informations de carte. -->
                         <div id="card-errors" role="alert"></div><br>
                         <div id="errors"></div><br> <!-- Contiendra les messages d'erreurs de paiement. -->
