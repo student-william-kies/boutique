@@ -23,38 +23,52 @@ if (isset($_POST['logout'])){
     <section class="modifyProducts-Form">
         <?php
         $productManager = new \Model\Product();
-        $thisProduct = $productManager -> modifyOneProduct($_GET['id_produits']);
+        $thisProduct = $productManager -> selectOneProduct($_GET['id_produits']);
 
-         echo ('<form action="" method="get">
+        var_dump($thisProduct);
+        echo ('<form action="" method="get">
                     <label>
                         Titre
-                        <input type="text" value="' . $thisProduct['titre'] . '">
+                        <input type="text" value="' . $thisProduct['titre'] . '" name="titleProduct">
                     </label>
                      <label>
                         Description
-                        <input type="text" value="' . $thisProduct['description'] . '">
+                        <input type="text" value="' . $thisProduct['description'] . '" name="descProduct">
                     </label>
                      <label>
                         Prix
-                        <input type="text" value="' . $thisProduct['prix'] . '">
+                        <input type="text" value="' . $thisProduct['prix'] . '" name="priceProduct">
                     </label>
                      <label>
                         Quantité en Stock
-                        <input type="number" value="' . $thisProduct['quantite_stock'] . '">
+                        <input type="number" value="' . $thisProduct['quantite_stock'] . '" name="qteProduct">
                     </label>
                     <label>
                         Photo 1 (Sert d\'icone)
-                        <input type="text" value="' . $thisProduct['photo1'] . '">
+                        <input type="text" value="' . $thisProduct['photo1'] . '" name="photo1Product">
                     </label>
                     <label>
                         Photo 2
-                        <input type="text" value="' . $thisProduct['photo2'] . '">
+                        <input type="text" value="' . $thisProduct['photo2'] . '" name="photo2Product">
                     </label>
                     <label>
                         Photo 3
-                        <input type="text" value="' . $thisProduct['photo3'] . '">
+                        <input type="text" value="' . $thisProduct['photo3'] . '" name="photo3product">
                     </label>
+                    <section>
+                        <label>
+                            <button type="submit" class="btn btn-success" name="updateThisProduct">Mettre à jour</button>
+                        </label>
+                        <label>
+                            <button type="submit" class="btn btn-danger" name="deleteThisProduct">Supprimer</button>
+                        </label>
+                    </section>
                 </form>');
+
+         if (isset($_GET['updateThisProduct']))
+         {
+
+         }
         ?>
     </section>
 </section>
