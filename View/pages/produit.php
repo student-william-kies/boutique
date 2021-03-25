@@ -14,7 +14,10 @@
                     $getAll = new \Model\Boutique();
                     $product = $getAll->getAllProduct($_GET['id']);
 
-                    //var_dump($product);
+                    var_dump($product[0]['id_produits']);
+
+                    $addCart = new \Model\Boutique();
+                    $addCart->addToCart();
 
                 echo
                     '<section class="img-item">
@@ -25,10 +28,15 @@
                         <p>' .$product[0]['description']. '</p>
                         <hr>
                         <p class="price-size">' .$product[0]['prix']. '€</p>
+                        <form method="post" name="add">
+                        <input type="submit" name="add" value=" Ajouter au panier">
+                        <input type="hidden" name="hiddenAdd" value="' . $product[0]['id_produits'] . '">
+                        </form>
                         <section>
                             <img src="images">
                         </section>
                      </section>';
+
                 ?>
             </section>
         </section>

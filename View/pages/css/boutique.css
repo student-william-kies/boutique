@@ -32,6 +32,10 @@ body{
     font-size: 16px;
 }
 
+.valid{
+    margin-top: 10%;
+}
+
 .new-product{
    text-align: center;
     border: solid 1px #9d9a9a;
@@ -69,7 +73,7 @@ body{
 .flex-items{
     text-align: center;
     flex-basis: 33.333%;
-    margin-bottom: 2%;
+    margin-bottom: 3%;
 }
 
 .filters form{
@@ -90,4 +94,10 @@ body{
     width: 100px;
     height: 100px;
 }
+
+.title-product{
+    text-decoration: none;
+    color: black;
+}
+
 

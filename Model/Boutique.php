@@ -84,10 +84,11 @@ class Boutique extends \Model{
 
             echo '<section class="flex-items">
                     <img class="img-produits" src='. $articles['photo1'] .'>
-                    <a href="produit.php?id=' . $_GET['id_produits'] . '"><h2>' . ucfirst($articles['titre']) . '</h2></a>
-                    <p>' . $articles['prix'] . '€</p>
+                    
                     <form method="post" name="add">
-                    <input type="submit" name="add" value=" Ajouter au panier">
+                    <a class="title-product" href="produit.php?id=' . $_GET['id_produits'] . '"><h2>' . ucfirst($articles['titre']) . '</h2></a>
+                    <p>' . $articles['prix'] . '€</p>
+                    <button class="btn btn-primary" type="submit" name="add" >Ajouter au panier</button>
                     <input type="hidden" name="hiddenAdd" value="'. $articles['id_produits'] .'">
                     </form>
                     </section>';
@@ -278,9 +279,7 @@ class Boutique extends \Model{
 
     public function addToCart(){
 
-        $data= $_GET['id_produits'];
-
-        $sql = $this->pdo->prepare( "SELECT * FROM produits WHERE id_produits = $data");
+        $sql = $this->pdo->prepare( "SELECT id_produits FROM produits WHERE id_produits = id_produits");
         $sql->execute();
         $sql->fetch(\PDO::FETCH_ASSOC);
 

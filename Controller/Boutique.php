@@ -174,9 +174,7 @@ class Boutique{
             $test = new \Model\Boutique();
             $test->addToCart();
 
-            $_SESSION['panier']=array();
 
-            var_dump($_SESSION);
 
         }
 

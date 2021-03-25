@@ -18,7 +18,7 @@
                     <h1 class="filter-title">FILTRES</h1>
                     <form action="boutique.php" method="get">
                         <section class="box">
-                            <p>Quelle catégorie souhaitez vous voir ?</p>
+                            <p>Univers</p>
                             <label>
                                 <select name="Choix">
                                     <option name="allProducts">Tous les produits</option>
@@ -28,11 +28,14 @@
                                     ?>
                                 </select>
                             </label>
-                            <section>
-                                <label for="hide">Masquer les produits indisponibles</label>
-                                <input type="checkbox" id="hide" name="hide">
+                            <hr>
+                            <section class="form-check form-switch">
+                                <input class="form-check-input"  type="checkbox" id="flexSwitchCheckDefault hide" name="hide">
+                                <label class="form-check-label" for="hide">Masquer produits indisponibles</label>
                             </section>
+                            <hr>
                             <section>
+                                <p>Prix</p>
                                 <label>
                                     <select name="prix" >
                                         <option value="trier">Trier par</option>
@@ -41,7 +44,8 @@
                                     </select>
                                 </label>
                             </section>
-                            <input class="valid" type="submit" name="search" value="Go !">
+                            <hr>
+                            <button class="valid btn btn-primary" type="submit" name="search" value="Go !">Rechercher</button>
                         </section>
                     </form>
                 </section>
