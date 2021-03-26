@@ -20,7 +20,7 @@
                         <section class="box">
                             <p>Univers</p>
                             <label>
-                                <select name="Choix">
+                                <select class="form-select" name="Choix">
                                     <option name="allProducts">Tous les produits</option>
                                     <?php
                                         $displayChoice = new \Controller\Boutique();
@@ -37,7 +37,7 @@
                             <section>
                                 <p>Prix</p>
                                 <label>
-                                    <select name="prix" >
+                                    <select class="form-select" name="prix" >
                                         <option value="trier">Trier par</option>
                                         <option value="croissant" >Croissant</option>
                                         <option value="decroissant" >Décroissant</option>

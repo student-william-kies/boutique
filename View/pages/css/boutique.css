@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap');
+
 body{
     background-image: none;
     background-color: white;
@@ -70,6 +72,15 @@ body{
     flex-wrap: wrap;
 }
 
+.product-container{
+    transition: all 0.7s;
+}
+
+.product-container:hover{
+    border: solid 1px lightgrey;
+    border-radius: 5px;
+}
+
 .flex-items{
     text-align: center;
     flex-basis: 33.333%;
@@ -97,7 +108,58 @@ body{
 
 .title-product{
     text-decoration: none;
-    color: black;
+    color: #1c1a1a;
 }
 
+.title-product h2{
+    margin-top: 1%;
+    font-size: 20px;
+    color: #2d2a2a;
+}
+
+.img-container{
+    display:block;
+    position:relative;
+    overflow:hidden;
+}
+
+
+
+.img-container .infos-hover{
+    display:block;
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:100%;
+    height:0;
+    text-align:center;
+    background: rgba(57, 54, 54, 0.8);
+    -webkit-transition: all 0.7s;
+    -moz-transition: all 0.7s;
+    -ms-transition: all 0.7s;
+    -o-transition: all 0.7s;
+    transition: all 0.7s;
+}
+
+.img-container .infos-hover i{
+    font-size:25px;
+}
+
+.img-container .infos-hover p{
+    text-align:center;
+}
+
+.img-container:hover .infos-hover{
+    height:30%;
+    border-radius: 5px;
+}
+
+.article-price{
+    font-family: 'Pathway Gothic One', sans-serif;
+    font-weight: lighter;
+}
+
+.infos-hover a{
+    color: white;
+}
 

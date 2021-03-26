@@ -46,10 +46,6 @@ class Boutique{
                         <img class="img-produits" src=' . $value[3] . '>
                         <a href="produit.php?id=' . $_GET['id_produits'] . '"><h2>' . ucfirst($value[1]) . '</h2></a>
                         <p>' . $value[2] . '€</p>
-                        <form method="post" name="add">
-                        <input type="submit" name="add" value=" Ajouter au panier">
-                        <input type="hidden" name="hiddenAdd" value="' . $value[0] . '">
-                        </form>
                         </section>';
                 }
             }
@@ -65,10 +61,6 @@ class Boutique{
                         <img class="img-produits" src=' . $value[3] . '>
                         <a href="produit.php?id=' . $_GET['id_produits'] . '"><h2>' . ucfirst($value[1]) . '</h2></a>
                         <p>' . $value[2] . '€</p>
-                        <form method="post" name="add">
-                        <input type="submit" name="add" value=" Ajouter au panier">
-                        <input type="hidden" name="hiddenAdd" value="' . $value[0] . '">
-                        </form>
                         </section>';
                 }
             }
@@ -84,10 +76,6 @@ class Boutique{
                         <img class="img-produits" src=' . $value[3] . '>
                         <a href="produit.php?id=' . $_GET['id_produits'] . '"><h2>' . ucfirst($value[1]) . '</h2></a>
                         <p>' . $value[2] . '€</p>
-                        <form method="post" name="add">
-                        <input type="submit" name="add" value=" Ajouter au panier">
-                        <input type="hidden" name="hiddenAdd" value="' . $value[0] . '">
-                        </form>
                         </section>';
                     }
             }
@@ -143,11 +131,7 @@ class Boutique{
                         <img class="img-produits" src=' . $value[3] . '>
                         <a href="produit.php?id=' . $_GET['id_produits'] . '"><h2>' . ucfirst($value[1]) . '</h2></a>
                         <p>' . $value[2] . '€</p>
-                        <form method="post" name="add">
-                        <input type="submit" name="add" value=" Ajouter au panier">
-                        <input type="hidden" name="hiddenAdd" value="' . $value[0] . '">
-                        </form>
-                        </section>';
+                      </section>';
             }
         }
    }

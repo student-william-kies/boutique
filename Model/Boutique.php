@@ -23,7 +23,7 @@ class Boutique extends \Model{
             echo '<section class="last-articles">
                     <a href="produit.php?id=' . $_GET['id_produits'] . '">
                     <img class="img-newProduits" src='. $count['photo1'] .'>
-                    <h2>' .ucfirst($count['titre']). '</h2><p>' .$count['prix']. '€</p>
+                    <h2>' .ucfirst($count['titre']). '</h2><p class="article-price">' .$count['prix']. '€</p>
                     </a>
                     </section>';
 
@@ -82,16 +82,19 @@ class Boutique extends \Model{
 
             $_GET['id_produits'] = $articles['id_produits'];
 
-            echo '<section class="flex-items">
-                    <img class="img-produits" src='. $articles['photo1'] .'>
-                    
-                    <form method="post" name="add">
+            echo '<section class="product-container flex-items">
+                    <section class="img-container">
+                        <img class="img-produits" src='. $articles['photo1'] .'>
+                        <section class="infos-hover">
+                            <a class="title-product" href="produit.php?id=' . $_GET['id_produits'] . '">
+                                <i class="fa fa-eye"></i>
+                                <p>En savoir plus</p>
+                            </a>
+                        </section>
+                    </section class="item-title-boutique">
                     <a class="title-product" href="produit.php?id=' . $_GET['id_produits'] . '"><h2>' . ucfirst($articles['titre']) . '</h2></a>
-                    <p>' . $articles['prix'] . '€</p>
-                    <button class="btn btn-primary" type="submit" name="add" >Ajouter au panier</button>
-                    <input type="hidden" name="hiddenAdd" value="'. $articles['id_produits'] .'">
-                    </form>
-                    </section>';
+                    <p class="article-price">' . $articles['prix'] . '€</p>
+                  </section>';
         }
 
         //On affiche ici notre pagination.
@@ -198,28 +201,7 @@ class Boutique extends \Model{
 
     public function hideProductWithoutCat(){
 
-        //Permet de compter tous les produits et de les assigner à une variable afin d'initier la pagination.
-
-        $data = $this->pdo-> query("SELECT COUNT(id_produits) as nbArt FROM produits")->fetch(\PDO::FETCH_ASSOC);
-
-        $nbArt = $data['nbArt'];
-        $perPage = 9;
-        $cPage =1;
-        $nbPage = ceil($nbArt/$perPage);
-
-        //Sécurisation de la pagination.
-
-        if(isset($_GET['p']) && $_GET['p']>0 && $_GET['p']<= $nbPage){
-
-            $cPage = $_GET['p'];
-        }
-        else{
-            $cPage =1;
-        }
-
-        //On récupère ici tous les articles et on les affiches avec une limite définie au dessus par page.
-
-        $article = $this->pdo-> query("SELECT * FROM produits WHERE quantite_stock >0 ORDER BY id_produits DESC LIMIT ".(($cPage-1)*$perPage).",$perPage")->fetchAll(\PDO::FETCH_ASSOC);
+        $article = $this->pdo-> query("SELECT * FROM produits WHERE quantite_stock >0 ORDER BY id_produits DESC")->fetchAll(\PDO::FETCH_ASSOC);
 
         foreach($article as $articles) {
 
@@ -229,23 +211,7 @@ class Boutique extends \Model{
                     <img class="img-produits" src='. $articles['photo1'] .'>
                     <a href="produit.php?id=' . $_GET['id_produits'] . '"><h2>' . ucfirst($articles['titre']) . '</h2></a>
                     <p>' . $articles['prix'] . '€</p>
-                    <form method="post" name="add">
-                    <input type="submit" name="add" value=" Ajouter au panier">
-                    <input type="hidden" name="hiddenAdd" value="'. $articles['id_produits'] .'">
-                    </form>
-                    </section>';
-        }
-
-        //On affiche ici notre pagination.
-
-        for($i=1; $i<=$nbPage; $i++){
-
-            if($i==$cPage){
-                echo "<section class='pageNumber'><a class='pageNumber'>$i</a></section>";
-            }
-            else{
-                echo " <section class='pageNumber'><a href=\"boutique.php?p=$i\Choix=Tous+les+produits&hide=on&search=Go+%21\">$i</a>  </section> ";
-            }
+                  </section>';
         }
     }
 
