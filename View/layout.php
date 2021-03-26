@@ -73,6 +73,45 @@
 
     <!-- Footer -->
     <footer>
+        <section class="container-fluid footer-content">
+            <section class="container footer-top-content">
+                <img src="images/logo__store.svg" class="img-fluid" alt="Logo">
+                <p>Unleashed Store est une boutique en ligne française de figurine issue du monde des mangas et des animés.</p>
+                <section class="footer-links">
+                    <a class="fa fa-facebook"></a>
+                    <a class="fa fa-twitter"></a>
+                    <a class="fa fa-instagram"></a>
+                </section>
+            </section>
+            <section class="container footer-bottom-content">
+                <section class="left-content">
+                    <h4>Informations</h4>
+                    <p><i class="fas fa-map-marker-alt"></i>unleashed Store - France</p>
+                    <p><i class="fas fa-envelope"></i><a href="">contact@unleashed-store.fr</a></p>
+                </section>
+                <section class="left-content">
+                    <h4>Votre compte</h4>
+                    <a href="">Informations personnelles</a>
+                    <a href="">Mes adresses</a>
+                    <a href="">Mes commandes</a>
+                </section>
+                <section class="right-content">
+                    <h4>Produits</h4>
+                    <a href="">Tout les produits</a>
+                    <a href="">Nouveautés</a>
+                    <a href="">Meilleurs ventes</a>
+                </section>
+                <section class="right-content">
+                    <h4>Notre société</h4>
+                    <a href="">Conditions générales de vente</a>
+                    <a href="">Mentions légales</a>
+                    <a href="">Contact</a>
+                </section>
+            </section>
+        </section>
+        <section class="container-fluid footer-copyright">
+            <p>@ 2021 - Unleashed Store</p>
+        </section>
     </footer>
 
     <!-- JS -->
