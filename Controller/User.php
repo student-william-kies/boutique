@@ -141,17 +141,16 @@ class User extends Controller
     {
         echo ('
         <form action="" method="post">
-        
-            <div class="input-group">
-                <span class="input-group-text">E-mail</span>
+            <div class="mb-3">
+                <span class="form-text">E-mail</span>
                 <input type="email" name="connectEmail" aria-label="email" class="form-control" placeholder="E-mail" required>
             </div>
-            <div class="input-group">
-                <span class="input-group-text">Mot de passe</span>
+            <div class="mb-3">
+                <span class="form-text">Mot de passe</span>
                 <input type="password" name="connectPassword" aria-label="password" class="form-control" placeholder="Mot de passe" required>
             </div>
             
-            <input type="submit" name="connectUser" value="Connexion">
+            <input type="submit" name="connectUser" value="Connexion" class="btn btn-secondary" style="margin-bottom: 1%">
         </form>
         ');
 
