@@ -42,11 +42,19 @@ class Boutique{
 
                     $_GET['id_produits'] = $value[0];
 
-                    echo '<section class="flex-items">
-                        <img class="img-produits" src=' . $value[3] . '>
-                        <a href="produit.php?id=' . $_GET['id_produits'] . '"><h2>' . ucfirst($value[1]) . '</h2></a>
-                        <p>' . $value[2] . '€</p>
-                        </section>';
+                    echo '<section class="product-container flex-items">
+                    <section class="img-container">
+                        <img class="img-produits" src='. $value[3] .'>
+                        <section class="infos-hover">
+                            <a class="title-product" href="produit.php?id=' . $value[0] . '">
+                                <i class="fa fa-eye"></i>
+                                <p>En savoir plus</p>
+                            </a>
+                        </section>
+                    </section class="item-title-boutique">
+                    <a class="title-product" href="produit.php?id=' . $value[0] . '"><h2>' . ucfirst($value[1]) . '</h2></a>
+                    <p class="article-price">' . $value[2] . '€</p>
+                  </section>';
                 }
             }
             if(isset($_GET['prix']) && $_GET['prix'] === "decroissant"){
@@ -57,11 +65,19 @@ class Boutique{
 
                     $_GET['id_produits'] = $value[0];
 
-                    echo '<section class="flex-items">
-                        <img class="img-produits" src=' . $value[3] . '>
-                        <a href="produit.php?id=' . $_GET['id_produits'] . '"><h2>' . ucfirst($value[1]) . '</h2></a>
-                        <p>' . $value[2] . '€</p>
-                        </section>';
+                    echo '<section class="product-container flex-items">
+                    <section class="img-container">
+                        <img class="img-produits" src='. $value[3] .'>
+                        <section class="infos-hover">
+                            <a class="title-product" href="produit.php?id=' . $value[0] . '">
+                                <i class="fa fa-eye"></i>
+                                <p>En savoir plus</p>
+                            </a>
+                        </section>
+                    </section class="item-title-boutique">
+                    <a class="title-product" href="produit.php?id=' . $value[0] . '"><h2>' . ucfirst($value[1]) . '</h2></a>
+                    <p class="article-price">' . $value[2] . '€</p>
+                  </section>';
                 }
             }
             if(isset($_GET['Choix']) != ($_GET['Choix'] ===  "Tous les produits")){
@@ -72,11 +88,19 @@ class Boutique{
 
                         $_GET['id_produits'] = $value[0];
 
-                        echo '<section class="flex-items">
-                        <img class="img-produits" src=' . $value[3] . '>
-                        <a href="produit.php?id=' . $_GET['id_produits'] . '"><h2>' . ucfirst($value[1]) . '</h2></a>
-                        <p>' . $value[2] . '€</p>
-                        </section>';
+                        echo '<section class="product-container flex-items">
+                    <section class="img-container">
+                        <img class="img-produits" src='. $value[3] .'>
+                        <section class="infos-hover">
+                            <a class="title-product" href="produit.php?id=' . $value[0] . '">
+                                <i class="fa fa-eye"></i>
+                                <p>En savoir plus</p>
+                            </a>
+                        </section>
+                    </section class="item-title-boutique">
+                    <a class="title-product" href="produit.php?id=' . $value[0] . '"><h2>' . ucfirst($value[1]) . '</h2></a>
+                    <p class="article-price">' . $value[2] . '€</p>
+                  </section>';
                     }
             }
 
@@ -127,11 +151,19 @@ class Boutique{
 
                 $_GET['id_produits'] = $value[0];
 
-                echo '<section class="flex-items">
-                        <img class="img-produits" src=' . $value[3] . '>
-                        <a href="produit.php?id=' . $_GET['id_produits'] . '"><h2>' . ucfirst($value[1]) . '</h2></a>
-                        <p>' . $value[2] . '€</p>
-                      </section>';
+                echo '<section class="product-container flex-items">
+                    <section class="img-container">
+                        <img class="img-produits" src='. $value[3] .'>
+                        <section class="infos-hover">
+                            <a class="title-product" href="produit.php?id=' . $value[0] . '">
+                                <i class="fa fa-eye"></i>
+                                <p>En savoir plus</p>
+                            </a>
+                        </section>
+                    </section class="item-title-boutique">
+                    <a class="title-product" href="produit.php?id=' . $value[0] . '"><h2>' . ucfirst($value[1]) . '</h2></a>
+                    <p class="article-price">' . $value[2] . '€</p>
+                  </section>';
             }
         }
    }

@@ -207,10 +207,18 @@ class Boutique extends \Model{
 
             $_GET['id_produits'] = $articles['id_produits'];
 
-            echo '<section class="flex-items">
-                    <img class="img-produits" src='. $articles['photo1'] .'>
-                    <a href="produit.php?id=' . $_GET['id_produits'] . '"><h2>' . ucfirst($articles['titre']) . '</h2></a>
-                    <p>' . $articles['prix'] . '€</p>
+            echo '<section class="product-container flex-items">
+                    <section class="img-container">
+                        <img class="img-produits" src='. $articles['photo1'] .'>
+                        <section class="infos-hover">
+                            <a class="title-product" href="produit.php?id=' . $_GET['id_produits'] . '">
+                                <i class="fa fa-eye"></i>
+                                <p>En savoir plus</p>
+                            </a>
+                        </section>
+                    </section class="item-title-boutique">
+                    <a class="title-product" href="produit.php?id=' . $_GET['id_produits'] . '"><h2>' . ucfirst($articles['titre']) . '</h2></a>
+                    <p class="article-price">' . $articles['prix'] . '€</p>
                   </section>';
         }
     }

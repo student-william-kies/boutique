@@ -77,7 +77,6 @@ body{
 }
 
 .product-container:hover{
-    border: solid 1px lightgrey;
     border-radius: 5px;
 }
 
