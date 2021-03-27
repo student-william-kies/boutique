@@ -185,43 +185,42 @@ class User extends Controller
     {
         echo ('
         <form action="" method="post">
-            <div class="form-group row div__prenom">
-                <label for="updatePrenom" class="col-sm-2 col-form-label">Prénom</label>
+            <div class="mb-3 row">
+                <label for="updatePrenom" class="col-sm-2 form-text">Prénom</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="updatePrenom" name="updatePrenom" value="' . $_SESSION['utilisateur']['prenom'] . '">
                 </div>
             </div>
     
-            <div class="form-group row div__nom">
-                <label for="updateNom" class="col-sm-2 col-form-label">Nom</label>
+            <div class="mb-3 row">
+                <label for="updateNom" class="col-sm-2 form-text">Nom</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="updateNom" name="updateNom" value="' . $_SESSION['utilisateur']['nom'] . '">
                 </div>
             </div>
     
-            <div class="form-group row div__mail">
-                <label for="updateEmail" class="col-sm-2 col-form-label">E-mail</label>
+            <div class="mb-3 row">
+                <label for="updateEmail" class="col-sm-2 form-text">E-mail</label>
                 <div class="col-sm-10">
                     <input type="email" class="form-control" id="updateEmail" name="updateEmail" value="' . $_SESSION['utilisateur']['email'] . '">
                 </div>
             </div>
     
-            <div class="form-group row div__password">
-                <label for="updatePassword" class="col-sm-2 col-form-label">New MDP</label>
+            <div class="mb-3 row">
+                <label for="updatePassword" class="col-sm-2 form-text">New MDP</label>
                 <div class="col-sm-10">
                     <input type="password" class="form-control" id="updatePassword" name="updatePassword" placeholder="Nouveau Mot de passe">
                 </div>
             </div>
     
-            <div class="form-group row div__password2">
-                <label for="confirmUpdatePassword" class="col-sm-2 col-form-label">Confirm New MDP</label>
+            <div class="mb-3 row">
+                <label for="confirmUpdatePassword" class="col-sm-2 form-text">Confirm New MDP</label>
                 <div class="col-sm-10">
                     <input type="password" class="form-control" id="confirmUpdatePassword" name="confirmUpdatePassword" placeholder="Confirmer Nouveau Mot de passe">
                 </div>
             </div>
 
-            <label></label>
-            <input type="submit" id="update" name="update" value="Mettre à jour">
+            <input type="submit" id="update" name="update" value="Mettre à jour" class="btn btn-secondary">
         </form>
     ');
 
@@ -308,37 +307,35 @@ class User extends Controller
     {
         echo ('
         <form action="" method="post">
-            
-            <div class="form-group row div__phone">
-                <label for="phone" class="col-sm-2 col-form-label">Téléphone</label>
+            <div class="mb-3 row">
+                <label for="phone" class="col-sm-2 form-text">Téléphone</label>
                 <div class="col-sm-10">
                     <input type="tel" class="form-control" name="phone" value="' . $_SESSION['utilisateur']['telephone'] . '">
                 </div>
             </div>
     
-            <div class="form-group row div__address">
-                <label for="address" class="col-sm-2 col-form-label">Adresse</label>
+            <div class="mb-3 row">
+                <label for="address" class="col-sm-2 form-text">Adresse</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="address" name="address" value="' . $_SESSION['utilisateur']['adresse'] . '">
                 </div>
             </div>
             
-            <div class="form-group row div__city">
-                <label for="city" class="col-sm-2 col-form-label">Ville</label>
+            <div class="mb-3 row">
+                <label for="city" class="col-sm-2 form-text">Ville</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="city" name="city" value="' . $_SESSION['utilisateur']['ville'] . '">
                 </div>
             </div>
             
-            <div class="form-group row div__codep">
-                <label for="codep" class="col-sm-2 col-form-label">Code Postal</label>
+            <div class="mb-3 row">
+                <label for="codep" class="col-sm-2 form-text">Code Postal</label>
                 <div class="col-sm-10">
                     <input type="number" class="form-control" id="codep" name="codep" value="' . $_SESSION['utilisateur']['codep'] . '">
                 </div>
             </div>
 
-            <label></label>
-            <input type="submit" id="insertAddress" name="insertAddress" value="Enregistrer">
+            <input type="submit" id="insertAddress" name="insertAddress" value="Enregistrer" class="btn btn-secondary">
         </form>
     ');
 
