@@ -5,13 +5,6 @@ require ('Http.php');
 
 class User extends Controller
 {
-//    public $log = "";
-//
-//    public function echoThisLog()
-//    {
-//        echo  $this -> log;
-//    }
-
     /**
      * Méthode qui vas afficher le formulaire d'inscription et inscrire un utilisateur
      */
@@ -19,38 +12,38 @@ class User extends Controller
     {
         echo ('
         <form action="" method="post">
-            <div class="input-group">
-                <span class="input-group-text">Prénom & Nom *</span>
+            <div class="mb-3">
+                <span class="form-text">Prénom & Nom *</span>
                 <input type="text" name="prenom" aria-label="name" class="form-control" placeholder="Prénom" required>
                 <input type="text" name="nom" aria-label="lastname" class="form-control" placeholder="Nom" required>
             </div>
-            <div class="input-group">
-                <span class="input-group-text">Mot de passe *</span>
+            <div class="mb-3">
+                <span class="form-text">Mot de passe *</span>
                 <input type="password" name="password" aria-label="password" class="form-control" placeholder="Mot de passe" required>
                 <input type="password" name="confirmPassword" aria-label="confirmPassword" class="form-control" placeholder="Confirmation Mot de passe" required>
             </div>
-            <div class="input-group">
-                <span class="input-group-text">E-mail *</span>
+            <div class="mb-3">
+                <span class="form-text">E-mail *</span>
                 <input type="email" name="email" aria-label="email" class="form-control" placeholder="E-mail" required>
             </div>
-            <div class="input-group">
-                <span class="input-group-text">Téléphone<i>(Facultatif)</i></span>
+            <div class="mb-3">
+                <span class="form-text">Téléphone<i>(Facultatif)</i></span>
                 <input type="text" name="phone" aria-label="phone" class="form-control" placeholder="Téléphone">
             </div>
-            <div class="input-group">
-                <span class="input-group-text">Adresse<i>(Facultatif)</i></span>
+            <div class="mb-3">
+                <span class="form-text">Adresse<i>(Facultatif)</i></span>
                 <input type="text" name="address" aria-label="address" class="form-control" placeholder="Adresse">
             </div>
-            <div class="input-group">
-                <span class="input-group-text">Ville<i>(Facultatif)</i></span>
+            <div class="mb-3">
+                <span class="form-text">Ville<i>(Facultatif)</i></span>
                 <input type="text" name="city" aria-label="city" class="form-control" placeholder="Ville">
             </div>
-            <div class="input-group">
-                <span class="input-group-text">Code postal<i>(Facultatif)</i></span>
+            <div class="mb-3">
+                <span class="form-text">Code postal<i>(Facultatif)</i></span>
                 <input type="number" name="codep" aria-label="codep" class="form-control" placeholder="Code postal">
             </div>
 
-            <input type="submit" name="validCreateUser" aria-label="trueRegister" class="form" value="Valider">
+            <input type="submit" name="validCreateUser" aria-label="trueRegister" class="btn btn-secondary" style="margin-bottom: 1%" value="Valider">
         </form>
         ');
 

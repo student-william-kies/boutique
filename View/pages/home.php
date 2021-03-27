@@ -11,7 +11,6 @@ if (isset($_POST['logout'])){
     Http::redirect('connexion.php');
     exit();
 }
-
 ?>
 
 <?php $css = ""; ?>
@@ -27,8 +26,6 @@ if (isset($_POST['logout'])){
         <?php
         $display = new \Controller\Product();
         $display -> displayNewProducts();
-
-
         ?>
     </section>
 </section>

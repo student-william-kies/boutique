@@ -6,6 +6,8 @@
 
 <?php ob_start(); ?>
 
+<?php session_start(); ?>
+
 <section class="container-fluid">
     <section class="container main-content">
         <section class="adding-products">

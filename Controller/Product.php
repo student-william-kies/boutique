@@ -17,41 +17,44 @@ class Product extends Controller
         $productManager = new \Model\Product();
         $thisProduct = $productManager -> selectOneProduct($_GET['id_produits']);
 
-        var_dump($thisProduct);
         echo ('<form action="" method="post">
-                    <label>
-                        Titre
-                        <input type="text" value="' . $thisProduct['titre'] . '" name="titleProduct">
-                    </label>
-                     <label>
-                        Description
-                        <input type="text" value="' . $thisProduct['description'] . '" name="descProduct">
-                    </label>
-                     <label>
-                        Prix
-                        <input type="text" value="' . $thisProduct['prix'] . '" name="priceProduct">
-                    </label>
-                     <label>
-                        Quantité en Stock
-                        <input type="number" value="' . $thisProduct['quantite_stock'] . '" name="qteProduct">
-                    </label>
-                    <label>
-                        Photo 1 (Sert d\'icone)
-                        <input type="text" value="' . $thisProduct['photo1'] . '" name="photo1Product">
-                    </label>
-                    <label>
-                        Photo 2
-                        <input type="text" value="' . $thisProduct['photo2'] . '" name="photo2Product">
-                    </label>
-                    <label>
-                        Photo 3
-                        <input type="text" value="' . $thisProduct['photo3'] . '" name="photo3product">
-                    </label>
-                    <section>
-                        <label>
+                    <section class="mb-3">
+                        <label class="form-label">
+                            <p class="form-text">Titre</p>
+                            <input type="text" value="' . $thisProduct['titre'] . '" name="titleProduct" class="form-control">
+                        </label>
+                        <label class="form-label">
+                            <p class="form-text">Description</p>
+                            <input type="text" value="' . $thisProduct['description'] . '" name="descProduct" class="form-control">
+                        </label>
+                    </section>
+                    <section class="mb-3">
+                        <label class="form-label">
+                            <p class="form-text">Prix</p>
+                            <input type="text" value="' . $thisProduct['prix'] . '" name="priceProduct" class="form-control">
+                        </label>
+                         <label class="form-label">
+                            <p class="form-text">Quantité en Stock</p>
+                            <input type="number" value="' . $thisProduct['quantite_stock'] . '" name="qteProduct" class="form-control">
+                        </label>
+                    </section>
+                    <section class="mb-3">
+                        <label class="form-label">
+                            <p class="form-text">Photo du produits (<i>Liens des images</i>)</p>
+                            <input type="text" value="' . $thisProduct['photo1'] . '" name="photo1Product" class="form-control">
+                        </label>
+                        <label class="form-label">
+                            <input type="text" value="' . $thisProduct['photo2'] . '" name="photo2Product" class="form-control">
+                        </label>
+                        <label class="form-label">
+                            <input type="text" value="' . $thisProduct['photo3'] . '" name="photo3product" class="form-control">
+                        </label>
+                    </section>
+                    <section class="mb-3">
+                        <label class="form-label">
                             <button type="submit" class="btn btn-success" name="updateThisProduct">Mettre à jour</button>
                         </label>
-                        <label>
+                        <label class="form-label">
                             <button type="submit" class="btn btn-danger" name="deleteThisProduct">Supprimer</button>
                         </label>
                     </section>

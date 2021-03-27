@@ -31,21 +31,25 @@ if (isset($_POST['logout'])){
                 <section class="tab-content" id="v-pills-tabContent">
                     <!-- GESTION DES PRODUITS -->
                     <section class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-articles-tab">
-                        <table>
-                            <thead>
-                            <th>Icone</th>
-                            <th>Titre</th>
-                            <th>Description</th>
-                            <th>Prix</th>
-                            </thead>
-                            <tbody>
-                            <?php
-                            $productManager = new \Model\Product();
-                            $products = $productManager -> displayManageProduct();
+                        <section class="table-responsive">
+                            <table class="table table-hover caption-top">
+                                <caption>Liste Produits</caption>
+                                <thead class="table-light">
+                                <tr>
+                                    <th scope="col">Icone</th>
+                                    <th scope="col">Titre</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Prix</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                $productManager = new \Model\Product();
+                                $products = $productManager -> displayManageProduct();
 
-                            foreach ($products as $allProducts)
-                            {
-                                echo ('<form action="" class="user_table" method="get">
+                                foreach ($products as $allProducts)
+                                {
+                                    echo ('<form action="" class="user_table" method="get">
                                            <tr>
                                                <td style="text-align: center; width: 10%;"><img src=' . $allProducts['photo1']  . ' style="width: 30%"></td>
                                                <td style="text-align: center;">' . $allProducts['titre'] . '</td>
@@ -57,45 +61,54 @@ if (isset($_POST['logout'])){
                                                </td>
                                            </tr>
                                            </form>');
-                            }
-                            ?>
-                            </tbody>
-                        </table>
+                                }
+                                ?>
+                                </tbody>
+                            </table>
+                        </section>
                     </section>
                     <!-- GESTION DES CATEGORIES -->
                     <section class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-categories-tab">
-                        <table>
-                            <thead>
-                            <th>
-                            <th>id_categorie</th>
-                            <th>Nom</th>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
+                        <section class="table-responsive">
+                            <table class="table table-hover caption-top">
+                                <caption>Liste Catégories</caption>
+                                <thead class="table-light">
+                                <tr>
+                                    <th scope="col">id_categorie</th>
+                                    <th scope="col">Nom</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </section>
                     </section>
                     <!-- GESTION DES UTILISATEURS -->
                     <section class="tab-pane fade" id="v-pills-users" role="tabpanel" aria-labelledby="v-pills-users-tab">
-                        <table>
-                            <thead>
-                            <th>id</th>
-                            <th>Prenom</th>
-                            <th>Nom</th>
-                            <th>Email</th>
-                            <th>Telephone</th>
-                            <th>Adresse</th>
-                            <th>Ville</th>
-                            <th>CodeP</th>
-                            <th>id_droits</th>
-                            </thead>
-                            <tbody>
-                            <?php
-                            $userManager = new \Model\User();
-                            $users = $userManager -> displayManageUser();
+                        <section class="table-responsive">
+                            <table class="table table-hover caption-top">
+                                <caption>Liste Utilisateurs</caption>
+                                <thead class="table-light">
+                                <tr>
+                                    <th scope="col">id</th>
+                                    <th scope="col">Prenom</th>
+                                    <th scope="col">Nom</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Telephone</th>
+                                    <th scope="col">Adresse</th>
+                                    <th scope="col">Ville</th>
+                                    <th scope="col">CodeP</th>
+                                    <th scope="col">id_droits</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                $userManager = new \Model\User();
+                                $users = $userManager -> displayManageUser();
 
-                            foreach ($users as $allUsers)
-                            {
-                                echo ('<form action="" class="user_table" method="get">
+                                foreach ($users as $allUsers)
+                                {
+                                    echo ('<form action="" class="user_table" method="get">
                                            <tr>
                                                <td style="text-align: center">' . $allUsers['id'] . '</td>
                                                <td style="padding-left: 0.2%; text-align: center;">' . $allUsers['prenom'] . '</td>
@@ -112,10 +125,11 @@ if (isset($_POST['logout'])){
                                                </td>
                                            </tr>
                                            </form>');
-                            }
-                            ?>
-                            </tbody>
-                        </table>
+                                }
+                                ?>
+                                </tbody>
+                            </table>
+                        </section>
                         <?php
                         if (isset($_GET['deleteUser']))
                         {

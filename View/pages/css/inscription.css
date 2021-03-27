@@ -4,5 +4,8 @@ body{
 }
 
 .register{
-    margin-top: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 3%;
 }

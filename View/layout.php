@@ -33,7 +33,7 @@
                     <section class="container-fluid second__ul" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item btn-primary" id="figurines"><a class="nav-link" href="boutique.php">Figurines</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#new-products">Nouveautés</a></li>
+                            <li class="nav-item"><a class="nav-link" href="home.php#new-products">Nouveautés</a></li>
                         </ul>
                         <form action="" method="get" class="d-flex">
                             <input class="form-control me-2" type="search" placeholder="Recherche" aria-label="Search">
@@ -87,25 +87,25 @@
                 <section class="left-content">
                     <h4>Informations</h4>
                     <p><i class="fas fa-map-marker-alt"></i>unleashed Store - France</p>
-                    <p><i class="fas fa-envelope"></i><a href="">contact@unleashed-store.fr</a></p>
+                    <p><i class="fas fa-envelope"></i><a href="contact.php">contact@unleashed-store.fr</a></p>
                 </section>
                 <section class="left-content">
                     <h4>Votre compte</h4>
-                    <a href="">Informations personnelles</a>
-                    <a href="">Mes adresses</a>
-                    <a href="">Mes commandes</a>
+                    <a href="profil.php">Informations personnelles</a>
+                    <a href="profil.php">Mes adresses</a>
+                    <a href="profil.php">Mes commandes</a>
                 </section>
                 <section class="right-content">
                     <h4>Produits</h4>
-                    <a href="">Tout les produits</a>
-                    <a href="">Nouveautés</a>
-                    <a href="">Meilleurs ventes</a>
+                    <a href="boutique.php">Tout les produits</a>
+                    <a href="home.php#new-products">Nouveautés</a>
+                    <a href="boutique.php">Meilleurs ventes</a>
                 </section>
                 <section class="right-content">
                     <h4>Notre société</h4>
-                    <a href="">Conditions générales de vente</a>
-                    <a href="">Mentions légales</a>
-                    <a href="">Contact</a>
+                    <a href="contact.php">Conditions générales de vente</a>
+                    <a href="contact.php">Mentions légales</a>
+                    <a href="contact.php">Contact</a>
                 </section>
             </section>
         </section>

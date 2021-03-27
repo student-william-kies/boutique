@@ -167,15 +167,29 @@ body{
     height: 100vh;
 }
 
+#new-products{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 .newProducts{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    margin-top: 5%;
+    justify-content: center;
+    align-items: center;
 }
 
 .newProducts img{
-    width: 40%;
+    width: 80%;
+}
+
+.last-articles{
+    text-align: center;
+}
+
+.last-articles a{
+    text-decoration: none;
 }
 
 /*-- Footer --*/
@@ -185,6 +199,7 @@ body{
     flex-direction: column;
     justify-content: center;
     height: 60vh;
+    border-top: solid 2px #d2cdcd;
 }
 
 .footer-top-content{
