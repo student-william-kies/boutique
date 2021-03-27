@@ -33,7 +33,9 @@ if (isset($_POST['logout'])){
                     <section class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-articles-tab">
                         <section class="table-responsive">
                             <table class="table table-hover caption-top">
-                                <caption>Liste Produits</caption>
+                                <caption>
+                                    <a href="" class="form-control" style="text-decoration: none; text-align: center">Ajouter produits</a>
+                                </caption>
                                 <thead class="table-light">
                                 <tr>
                                     <th scope="col">Icone</th>
