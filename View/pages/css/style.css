@@ -167,6 +167,17 @@ body{
     height: 100vh;
 }
 
+.newProducts{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 5%;
+}
+
+.newProducts img{
+    width: 40%;
+}
+
 /*-- Footer --*/
 
 .footer-content{

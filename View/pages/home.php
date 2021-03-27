@@ -1,4 +1,5 @@
 <?php
+require ('../../Controller/Product.php');
 require ('../../Controller/Http.php');
 use Controller\Http;
 
@@ -20,12 +21,16 @@ if (isset($_POST['logout'])){
 <!-- Empty section for the pictures -->
 <section class="container-fluid main__section"></section>
 
-<section class="container-fluid main__section">
-    <p>Affichage des nouveautés</p>
-</section>
+<section class="container-fluid main__section" id="new-products">
+    <h1>Nouveautés</h1>
+    <section class="container-fluid newProducts">
+        <?php
+        $display = new \Controller\Product();
+        $display -> displayNewProducts();
 
-<section class="container-fluid main__section">
-    <p>Liens des éseaux</p>
+
+        ?>
+    </section>
 </section>
 
 <?php $content = ob_get_clean(); ?>

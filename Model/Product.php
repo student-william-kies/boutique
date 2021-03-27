@@ -1,7 +1,5 @@
 <?php
 namespace Model;
-use Controller\Http;
-use PDOStatement;
 
 require_once ('Model.php');
 class Product extends \Model
