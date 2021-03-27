@@ -10,7 +10,7 @@ body{
     margin-top: 5%;
     display: grid;
     grid-template-columns: 5% 20% 3% 70%;
-    grid-template-rows: 40vh 20vh 3% 60vh 20vh;
+    grid-template-rows: 40vh 20vh 3% 60vh 20vh 20vh;
 }
 
 .filters{
@@ -44,7 +44,7 @@ body{
     grid-column-start: 2;
     grid-column-end: 3;
     grid-row-start: 4;
-    grid-row-end: 7;
+    grid-row-end: 6;
 }
 
 .banner{
@@ -68,6 +68,7 @@ body{
 .all-products{
     grid-column-start: 4;
     grid-row-start: 2;
+    grid-row-end: 6;
     display: flex;
     flex-wrap: wrap;
 }
@@ -160,5 +161,13 @@ body{
 
 .infos-hover a{
     color: white;
+}
+
+.pageNumber{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 6;
+    grid-row-end: 7;
+    justify-self: center;
 }
 

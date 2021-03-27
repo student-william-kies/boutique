@@ -78,11 +78,6 @@
                         }
 
                             $resultProducts->searchCategorieWithPrice();
-
-                        $resultProducts->addToCart();
-
-
-
                     ?>
                 </section>
             </section>

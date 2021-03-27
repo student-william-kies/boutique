@@ -251,11 +251,20 @@ class Boutique extends \Model{
 
     }
 
-    public function addToCart(){
+    public function addToCart($id){
 
-        $sql = $this->pdo->prepare( "SELECT id_produits FROM produits WHERE id_produits = id_produits");
-        $sql->execute();
-        $sql->fetch(\PDO::FETCH_ASSOC);
+        $sql = $this->pdo->prepare("SELECT * FROM produits WHERE id_produits = :id");
+        $sql->execute([
+            "id"=>$id
+        ]);
+
+        $result=$sql->fetch();
+
+        $_SESSION['product']= $result;
+
+        var_dump($_SESSION);
+
+        return $result;
 
     }
 }

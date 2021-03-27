@@ -6,6 +6,8 @@
 
 <?php ob_start(); ?>
 
+<?php session_start(); ?>
+
 <main>
     <article>
         <section class="container-fluid">
@@ -14,10 +16,10 @@
                     $getAll = new \Model\Boutique();
                     $product = $getAll->getAllProduct($_GET['id']);
 
-                    //var_dump($product[0]['id_produits']);
-
+                if(isset($_POST['add'])) {
                     $addCart = new \Model\Boutique();
-                    $addCart->addToCart();
+                    $addCart->addToCart($_GET['id']);
+                }
 
                 echo
                     '<section class="img-item">
@@ -31,13 +33,12 @@
                         <h2>' .ucfirst($product[0]["titre"]). '</h2>
                         <p>' .ucfirst($product[0]['description']). '</p>
                         <hr>
-                        <form method="post" name="add">
+                        <form method="post" action="">
                         <p class="price-size">' .$product[0]['prix']. '€</p>
                         <input class="btn btn-primary" type="submit" name="add" value=" Ajouter au panier">
                         <input type="hidden" name="hiddenAdd" value="' . $product[0]['id_produits'] . '">
                         </form>
                      </section>';
-
                 ?>
             </section>
         </section>

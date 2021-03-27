@@ -182,20 +182,6 @@ class Boutique{
 
         }
     }
-
-    public function addToCart(){
-
-        if(isset($_GET['add'])){
-
-            $test = new \Model\Boutique();
-            $test->addToCart();
-
-
-
-        }
-
-    }
-
 }
 
 ?>
