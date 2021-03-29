@@ -34,7 +34,7 @@ if (isset($_POST['logout'])){
                         <section class="table-responsive">
                             <table class="table table-hover caption-top">
                                 <caption>
-                                    <a href="" class="form-control" style="text-decoration: none; text-align: center">Ajouter produits</a>
+                                    <a href="addProduct.php" class="form-control" style="text-decoration: none; text-align: center">Ajouter produits</a>
                                 </caption>
                                 <thead class="table-light">
                                 <tr>

@@ -4,7 +4,7 @@ require_once ('Model.php');
 
 class Product extends \Model
 {
-    public function displayManageProduct()
+    public function displayManageProduct(): array
     {
         $query = $this -> pdo -> prepare("SELECT * FROM Produits");
         $query -> execute();
@@ -37,5 +37,24 @@ class Product extends \Model
            "img3" => $photo3,
             "id" => $id_produit
         ]);
+    }
+
+    public function createProducts($id_cat, $titre, $desc, $prix, $qteStock, $photo1, $photo2, $photo3)
+    {
+        $query = $this -> pdo -> prepare("INSERT INTO produits (id_cat, titre, description, prix, quantite_stock, stock_status, photo1, photo2, photo3)
+                                                        VALUES (:id_cat, :titre, :description, :prix, :qteStock, :stockStats, :photo1, :photo2, :photo3)");
+        $query -> execute([
+            "id_cat" => $id_cat,
+            "titre" => $titre,
+            "description" => $desc,
+            "prix" => $prix,
+            "qteStock" => $qteStock,
+            "stockStats" => '',
+            "photo1" => $photo1,
+            "photo2" => $photo2,
+            "photo3" => $photo3
+        ]);
+
+        return $query;
     }
 }
