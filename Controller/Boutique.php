@@ -182,6 +182,42 @@ class Boutique{
 
         }
     }
+
+
+    public function creationPanier(){
+
+        if (!isset($_SESSION['panier'])){
+
+            $_SESSION['panier']=array();
+
+        }
+        return true;
+    }
+
+    public function afficherPanier(){
+
+        if(empty($_SESSION['panier'])){
+
+            echo $log = 'gé mahl o cou 2 soleye';
+        }
+        else{
+
+            foreach($_SESSION['panier'] as $value){
+
+                echo " <section class='product-line'>
+                        <img class='icon-img' src=" .$value['photo1']. ">
+                        <p>".$value['titre']."</p>
+                        <p>".$value['prix']."</p>
+                        <form method='post' action=''>
+                            <input class='btn btn-primary' type='submit' name='delet' value='Supprimer du panier'>
+                            <input type='hidden' name='hiddenAdd' value=" .$value['id_produits'].">
+                        </form>
+                   </section><br>";
+            }
+        }
+    }
+
+
 }
 
 ?>

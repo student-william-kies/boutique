@@ -13,6 +13,11 @@
         <section class="container-fluid">
             <section class="main-content">
                 <?php
+
+                    $panier = new  \Controller\Boutique();
+                    $panier->creationPanier();
+
+
                     $getAll = new \Model\Boutique();
                     $product = $getAll->getAllProduct($_GET['id']);
 

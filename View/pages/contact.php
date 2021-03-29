@@ -46,7 +46,7 @@
                 <section class="sav">
                     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                         <li class="nav-item" role="presentation"><button class="nav-link active" id="pills-mentions-legales-tab" data-bs-toggle="pill" data-bs-target="#pills-mentions-legales" type="button" role="tab" aria-controls="mentions-legales" aria-selected="true">Mentions légales</button></li>
-                        <li class="nav-item" role="presentation"><button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</button></li>
+                        <li class="nav-item" role="presentation"><button class="nav-link" id="pills-cgv-tab" data-bs-toggle="pill" data-bs-target="#pills-cgv" type="button" role="tab" aria-controls="pills-cgv" aria-selected="false">CGU</button></li>
                         <li class="nav-item" role="presentation"><button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button></li>
                     </ul>
                     <section class="tab-content" id="pills-tabContent">
@@ -69,8 +69,16 @@
                                 Dénomination sociale : SARL UNLEASHED-STORE<br>
                                 Dénomination du site internet : UNLEASHED-STORE</p>
                         </section>
-                        <section class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-
+                        <section class="tab-pane fade" id="pills-cgv" role="tabpanel" aria-labelledby="pills-cgv-tab">
+                            <h1>Conditions générales de vente</h1>
+                            <h2>Clause n°1 : Objet</h2>
+                            <p>Les conditions générales de vente décrites ci-après détaillent les droits et obligations de la SARL SHIN SEKAI et de son client
+                                dans le cadre de la vente de bien sur le site internet www.shin-sekai.fr.<br>
+                                Toute personne peut consulter les conditions générales de vente de la SARL SHIN SEKAI sur le site www.shin-sekai.fr.<br>
+                                Toute vente accomplie par la SARL SHIN SEKAI pour le compte d’un client implique donc que le client ait pris connaissance
+                                des présentes conditions générales de vente et qu’il adhère sans réserve à ces mêmes conditions.
+                                Le client renonce ainsi à toute application de ses éventuelles conditions générales d’achat.
+                            </p>
                         </section>
                         <section class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
 

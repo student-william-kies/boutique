@@ -11,18 +11,11 @@
 <section class="container-fluid">
     <section class="container main-content">
         <section class="adding-products">
-            <p>Affichage de produits</p>
-            <p>Affichage de produits</p>
-            <p>Affichage de produits</p>
-            <p>Affichage de produits</p>
-            <p>Affichage de produits</p>
-            <p>Affichage de produits</p>
-            <p>Affichage de produits</p>
-            <p>Affichage de produits</p>
-            <p>Affichage de produits</p>
-            <p>Affichage de produits</p>
-            <p>Affichage de produits</p>
-            <p>Affichage de produits</p>
+               <?php
+               $displayCart = new \Controller\Boutique();
+               $displayCart->afficherPanier();
+
+               ?>
         </section>
         <section class="form-paiement-section">
             <form action="paiement.php" method="post">
@@ -35,8 +28,6 @@
         </section>
     </section>
 </section>
-
-<?php var_dump($_SESSION); ?>
 
 <?php $content = ob_get_clean(); ?>
 

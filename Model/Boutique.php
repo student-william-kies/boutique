@@ -260,7 +260,8 @@ class Boutique extends \Model{
 
         $result=$sql->fetch();
 
-        $_SESSION['product']= $result;
+        array_push($_SESSION['panier'],$result);
+
 
         var_dump($_SESSION);
 

@@ -21,7 +21,7 @@
             'currency' => 'eur',
         ]);
     }
-   /* else{
+    /*else{
         header('Location: ../../index.php');
     }*/
 ?>
@@ -47,6 +47,9 @@
                         </p>
                         <p>
                             <i class="far fa-check-circle"></i> En cliquant sur VALIDER , vous acceptez les Conditions Générales de Vente.
+                        </p>
+                        <p class="text-center py-5">
+                            Unleashed-Store vous remercie pour votre confiance et votre achat !
                         </p>
                     </section>
                 </section>

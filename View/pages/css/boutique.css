@@ -34,10 +34,6 @@ body{
     font-size: 16px;
 }
 
-.valid{
-    margin-top: 10%;
-}
-
 .new-product{
    text-align: center;
     border: solid 1px #9d9a9a;
@@ -164,10 +160,10 @@ body{
 }
 
 .pageNumber{
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 6;
-    grid-row-end: 7;
-    justify-self: center;
+
+}
+
+.search{
+    width: 200%;
 }
 
