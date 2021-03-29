@@ -59,12 +59,28 @@ class Product extends Controller
                         </label>
                     </section>
                 </form>');
+
+        if (isset($_POST['updateThisProduct']))
+        {
+            $this -> updatingProducts();
+        }
+
+        if (isset($_POST['deleteThisProduct']))
+        {
+            $this -> deletingproducts();
+        }
     }
 
     public function updatingProducts()
     {
         $update = new \Model\Product();
         $update -> updateOneProduct($_GET['id_produits'], $_POST['titleProduct'], $_POST['descProduct'], $_POST['priceProduct'], $_POST['qteProduct'], $_POST['photo1Product'], $_POST['photo2Product'], $_POST['photo3product']);
+    }
+
+    public function deletingproducts()
+    {
+        $delete = new \Model\Product();
+        $delete -> deleteOneProduct($_GET['id_produits']);
     }
 
     public function displayCreatingProduct()

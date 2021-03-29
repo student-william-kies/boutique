@@ -24,11 +24,6 @@ if (isset($_POST['logout'])){
         <?php
         $productManager = new \Controller\Product();
         $productManager -> selectingOneProduct();
-
-         if (isset($_POST['updateThisProduct']))
-         {
-             $productManager -> updatingProducts();
-         }
         ?>
     </section>
 </section>

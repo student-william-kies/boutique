@@ -39,6 +39,14 @@ class Product extends \Model
         ]);
     }
 
+    public function deleteOneProduct($id_produits)
+    {
+        $query = $this -> pdo -> prepare("DELETE FROM produits WHERE id_produits = :id");
+        $query -> execute([
+            "id" => $id_produits
+        ]);
+    }
+
     public function createProducts($id_cat, $titre, $desc, $prix, $qteStock, $photo1, $photo2, $photo3)
     {
         $query = $this -> pdo -> prepare("INSERT INTO produits (id_cat, titre, description, prix, quantite_stock, stock_status, photo1, photo2, photo3)
