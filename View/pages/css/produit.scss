@@ -10,7 +10,7 @@ body{
     margin-top: 5%;
     display: grid;
     grid-template-columns: 1.5fr 1.5fr;
-    grid-template-rows: 0.5fr;
+    grid-template-rows: 0.5fr 0.2fr;
 }
 
 .img-item{
@@ -42,6 +42,22 @@ body{
 .price-size{
     font-family: 'Pathway Gothic One', sans-serif;
     font-weight: lighter;
+}
+
+.confirm-add{
+    text-align: center;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    margin-top: 50%;
+    margin-right: 20%;
+}
+
+.confirm-add a{
+    text-decoration: none;
+    font-weight: bold;
+
 }
 
 

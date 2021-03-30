@@ -105,7 +105,7 @@ class Boutique extends \Model{
                 echo "<section class='pageNumber'><a class='pageNumber'>$i</a></section>";
             }
             else{
-                echo " <section class='pageNumber'><a href=\"boutique.php?p=$i\">$i</a>  </section> ";
+                echo " <section class='pageNumberA'><a href=\"boutique.php?p=$i\">$i</a>  </section> ";
             }
         }
     }

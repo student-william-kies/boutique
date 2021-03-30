@@ -24,6 +24,10 @@
                 if(isset($_POST['add'])) {
                     $addCart = new \Model\Boutique();
                     $addCart->addToCart($_GET['id']);
+
+                    echo'<section class="confirm-add alert alert-info" role="alert">
+                            Votre article a bien été rajouté au <a href="paiement-form.php">panier</a>. 
+                         </section>';
                 }
 
                 echo
