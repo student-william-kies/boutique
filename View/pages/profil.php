@@ -34,7 +34,7 @@ if (isset($_POST['logout'])){
         </section>
     </a>
 
-    <a href="" class="container upright">
+    <a href="history.php" class="container upright">
         <section class="ico__text">
             <i class="fas fa-history"></i>
             <p><strong>Historique d'achat</strong></p>
