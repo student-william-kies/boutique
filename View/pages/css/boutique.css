@@ -159,40 +159,6 @@ body{
     color: white;
 }
 
-.pageNumber{
-    transition: 0.5s;
-    font-weight: bolder;
-    margin-top: 5%;
-    color: white;
-    background-color: black;
-    padding: 2%;
-    border-radius: 10%;
-    border: solid black 2px;
-}
-
-.pageNumber:hover{
-    color: black;
-    font-weight: bolder;
-    text-decoration: none;
-    background-color: white;
-    border: solid black 2px;
-}
-
-.pageNumberA{
-    font-weight: bolder;
-    margin-top: 5%;
-    color: black;
-    background-color: white;
-    padding: 2%;
-    border-radius: 10%;
-    border: solid black 2px;
-}
-
-.pageNumberA:hover{
-    color: black;
-    font-weight: bolder;
-    text-decoration: none;
-}
 
 .search{
     width: 200%;
