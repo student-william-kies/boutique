@@ -1,0 +1,13 @@
+body{
+    background-color: #ffffff;
+    background-image: none;
+}
+
+.login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 6%;
+    margin-bottom: 3%;
+    border: solid 1px #428BCA;
+}

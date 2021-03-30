@@ -1,0 +1,52 @@
+body{
+    background-image: none;
+    background-color: white;
+}
+
+.main-content{
+    color: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.main-content form{
+    box-shadow: #242424 1px 1px 5px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+    margin-left: 2%;
+    background-color: #f0e9e9;
+    padding: 2%;
+    width: 40%;
+    border-radius: 10px;
+}
+
+.secur-text{
+    box-shadow: #242424 1px 1px 5px;
+    border-radius: 10px;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+    margin-right: 2%;
+    padding: 2%;
+    background-color: #f0e9e9;
+}
+
+#card-element{
+    border-radius: 5px;
+    background-color: white;
+    padding: 2%;
+}
+
+#cardholder-name{
+    border-radius: 5px;
+    padding-left: 1%;
+    border: none;
+}
+
+form h2 i{
+    font-size: 20px;
+    margin-top: 0;
+}

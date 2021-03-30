@@ -1,0 +1,76 @@
+body{
+    background-image: none;
+    background-color: white;
+}
+
+.main-content{
+    color: black;
+    margin-top: 5%;
+    display: grid;
+    grid-template-columns: 16% 16% 16% 16% 16% 16%;
+    grid-template-rows: 20vh 20vh 20vh 20vh 20vh;
+}
+
+.info-content{
+    color: #242424;
+    font-weight: bold;
+    justify-self: center;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+.info-title{
+    color: black;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.contact-form{
+    grid-column-start: 3;
+    grid-column-end: 7;
+    grid-row-start: 1;
+    grid-row-end: 4;
+    border: solid 1px #428BCA;
+    padding: 2%;
+}
+
+.contact-title{
+    font-size: 22px;
+    font-weight: bold;
+}
+
+button{
+    margin-top: 3%;
+    float: right;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+label{
+    font-weight: bold;
+    color: #242424;
+}
+
+.salut{
+    margin-top: 3%;
+    margin-left: 10%;
+    width: 50%;
+    justify-self: center;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 4;
+}
+
+.sav{
+    grid-column-start: 1;
+    grid-column-end: 7;
+    grid-row-start: 5;
+}
+
+.tab-content{
+    border: #403c3c 1px solid;
+    padding-inline: 1%;
+}

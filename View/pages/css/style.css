@@ -1,0 +1,290 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    background-image: url("../images/home__bg.svg");
+    background-repeat: no-repeat;
+}
+
+.header__bg{
+    background-color: #242424;
+    height: 17vh;
+    margin-top: -2%;
+}
+
+.header__section{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: #ffffff;
+    font-weight: bold;
+    margin-top: 2%;
+}
+
+.header__section img{
+    width: 2%;
+    height: 3%;
+    margin-right: 0.2%;
+}
+
+.header__section p{
+    margin-right: 1.2%;
+}
+
+#logo{
+    width: 100%;
+    margin-bottom: -19%;
+    margin-left: -6%;
+}
+
+/*-- French store text --*/
+
+.header__section p:hover span{
+    display: none;
+}
+
+.header__section p:hover:after{
+    content: "Votre commande livrée en 72h !";
+}
+
+/*-- Contact link --*/
+
+#contact{
+    text-decoration: none;
+    list-style: none;
+    color: #ffffff;
+}
+
+#contact:hover i{
+    color: #428BCA;
+}
+
+#contact:hover span{
+    display: none;
+}
+
+#contact:hover:after{
+    content: "Du lundi au vendredi de 9h à 17h";
+}
+
+/*-- End Contact link --*/
+
+.header__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 18vh;
+    font-weight: bold;
+    background-color: #F3F3F3;
+    border: solid 1px #c6c1c1;
+    border-radius: 4px;
+    z-index: 1;
+}
+
+/*-- Navbar(figurines) --*/
+
+.first__ul img{
+    margin-top: -20%;
+}
+
+#figurines{
+    text-align: center;
+    width: 200px;
+}
+
+#figurines a{
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 16px;
+    font-weight: lighter;
+}
+
+/*-- Navbar(news, search) --*/
+
+.second__ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    margin-top: 5%;
+    margin-right: -25.7%;
+}
+
+.second__ul ul{
+    margin-left: 5%;
+}
+
+.second__ul form input{
+    width: 200px;
+}
+
+/*-- Navbar(phone, account and shopping basket) --*/
+
+.third__ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    margin-top: -7%;
+}
+
+#phone{
+    margin-right: 5%;
+    margin-left: -10%;
+    font-size: 20px;
+}
+
+#phone a{
+    color: #428BCA;
+}
+
+#account{
+    margin-right: 5%;
+    font-size: 20px;
+}
+
+#account a{
+    color: #428BCA;
+}
+
+#shopping{
+    font-size: 20px;
+}
+
+#shopping a{
+    color: #428BCA;
+}
+
+/*-- Home.php --*/
+
+.main__section{
+    height: 100vh;
+}
+
+#new-products{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.newProducts{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.newProducts img{
+    width: 80%;
+}
+
+.last-articles{
+    text-align: center;
+}
+
+.last-articles a{
+    text-decoration: none;
+}
+
+/*-- Footer --*/
+
+.footer-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 60vh;
+    border-top: solid 2px #d2cdcd;
+}
+
+.footer-top-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.fa{
+    padding: 20px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+}
+
+.fa:hover{
+    opacity: 0.85;
+}
+
+.fa-facebook{
+    background: #3B5998;
+    color: white;
+}
+
+.fa-twitter{
+    background: #55ACEE;
+    color: white;
+}
+
+.fa-instagram{
+    background: #125688;
+    color: white;
+}
+
+.footer-bottom-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 2%;
+}
+
+.left-content, .right-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.footer-copyright{
+    background-color: #242424;
+    color: #ffffff;
+    height: 8vh;
+}
+
+.footer-copyright p{
+    margin-left: 15%;
+    font-weight: bold;
+}
+
+.footer-bottom-content a{
+    text-decoration: none;
+    font-weight: bold;
+    color: #242424;
+}
+
+.footer-bottom-content a:hover{
+    color: #337ab7;
+}
+
+.footer-bottom-content h4{
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+.footer-top-content p{
+    text-align: center;
+    font-weight: bold;
+    color: #242424;
+    font-size: 18px;
+    width: 60%;
+}
+
+.footer-top-content img{
+    width: 35%;
+    margin-left: 12%;
+}

@@ -1,0 +1,42 @@
+body{
+    background-image: none;
+    background-color: white;
+}
+
+.main-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+.adding-products{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 70%;
+}
+
+.form-paiement-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 30%;
+}
+
+.product-line{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 70%;
+}
+
+.icon-img{
+    width: 100px;
+    height: 100px;
+}
+
+.cart-vide{
+    margin-right: 20%;
+}
