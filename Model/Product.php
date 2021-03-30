@@ -102,4 +102,14 @@ class Product extends \Model
 
         return $query;
     }
+
+    public function createCat($nom)
+    {
+        $query = $this -> pdo -> prepare("INSERT INTO categories (nom) VALUES (:nom)");
+        $query -> execute([
+            "nom" => $nom
+        ]);
+
+        return $query;
+    }
 }

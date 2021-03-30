@@ -194,8 +194,41 @@ class Product extends Controller
 
         if (!empty($id_cat) && !empty($titre) && !empty($desc) && !empty($prix) && !empty($qteStock) && !empty($photo1) && !empty($photo2) && !empty($photo3))
         {
-            $test = new \Model\Product();
-            $test -> createProducts($id_cat, $titre, $desc, $prix, $qteStock, $photo1, $photo2, $photo3);
+            $create = new \Model\Product();
+            $create -> createProducts($id_cat, $titre, $desc, $prix, $qteStock, $photo1, $photo2, $photo3);
         } else echo $log = ('<p>Erreur : Veuillez remplir le formulaire.</p>');
+    }
+
+    public function displayCreatingCat()
+    {
+        echo ('<form action="" method="post">
+                    <section class="mb-3">
+                        <label class="form-label">
+                            <p class="form-text">Nom</p>
+                            <input type="text" name="newNomCat" class="form-control">
+                        </label>
+                    </section>
+                    <section class="mb-3">
+                        <label class="form-label">
+                            <button type="submit" class="btn btn-success" name="createThisCat">Ajouter</button>
+                        </label>
+                    </section>
+                </form>');
+
+        if (isset($_POST['createThisCat']))
+        {
+            $this -> creatingCats($_POST['newNomCat']);
+        }
+    }
+
+    public function creatingCats($nom)
+    {
+        $this -> secure($nom);
+
+        if (!empty($nom))
+        {
+            $create = new \Model\Product();
+            $create -> createCat($nom);
+        } else echo $log = "<p>Erreur : Veuillez remplir le formulaire.</p>";
     }
 }
