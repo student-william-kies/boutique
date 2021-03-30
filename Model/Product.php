@@ -12,6 +12,14 @@ class Product extends \Model
         return $query -> fetchAll(\PDO::FETCH_ASSOC);
     }
 
+    public function displayManageCat(): array
+    {
+        $query = $this -> pdo -> prepare('SELECT * FROM categories');
+        $query -> execute();
+
+        return $query -> fetchAll(\PDO::FETCH_ASSOC);
+    }
+
     public function selectOneProduct($id_produit)
     {
         $query = $this -> pdo -> prepare("SELECT * FROM produits WHERE id_produits = :id");
@@ -20,6 +28,18 @@ class Product extends \Model
         ]);
         $result = $query -> fetch(\PDO::FETCH_ASSOC);
         $_GET['products'] = $result;
+
+        return $result;
+    }
+
+    public function selectOneCat($id_cat)
+    {
+        $query = $this -> pdo -> prepare("SELECT * FROM categories WHERE id_categorie = :id");
+        $query -> execute([
+            "id" => $id_cat
+        ]);
+        $result = $query -> fetch(\PDO::FETCH_ASSOC);
+        $_GET['cat'] = $result;
 
         return $result;
     }
@@ -39,11 +59,28 @@ class Product extends \Model
         ]);
     }
 
+    public function updateOneCat($id_cat, $nom)
+    {
+        $query = $this -> pdo -> prepare("UPDATE categories SET nom = :nom WHERE id_categorie = :id");
+        $query -> execute([
+            "nom" => $nom,
+            "id" => $id_cat
+        ]);
+    }
+
     public function deleteOneProduct($id_produits)
     {
         $query = $this -> pdo -> prepare("DELETE FROM produits WHERE id_produits = :id");
         $query -> execute([
             "id" => $id_produits
+        ]);
+    }
+
+    public function deleteOneCat($id_cat)
+    {
+        $query = $this -> pdo -> prepare("DELETE FROM categories WHERE id_categorie = :id");
+        $query -> execute([
+            "id" => $id_cat
         ]);
     }
 

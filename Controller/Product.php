@@ -67,7 +67,39 @@ class Product extends Controller
 
         if (isset($_POST['deleteThisProduct']))
         {
-            $this -> deletingproducts();
+            $this -> deletingProducts();
+        }
+    }
+
+    public function selectingOneCat()
+    {
+        $catManager = new \Model\Product();
+        $thisCat = $catManager -> selectOneCat($_GET['id_categorie']);
+
+        echo ('<form action="" method="post">
+                    <section class="mb-3">
+                        <label class="form-label">
+                            <p class="form-text">Nom</p>
+                            <input type="text" value="' . $thisCat['nom'] . '" name="nomCat" class="form-control">
+                        </label>
+                    <section class="mb-3">
+                        <label class="form-label">
+                            <button type="submit" class="btn btn-success" name="updateThisCat">Mettre à jour</button>
+                        </label>
+                        <label class="form-label">
+                            <button type="submit" class="btn btn-danger" name="deleteThisCat">Supprimer</button>
+                        </label>
+                    </section>
+                </form>');
+
+        if (isset($_POST['updateThisCat']))
+        {
+            $this -> updatingCat();
+        }
+
+        if (isset($_POST['deleteThisCat']))
+        {
+            $this -> deletingCat();
         }
     }
 
@@ -77,10 +109,22 @@ class Product extends Controller
         $update -> updateOneProduct($_GET['id_produits'], $_POST['titleProduct'], $_POST['descProduct'], $_POST['priceProduct'], $_POST['qteProduct'], $_POST['photo1Product'], $_POST['photo2Product'], $_POST['photo3product']);
     }
 
-    public function deletingproducts()
+    public function updatingCat()
+    {
+        $update = new \Model\Product();
+        $update -> updateOneCat($_GET['id_categorie'], $_POST['nomCat']);
+    }
+
+    public function deletingProducts()
     {
         $delete = new \Model\Product();
         $delete -> deleteOneProduct($_GET['id_produits']);
+    }
+
+    public function deletingCat()
+    {
+        $delete = new \Model\Product();
+        $delete -> deleteOneCat($_GET['id_categorie']);
     }
 
     public function displayCreatingProduct()

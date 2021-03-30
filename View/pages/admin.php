@@ -51,7 +51,7 @@ if (isset($_POST['logout'])){
 
                                 foreach ($products as $allProducts)
                                 {
-                                    echo ('<form action="" class="user_table" method="get">
+                                    echo ('<form action="" method="get">
                                            <tr>
                                                <td style="text-align: center; width: 10%;"><img src=' . $allProducts['photo1']  . ' style="width: 30%"></td>
                                                <td style="text-align: center;">' . $allProducts['titre'] . '</td>
@@ -73,7 +73,9 @@ if (isset($_POST['logout'])){
                     <section class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-categories-tab">
                         <section class="table-responsive">
                             <table class="table table-hover caption-top">
-                                <caption>Liste Catégories</caption>
+                                <caption>
+                                    <a href="addCat.php" class="form-control" style="text-decoration: none; text-align: center">Ajouter Catégorie</a>
+                                </caption>
                                 <thead class="table-light">
                                 <tr>
                                     <th scope="col">id_categorie</th>
@@ -81,6 +83,24 @@ if (isset($_POST['logout'])){
                                 </tr>
                                 </thead>
                                 <tbody>
+                                <?php
+                                $catManager = new \Model\Product();
+                                $cat = $catManager -> displayManageCat();
+
+                                foreach ($cat as $allCat)
+                                {
+                                    echo ('<form action="" method="get">
+                                           <tr>
+                                               <td style="text-align: center;">' . $allCat['id_categorie'] . '</td>
+                                               <td style="padding-left: 0.2%; text-align: center;">' . $allCat['nom'] . '</td>
+                                               <td style="border: none" class="d-flex flex-row justify-center">                                                         
+                                                   <a href="modifyCat.php?id_categorie=' . $allCat['id_categorie'] . '" type="submit" class="btn btn-primary" id="modify_Cat"><i class="fas fa-pencil-alt"></i></a>
+                                                   <input type="hidden" id="hiddenModifyProduct" name="hiddenModifyProduct" value="' . $allCat['id_categorie'] . '">
+                                               </td>
+                                           </tr>
+                                           </form>');
+                                }
+                                ?>
                                 </tbody>
                             </table>
                         </section>
@@ -110,10 +130,10 @@ if (isset($_POST['logout'])){
 
                                 foreach ($users as $allUsers)
                                 {
-                                    echo ('<form action="" class="user_table" method="get">
+                                    echo ('<form action="" method="get">
                                            <tr>
-                                               <td style="text-align: center">' . $allUsers['id'] . '</td>
-                                               <td style="padding-left: 0.2%; text-align: center;">' . $allUsers['prenom'] . '</td>
+                                               <td style="text-align: center; width: 10%;">' . $allUsers['id']  . '</td>
+                                               <td style="text-align: center;">' . $allUsers['prenom'] . '</td>
                                                <td style="padding-left: 0.2%; text-align: center;">' . $allUsers['nom'] . '</td>
                                                <td style="padding-left: 0.2%; text-align: center;">' . $allUsers['email'] . '</td>
                                                <td style="padding-left: 0.2%; text-align: center;">' . $allUsers['telephone'] . '</td>
@@ -122,7 +142,7 @@ if (isset($_POST['logout'])){
                                                <td style="padding-left: 0.2%; text-align: center;">' . $allUsers['codep'] . '</td>
                                                <td style="padding-left: 0.2%; text-align: center;">' . $allUsers['id_droits'] . '</td>
                                                <td style="border: none" class="d-flex flex-row justify-center">                                                         
-                                                   <input type="submit" class="btn btn-danger input-User" id="delete_User" name="deleteUser" onclick="return confirm(\'Etes vous sûre de vouloir supprimer le compte selectionné ?\');" value="-">
+                                                   <input type="submit" class="btn btn-danger" id="delete_User" name="deleteUser" onclick="return confirm(\'Etes vous sûre de vouloir supprimer le compte selectionné ?\');" value="-">
                                                    <input type="hidden" id="hiddenDeleteUser" name="hiddenDeleteUser" value="' . $allUsers['id'] . '">
                                                </td>
                                            </tr>
