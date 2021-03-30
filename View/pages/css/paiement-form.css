@@ -8,7 +8,6 @@ body{
     flex-direction: row;
     justify-content: center;
     margin-top: 5%;
-    background-color: red;
 }
 
 .adding-products{
@@ -16,7 +15,6 @@ body{
     flex-direction: column;
     justify-content: center;
     width: 70%;
-    background-color: blue;
 }
 
 .form-paiement-section{
@@ -24,5 +22,17 @@ body{
     flex-direction: column;
     justify-content: center;
     width: 30%;
-    background-color: green;
+}
+
+.product-line{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 70%;
+}
+
+.icon-img{
+    width: 100px;
+    height: 100px;
 }

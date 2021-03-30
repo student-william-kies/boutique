@@ -42,15 +42,19 @@ class Boutique{
 
                     $_GET['id_produits'] = $value[0];
 
-                    echo '<section class="flex-items">
-                        <img class="img-produits" src=' . $value[4] . '>
-                        <a href="produit.php?id=' . $_GET['id_produits'] . '"><h2>' . ucfirst($value[1]) . '</h2></a>
-                        <p>' . $value[3] . '</p><p>' . $value[2] . '€</p>
-                        <form method="post" name="add">
-                        <input type="submit" name="add" value=" Ajouter au panier">
-                        <input type="hidden" name="hiddenAdd" value="' . $value[0] . '">
-                        </form>
-                        </section>';
+                    echo '<section class="product-container flex-items">
+                    <section class="img-container">
+                        <img class="img-produits" src='. $value[3] .'>
+                        <section class="infos-hover">
+                            <a class="title-product" href="produit.php?id=' . $value[0] . '">
+                                <i class="fa fa-eye"></i>
+                                <p>En savoir plus</p>
+                            </a>
+                        </section>
+                    </section class="item-title-boutique">
+                    <a class="title-product" href="produit.php?id=' . $value[0] . '"><h2>' . ucfirst($value[1]) . '</h2></a>
+                    <p class="article-price">' . $value[2] . '€</p>
+                  </section>';
                 }
             }
             if(isset($_GET['prix']) && $_GET['prix'] === "decroissant"){
@@ -61,15 +65,19 @@ class Boutique{
 
                     $_GET['id_produits'] = $value[0];
 
-                    echo '<section class="flex-items">
-                        <img class="img-produits" src=' . $value[4] . '>
-                        <a href="produit.php?id=' . $_GET['id_produits'] . '"><h2>' . ucfirst($value[1]) . '</h2></a>
-                        <p>' . $value[3] . '</p><p>' . $value[2] . '€</p>
-                        <form method="post" name="add">
-                        <input type="submit" name="add" value=" Ajouter au panier">
-                        <input type="hidden" name="hiddenAdd" value="' . $value[0] . '">
-                        </form>
-                        </section>';
+                    echo '<section class="product-container flex-items">
+                    <section class="img-container">
+                        <img class="img-produits" src='. $value[3] .'>
+                        <section class="infos-hover">
+                            <a class="title-product" href="produit.php?id=' . $value[0] . '">
+                                <i class="fa fa-eye"></i>
+                                <p>En savoir plus</p>
+                            </a>
+                        </section>
+                    </section class="item-title-boutique">
+                    <a class="title-product" href="produit.php?id=' . $value[0] . '"><h2>' . ucfirst($value[1]) . '</h2></a>
+                    <p class="article-price">' . $value[2] . '€</p>
+                  </section>';
                 }
             }
             if(isset($_GET['Choix']) != ($_GET['Choix'] ===  "Tous les produits")){
@@ -80,17 +88,22 @@ class Boutique{
 
                         $_GET['id_produits'] = $value[0];
 
-                        echo '<section class="flex-items">
-                        <img class="img-produits" src=' . $value[4] . '>
-                        <a href="produit.php?id=' . $_GET['id_produits'] . '"><h2>' . ucfirst($value[1]) . '</h2></a>
-                        <p>' . $value[3] . '</p><p>' . $value[2] . '€</p>
-                        <form method="post" name="add">
-                        <input type="submit" name="add" value=" Ajouter au panier">
-                        <input type="hidden" name="hiddenAdd" value="' . $value[0] . '">
-                        </form>
-                        </section>';
+                        echo '<section class="product-container flex-items">
+                    <section class="img-container">
+                        <img class="img-produits" src='. $value[3] .'>
+                        <section class="infos-hover">
+                            <a class="title-product" href="produit.php?id=' . $value[0] . '">
+                                <i class="fa fa-eye"></i>
+                                <p>En savoir plus</p>
+                            </a>
+                        </section>
+                    </section class="item-title-boutique">
+                    <a class="title-product" href="produit.php?id=' . $value[0] . '"><h2>' . ucfirst($value[1]) . '</h2></a>
+                    <p class="article-price">' . $value[2] . '€</p>
+                  </section>';
                     }
             }
+
             if(($_GET['Choix'] == "Tous les produits") && ($_GET['prix']) == "trier"){
 
                 $displayAll = new \Model\Boutique();
@@ -138,15 +151,19 @@ class Boutique{
 
                 $_GET['id_produits'] = $value[0];
 
-                echo '<section class="flex-items">
-                        <img class="img-produits" src=' . $value[4] . '>
-                        <a href="produit.php?id=' . $_GET['id_produits'] . '"><h2>' . ucfirst($value[1]) . '</h2></a>
-                        <p>' . $value[3] . '</p><p>' . $value[2] . '€</p>
-                        <form method="post" name="add">
-                        <input type="submit" name="add" value=" Ajouter au panier">
-                        <input type="hidden" name="hiddenAdd" value="' . $value[0] . '">
-                        </form>
-                        </section>';
+                echo '<section class="product-container flex-items">
+                    <section class="img-container">
+                        <img class="img-produits" src='. $value[3] .'>
+                        <section class="infos-hover">
+                            <a class="title-product" href="produit.php?id=' . $value[0] . '">
+                                <i class="fa fa-eye"></i>
+                                <p>En savoir plus</p>
+                            </a>
+                        </section>
+                    </section class="item-title-boutique">
+                    <a class="title-product" href="produit.php?id=' . $value[0] . '"><h2>' . ucfirst($value[1]) . '</h2></a>
+                    <p class="article-price">' . $value[2] . '€</p>
+                  </section>';
             }
         }
    }
@@ -163,10 +180,52 @@ class Boutique{
             $displayAll = new \Model\Boutique();
             $displayAll->hideProductWithoutCat();
 
-
         }
     }
 
+
+    /**
+     * @return bool
+     * Initialise la SESSION qui sert de panier.
+     */
+
+    public function creationPanier(){
+
+        if (!isset($_SESSION['panier'])){
+
+            $_SESSION['panier']=array();
+
+        }
+        return true;
+    }
+
+
+    /**
+     * Ici nous affichons un panier vide ou les éléments qui ont étaient ajouter.
+     */
+
+    public function afficherPanier(){
+
+        if(empty($_SESSION['panier'])){
+
+            echo $log = 'gé mahl o cou 2 soleye';
+        }
+        else{
+
+            foreach($_SESSION['panier'] as $value){
+
+                echo " <section class='product-line'>
+                        <img class='icon-img' src=" .$value['photo1']. ">
+                        <p>".$value['titre']."</p>
+                        <p>".$value['prix']."</p>
+                        <form method='post' action=''>
+                            <input class='btn btn-primary' type='submit' name='delet' value='Supprimer du panier'>
+                            <input type='hidden' name='hiddenAdd' value=" .$value['id_produits'].">
+                        </form>
+                   </section><br>";
+            }
+        }
+    }
 }
 
 ?>

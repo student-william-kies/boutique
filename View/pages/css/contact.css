@@ -65,7 +65,12 @@ label{
 }
 
 .sav{
-    grid-column-start: 3;
+    grid-column-start: 1;
     grid-column-end: 7;
     grid-row-start: 5;
+}
+
+.tab-content{
+    border: #403c3c 1px solid;
+    padding-inline: 1%;
 }
