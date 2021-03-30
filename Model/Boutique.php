@@ -251,6 +251,13 @@ class Boutique extends \Model{
 
     }
 
+
+    /**
+     * @param $id
+     * @return mixed
+     * Permet d'ajouter un article au panier.
+     */
+
     public function addToCart($id){
 
         $sql = $this->pdo->prepare("SELECT * FROM produits WHERE id_produits = :id");
@@ -261,9 +268,6 @@ class Boutique extends \Model{
         $result=$sql->fetch();
 
         array_push($_SESSION['panier'],$result);
-
-
-        var_dump($_SESSION);
 
         return $result;
 

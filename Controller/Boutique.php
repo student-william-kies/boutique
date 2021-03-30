@@ -184,6 +184,11 @@ class Boutique{
     }
 
 
+    /**
+     * @return bool
+     * Initialise la SESSION qui sert de panier.
+     */
+
     public function creationPanier(){
 
         if (!isset($_SESSION['panier'])){
@@ -193,6 +198,11 @@ class Boutique{
         }
         return true;
     }
+
+
+    /**
+     * Ici nous affichons un panier vide ou les éléments qui ont étaient ajouter.
+     */
 
     public function afficherPanier(){
 
@@ -216,8 +226,6 @@ class Boutique{
             }
         }
     }
-
-
 }
 
 ?>

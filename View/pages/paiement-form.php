@@ -2,6 +2,8 @@
 
 <?php require ('../../Model/Boutique.php'); ?>
 
+<?php require ('../../Controller/Http.php'); ?>
+
 <?php $css = "css/paiement-form.css"; ?>
 
 <?php ob_start(); ?>
@@ -22,7 +24,19 @@
                 <label for="prix">
                     <p><strong>Total</strong></p>
                     <input type="text" name="prix" id="prix">
-                    <button class="btn btn-primary">Payer</button>
+
+                    <?php
+
+                        if (isset($_SESSION['utilisateur'])){
+
+                            echo '<button class="btn btn-primary" name="buyButton">Payer</button>';
+
+                        }
+                        else{
+                            echo'<a href="connexion.php" class="btn btn-primary"> Connectez-vous</a>';
+                        }
+
+                    ?>
                 </label>
             </form>
         </section>
