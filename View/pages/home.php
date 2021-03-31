@@ -20,8 +20,8 @@ if (isset($_POST['logout'])){
 <!-- Empty section for the pictures -->
 <section class="container-fluid main__section"></section>
 
-<section class="container-fluid main__section" id="new-products">
-    <h1>Nouveautés</h1>
+<section class="container-fluid showNewProducts" id="new-products">
+    <img src="images/titre_nouveautes.png" alt="titre_nouveaute">
     <section class="container-fluid newProducts">
         <?php
         $display = new \Controller\Product();

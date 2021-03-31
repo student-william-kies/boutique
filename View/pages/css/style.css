@@ -167,10 +167,17 @@ body{
     height: 100vh;
 }
 
-#new-products{
+.showNewProducts{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.showNewProducts img{
+    width: 50%;
+    margin-bottom: 5%;
 }
 
 .newProducts{
@@ -182,6 +189,12 @@ body{
 
 .newProducts img{
     width: 80%;
+    border: solid 2px #c1c1c1;
+}
+
+.newProducts img:hover{
+    opacity: 0.5;
+    transition: 0.3s;
 }
 
 .last-articles{
@@ -190,6 +203,12 @@ body{
 
 .last-articles a{
     text-decoration: none;
+    color: #242424;
+}
+
+.last-articles a:hover{
+    color: #428BCA;
+    transition: 0.3s;
 }
 
 /*-- Footer --*/
