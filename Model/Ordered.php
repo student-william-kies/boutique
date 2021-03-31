@@ -24,7 +24,7 @@ class Ordered extends \Model
         return $query;
     }
 
-    public function displayOrder($id_user)
+    public function displayOrder($id_user): array
     {
         $query = $this -> pdo -> prepare("SELECT * FROM commandes WHERE id_user = :id_user");
         $query -> execute([

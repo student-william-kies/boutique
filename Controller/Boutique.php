@@ -226,6 +226,32 @@ class Boutique{
             }
         }
     }
+
+    public function totalPrice(){
+
+        $price = 0;
+
+        $i = 0;
+
+        foreach ($_SESSION['panier'] as $value){
+
+            $convert = $_SESSION['panier'][$i]['prix'];
+
+            $price += intval($convert);
+
+            $i++;
+        }
+        echo " <input class='total-price' type='text' name='prix' id='prix' value=' $price' readonly> ";
+
+        if (isset($_SESSION['utilisateur'])){
+
+            echo '<button class="btn btn-primary" name="buyButton">Payer</button>';
+
+        }
+        else{
+            echo'<a href="connexion.php" class="btn btn-primary"> Connectez-vous</a>';
+        }
+    }
 }
 
 ?>

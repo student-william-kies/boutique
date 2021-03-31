@@ -2,28 +2,36 @@
 
 <?php require ('../../Model/Boutique.php'); ?>
 
+<?php require ('../../Controller/Ordered.php'); ?>
+
 <?php $css = "css/paiement.css"; ?>
 
 <?php ob_start(); ?>
 
 <?php
-    if(isset($_POST['prix']) && !empty($_POST['prix'])){
 
-        // Nous appelons l'autoloader pour avoir accès à Stripe
-        require_once('../../vendor/autoload.php');
+session_start();
 
-        // Nous instancions Stripe en indiquand la clé privée, pour prouver que nous sommes bien à l'origine de cette demande
-        \Stripe\Stripe::setApiKey('sk_test_51INaYzFQ99jFDHtEm01BfNp3P2cOUJjDozjXQip5KNNMViBgF3WFcmPgKnGfkJLMikX7skAQz7BR5vJ8sz6NkxK500WnJ8UlYH');
+if(isset($_POST['prix']) && !empty($_POST['prix'])){
 
-        // Nous créons l'intention de paiement et stockons la réponse dans la variable $intent
-        $intent = \Stripe\PaymentIntent::create([
-            'amount' => $_POST['prix']*100, // Le prix doit être transmis en centimes
-            'currency' => 'eur',
-        ]);
-    }
-    /*else{
-        header('Location: ../../index.php');
-    }*/
+    // Nous appelons l'autoloader pour avoir accès à Stripe
+    require_once('../../vendor/autoload.php');
+
+    // Nous instancions Stripe en indiquand la clé privée, pour prouver que nous sommes bien à l'origine de cette demande
+    \Stripe\Stripe::setApiKey('sk_test_51INaYzFQ99jFDHtEm01BfNp3P2cOUJjDozjXQip5KNNMViBgF3WFcmPgKnGfkJLMikX7skAQz7BR5vJ8sz6NkxK500WnJ8UlYH');
+
+    // Nous créons l'intention de paiement et stockons la réponse dans la variable $intent
+    $intent = \Stripe\PaymentIntent::create([
+        'amount' => $_POST['prix']*100, // Le prix doit être transmis en centimes
+        'currency' => 'eur',
+    ]);
+
+    $test = new \Controller\Ordered();
+    $test -> GetingOrder();
+}
+/*else{
+    header('Location: ../../index.php');
+}*/
 ?>
 
         <main>

@@ -22,20 +22,10 @@
         <section class="form-paiement-section">
             <form action="paiement.php" method="post">
                 <label for="prix">
-                    <p><strong>Total</strong></p>
-                    <input type="text" name="prix" id="prix">
+                    <p><strong>Total €</strong></p>
 
                     <?php
-
-                        if (isset($_SESSION['utilisateur'])){
-
-                            echo '<button class="btn btn-primary" name="buyButton">Payer</button>';
-
-                        }
-                        else{
-                            echo'<a href="connexion.php" class="btn btn-primary"> Connectez-vous</a>';
-                        }
-
+                    $displayCart -> totalPrice();
                     ?>
                 </label>
             </form>
