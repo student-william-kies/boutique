@@ -203,6 +203,7 @@ class Boutique
     public function addToCart(){
 
         if(isset($_POST['add'])) {
+
             $addCart = new \Model\Boutique();
             $addCart->addToCart($_GET['id']);
 
@@ -227,6 +228,8 @@ class Boutique
         }
         else{
 
+            echo '<p><b>PANIER</b></p>
+                    <hr>';
             foreach($_SESSION['panier'] as $value){
 
                 echo " <section class='product-line'>
@@ -237,7 +240,7 @@ class Boutique
                    </section><br>";
             }
             echo "<form method='post' action=''>
-                            <input class='btn btn-primary' type='submit' name='delet' value='Supprimer du panier'>
+                            <input class='btn btn-primary' type='submit' name='delet' value='Supprimer le panier'>
                         </form>";
         }
     }
@@ -262,7 +265,7 @@ class Boutique
 
                 $i++;
             }
-            echo " <input class='total-price' type='text' name='prix' id='prix' value=' $price' readonly> ";
+            echo " <input class='total-price' type='text' name='prix' id='prix' value='$price' readonly>";
         }
         else{
             echo " <input class='total-price' type='text' name='prix' id='prix' value='panier vide' readonly> ";
@@ -281,7 +284,7 @@ class Boutique
         }
 
         else{
-            echo'<a href="connexion.php" class="btn btn-primary"> Connectez-vous</a>';
+            echo'<a href="connexion.php" class="btn btn-primary">Payer</a>';
         }
     }
 

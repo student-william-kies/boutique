@@ -59,7 +59,7 @@ class Boutique extends \Model{
         $data = $this->pdo-> query("SELECT COUNT(id_produits) as nbArt FROM produits")->fetch(\PDO::FETCH_ASSOC);
 
         $nbArt = $data['nbArt'];
-        $perPage = 9;
+        $perPage = 15;
         $cPage =1;
         $nbPage = ceil($nbArt/$perPage);
 
@@ -98,7 +98,7 @@ class Boutique extends \Model{
 
         //On affiche ici notre pagination.
 
-        for($i=1; $i<=$nbPage; $i++){
+        /*for($i=1; $i<=$nbPage; $i++){
 
             if($i==$cPage){
                 echo "<section class='pageNumber'><a class='pageNumber'>$i</a></section>";
@@ -106,7 +106,7 @@ class Boutique extends \Model{
             else{
                 echo " <section class='pageNumberA'><a href=\"boutique.php?p=$i\">$i</a>  </section> ";
             }
-        }
+        }*/
     }
 
 

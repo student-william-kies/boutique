@@ -18,6 +18,9 @@ body{
     flex-direction: column;
     justify-content: center;
     width: 70%;
+    border: solid 1px #c1c1c1;
+    margin: 1%;
+    padding: 1%;
 }
 
 .form-paiement-section{
@@ -50,6 +53,7 @@ body{
 }
 
 .total-price{
+    text-align: center;
     font-family: 'Pathway Gothic One', sans-serif;
     border: none;
     font-weight: bold;
