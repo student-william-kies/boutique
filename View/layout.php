@@ -34,9 +34,11 @@
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item btn-primary" id="figurines"><a class="nav-link" href="boutique.php">Figurines</a></li>
                             <li class="nav-item"><a class="nav-link" href="home.php#new-products">Nouveautés</a></li>
-                            <li class="nav-item"><a class="nav-link" href="boutique.php">+ connus</a></li>
-                            <li class="nav-item"><a class="nav-link" href="boutique.php?Choix=Tous+les+produits&prix=croissant&search=Go+%21">- chères</a></li>
                         </ul>
+                        <form action="" method="get" class="d-flex">
+                            <input class="form-control me-2" type="search" placeholder="Recherche" aria-label="Search">
+                            <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+                        </form>
                     </section>
 
                     <!-- Third Navbar -->

@@ -14,7 +14,7 @@ if (isset($_POST['logout'])){
     exit();
 }
 
-?> 
+?>
 
 <?php $css = "css/commandView.css"; ?>
 

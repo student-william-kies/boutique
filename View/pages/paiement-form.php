@@ -16,16 +16,15 @@
                <?php
                $displayCart = new \Controller\Boutique();
                $displayCart->afficherPanier();
-
+               $displayCart->deletProduct();
                ?>
         </section>
         <section class="form-paiement-section">
             <form action="paiement.php" method="post">
                 <label for="prix">
                     <p><strong>Total €</strong></p>
-
                     <?php
-                    $displayCart -> totalPrice();
+                    $displayCart->totalPrice();
                     ?>
                 </label>
             </form>

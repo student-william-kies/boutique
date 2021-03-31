@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap');
+
 body{
     background-image: none;
     background-color: white;
 }
 
 .main-content{
+    min-height: 60vh;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -29,10 +32,37 @@ body{
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin-right: 70%;
+    margin-right: 30%;
+}
+
+.price-line-product{
+    font-family: 'Pathway Gothic One', sans-serif;
+    font-weight: bold;
 }
 
 .icon-img{
     width: 100px;
     height: 100px;
+}
+
+.cart-vide{
+    margin-right: 20%;
+}
+
+.total-price{
+    font-family: 'Pathway Gothic One', sans-serif;
+    border: none;
+    font-weight: bold;
+    width: 40%;
+}
+
+button a{
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
+
+button a:hover{
+    text-decoration: none;
+    color: white;
 }
