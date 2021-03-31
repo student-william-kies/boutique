@@ -107,24 +107,32 @@ class Product extends Controller
     {
         $update = new \Model\Product();
         $update -> updateOneProduct($_GET['id_produits'], $_POST['titleProduct'], $_POST['descProduct'], $_POST['priceProduct'], $_POST['qteProduct'], $_POST['photo1Product'], $_POST['photo2Product'], $_POST['photo3product']);
+
+        Http::redirect('admin.php');
     }
 
     public function updatingCat()
     {
         $update = new \Model\Product();
         $update -> updateOneCat($_GET['id_categorie'], $_POST['nomCat']);
+
+        Http::redirect('admin.php');
     }
 
     public function deletingProducts()
     {
         $delete = new \Model\Product();
         $delete -> deleteOneProduct($_GET['id_produits']);
+
+        Http::redirect('admin.php');
     }
 
     public function deletingCat()
     {
         $delete = new \Model\Product();
         $delete -> deleteOneCat($_GET['id_categorie']);
+
+        Http::redirect('admin.php');
     }
 
     public function displayCreatingProduct()
@@ -196,6 +204,8 @@ class Product extends Controller
         {
             $create = new \Model\Product();
             $create -> createProducts($id_cat, $titre, $desc, $prix, $qteStock, $photo1, $photo2, $photo3);
+
+            Http::redirect('admin.php');
         } else echo $log = ('<p>Erreur : Veuillez remplir le formulaire.</p>');
     }
 
@@ -229,6 +239,8 @@ class Product extends Controller
         {
             $create = new \Model\Product();
             $create -> createCat($nom);
+
+            Http::redirect('admin.php');
         } else echo $log = "<p>Erreur : Veuillez remplir le formulaire.</p>";
     }
 }

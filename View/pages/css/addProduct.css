@@ -18,3 +18,8 @@ body{
     background-color: #ded3d3;
     height: 50vh;
 }
+
+.profil__links{
+    padding-top: 1%;
+    padding-bottom: 1%;
+}

@@ -377,5 +377,7 @@ class User extends Controller
     {
         $deleteUser = new \Model\User();
         $deleteUser -> deleteManageUser($id);
+
+        Http::redirect('admin.php');
     }
 }

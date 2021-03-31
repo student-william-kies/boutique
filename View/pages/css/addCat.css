@@ -21,6 +21,8 @@ body{
     width: 20%;
 }
 
-.bottom-link{
+.profil__links{
     margin-left: 40%;
+    padding-top: 1%;
+    padding-bottom: 1%;
 }

@@ -9,3 +9,8 @@ body{
     justify-content: center;
     height: 60vh;
 }
+
+.profil__links{
+    padding-top: 1%;
+    padding-bottom: 1%;
+}

@@ -26,3 +26,8 @@ body{
 thead th{
     text-align: center;
 }
+
+.profil__links{
+    padding-top: 1%;
+    padding-bottom: 1%;
+}

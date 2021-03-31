@@ -26,3 +26,8 @@ body{
     justify-content: center;
     text-align: left;
 }
+
+.profil__links{
+    padding-top: 1%;
+    padding-bottom: 1%;
+}

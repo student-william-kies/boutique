@@ -26,9 +26,9 @@ if (isset($_POST['logout'])){
         ?>
     </section>
 
-    <section class="container">
-        <a href="profil.php">Retour a votre compte</a>
-        <a href="home.php">Accueil</a>
+    <section class="container profil__links">
+        <a href="profil.php" class="btn btn-primary">Retour a votre compte</a>
+        <a href="home.php" class="btn btn-primary">Accueil</a>
     </section>
 
 <?php $content = ob_get_clean(); ?>

@@ -47,8 +47,8 @@
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <?php if (!isset($_SESSION['utilisateur']['id'])){ echo ('<li><a class="dropdown-item" href="inscription.php">Inscription</a></li>'); } ?>
                                     <?php if (!isset($_SESSION['utilisateur']['id'])){ echo ('<li><a class="dropdown-item" href="connexion.php">Connexion</a></li>'); } ?>
-                                    <?php if (isset($_SESSION['utilisateur']['id'])){ echo ('<form method="POST" action="home.php"><li><a class="dropdown-item" href=""><input type="submit" name="logout" value="Déconnexion" class=""></a></li></form>'); } ?>
-                                    <?php if (isset($_SESSION['utilisateur']['id'])){ echo ('<li><a class="dropdown-item" href="profil.php">' . $_SESSION['utilisateur']['prenom']. ' ' . $_SESSION['utilisateur']['nom'] . '</a></li>'); } ?>
+                                    <?php if (isset($_SESSION['utilisateur']['id'])){ echo ('<form method="POST" action="home.php"><li><a class="dropdown-item" href=""><input type="submit" name="logout" value="Déconnexion" class="btn btn-secondary"></a></li></form>'); } ?>
+                                    <?php if (isset($_SESSION['utilisateur']['id'])){ echo ('<li><a class="dropdown-item" style="text-decoration: none; color: #428BCA;" href="profil.php">Hi, ' . $_SESSION['utilisateur']['prenom']. '!</a></li>'); } ?>
                                 </ul>
                             </li>
                             <li class="nav-item" id="shopping"><a class="nav-link" href="paiement-form.php"><i class="fas fa-shopping-basket"></i> Panier</a></li>
@@ -89,9 +89,24 @@
                 </section>
                 <section class="left-content">
                     <h4>Votre compte</h4>
-                    <a href="profil.php">Informations personnelles</a>
-                    <a href="profil.php">Mes adresses</a>
-                    <a href="profil.php">Mes commandes</a>
+                    <?php
+                    if (isset($_SESSION['utilisateur']))
+                    {
+                        echo ('
+                        <a href="profil.php">Informations personnelles</a>
+                        <a href="profil.php">Mes adresses</a>
+                        <a href="profil.php">Mes commandes</a>
+                        ');
+                    }
+                    else
+                    {
+                        echo ('
+                        <a href="connexion.php">Informations personnelles</a>
+                        <a href="connexion.php">Mes adresses</a>
+                        <a href="connexion.php">Mes commandes</a>
+                        ');
+                    }
+                    ?>
                 </section>
                 <section class="right-content">
                     <h4>Produits</h4>

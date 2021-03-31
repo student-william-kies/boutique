@@ -28,6 +28,10 @@ if (isset($_POST['logout'])){
                 <th scope="col">Total de la commande</th>
             </tr>
         </thead>
+        <section class="container profil__links">
+            <a href="profil.php" class="btn btn-primary">Retour a votre compte</a>
+            <a href="home.php" class="btn btn-primary">Accueil</a>
+        </section>
         <?php
         $displayOrder = new \Model\Ordered();
         $allOrder = $displayOrder -> displayOrder($_SESSION['utilisateur']['id']);
