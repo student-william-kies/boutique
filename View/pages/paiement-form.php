@@ -16,7 +16,7 @@
                <?php
                $displayCart = new \Controller\Boutique();
                $displayCart->afficherPanier();
-
+               $displayCart->deletProduct();
                ?>
         </section>
         <section class="form-paiement-section">
@@ -24,17 +24,7 @@
                 <label for="prix">
                     <p><strong>Total €</strong></p>
                     <?php
-
                     $displayCart->totalPrice();
-
-                        if (isset($_SESSION['utilisateur'])){
-
-                            echo '<button class="btn btn-primary" name="buyButton">Payer</button>';
-
-                        }
-                        else{
-                            echo'<a href="connexion.php" class="btn btn-primary"> Connectez-vous</a>';
-                        }
                     ?>
                 </label>
             </form>

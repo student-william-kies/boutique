@@ -201,6 +201,23 @@ class Boutique{
 
 
     /**
+     * Permet d'ajouter l'article au panier.
+     */
+
+    public function addToCart(){
+
+        if(isset($_POST['add'])) {
+            $addCart = new \Model\Boutique();
+            $addCart->addToCart($_GET['id']);
+
+            echo'<section class="confirm-add alert alert-info" role="alert">
+                            Votre article a bien été rajouté au <a href="paiement-form.php">panier</a>. 
+                         </section>';
+        }
+    }
+
+
+    /**
      * Ici nous affichons un panier vide ou les éléments qui ont étaient ajouter.
      */
 
@@ -220,14 +237,18 @@ class Boutique{
                         <img class='icon-img' src=" .$value['photo1']. ">
                         <p>".ucfirst($value['titre'])."</p>
                         <p class='price-line-product'>".$value['prix']."€</p>
-                        <form method='post' action=''>
-                            <input class='btn btn-primary' type='submit' name='delet' value='Supprimer du panier'>
-                            <input type='hidden' name='hiddenAdd' value=" .$value['id_produits'].">
-                        </form>
+                        
                    </section><br>";
             }
+            echo "<form method='post' action=''>
+                            <input class='btn btn-primary' type='submit' name='delet' value='Supprimer du panier'>
+                        </form>";
         }
     }
+
+    /**
+     * Permet de récupérer le prix total du panier et de l'afficher dans une variable.
+     */
 
     public function totalPrice(){
 
@@ -235,15 +256,45 @@ class Boutique{
 
         $i = 0;
 
-        foreach ($_SESSION['panier'] as $value){
+        if(isset($_SESSION['panier'])){
 
-            $convert = $_SESSION['panier'][$i]['prix'];
+            foreach ($_SESSION['panier'] as $value){
 
-            $price += intval($convert);
+                $convert = $_SESSION['panier'][$i]['prix'];
 
-            $i++;
-        }
+                $price += intval($convert);
+
+                $i++;
+            }
             echo " <input class='total-price' type='text' name='prix' id='prix' value=' $price' readonly> ";
+        }
+        else{
+            echo " <input class='total-price' type='text' name='prix' id='prix' value='panier vide' readonly> ";
+
+        }
+
+        if (isset($_SESSION['utilisateur'])){
+
+            if(isset($_SESSION['panier'])){
+
+                echo '<button class="btn btn-primary" name="buyButton">Payer</button>';
+            }
+            else{
+                echo '<button class="btn btn-primary" name="buyButton"><a href="boutique.php">Ajouter produits</a></button>';
+            }
+        }
+
+        else{
+            echo'<a href="connexion.php" class="btn btn-primary"> Connectez-vous</a>';
+        }
+    }
+
+    public function deletProduct(){
+
+        if (isset($_POST['delet'])){
+
+            unset($_SESSION['panier']);
+        }
     }
 }
 

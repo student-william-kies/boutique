@@ -13,22 +13,12 @@
         <section class="container-fluid">
             <section class="main-content">
                 <?php
+                $getAll = new \Model\Boutique();
+                $product = $getAll->getAllProduct($_GET['id']);
 
-                    $panier = new  \Controller\Boutique();
-                    $panier->creationPanier();
-
-
-                    $getAll = new \Model\Boutique();
-                    $product = $getAll->getAllProduct($_GET['id']);
-
-                if(isset($_POST['add'])) {
-                    $addCart = new \Model\Boutique();
-                    $addCart->addToCart($_GET['id']);
-
-                    echo'<section class="confirm-add alert alert-info" role="alert">
-                            Votre article a bien été rajouté au <a href="paiement-form.php">panier</a>. 
-                         </section>';
-                }
+                $panier = new  \Controller\Boutique();
+                $panier->creationPanier();
+                $panier->addToCart();
 
                 echo
                     '<section class="img-item">
