@@ -3,7 +3,6 @@ namespace Controller;
 require_once ('Controller.php');
 require ('../../Model/Ordered.php');
 
-
 class Ordered extends Controller
 {
 
@@ -13,30 +12,10 @@ class Ordered extends Controller
 
         $createOrder = new \Model\Ordered();
 
-        foreach ($_SESSION['panier'] as $value){
-
+        foreach ($_SESSION['panier'] as $value)
+        {
             $convert = $_SESSION['panier'][$i];
-
-            $createOrder -> getOrder($_SESSION['utilisateur']['prenom'], $_SESSION['utilisateur']['nom'],
-                $_SESSION['utilisateur']['email'], $_SESSION['utilisateur']['telephone'], $_SESSION['utilisateur']['adresse'],
-                $_SESSION['utilisateur']['ville'], $_SESSION['utilisateur']['codep'], $_SESSION['panier'][$i]['titre'], $_SESSION['panier'][$i]['prix'],
-                $_SESSION['utilisateur']['id']);
-
-            $i++;
-        }
-    }
-
-    public function totalPriceForOrder()
-    {
-        $price = 0;
-
-        $i = 0;
-
-        foreach ($_SESSION['panier'] as $value){
-
-            $convert = $_SESSION['panier'][$i]['prix'];
-
-            $price += intval($convert);
+            $createOrder -> getOrder($_SESSION['utilisateur']['prenom'], $_SESSION['utilisateur']['nom'], $_SESSION['utilisateur']['email'], $_SESSION['utilisateur']['telephone'], $_SESSION['utilisateur']['adresse'], $_SESSION['utilisateur']['ville'], $_SESSION['utilisateur']['codep'], $_SESSION['panier'][$i]['titre'], $_SESSION['panier'][$i]['prix'], $_SESSION['utilisateur']['id']);
 
             $i++;
         }

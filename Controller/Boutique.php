@@ -1,111 +1,107 @@
 <?php
-
 namespace Controller;
 
-class Boutique{
-
+class Boutique
+{
     /**
      * Permet d'afficher dans l'option le nom des catégories.
      */
-
-    public function categorieChoice(){
-
+    public function categorieChoice()
+    {
         $displayCategorie = new \Model\Boutique();
-        $option= $displayCategorie->categorieChoice();
+        $option = $displayCategorie -> categorieChoice();
 
-        $i=0;
-
-        foreach ($option as $value){
-
-            echo '<option value="'.$value[1].'">' . $value[1] . '</option>';
-
+        $i = 0;
+        foreach ($option as $value)
+        {
+            echo '<option value="'. $value[1] . '">' . $value[1] . '</option>';
         }
         $i++;
     }
 
-
     /**
      * Permet de gérer l'affichage des produits filtrés ou pas.
      */
-
-    public function searchCategorie(){
-
-        if(isset($_GET['search'])){
-
+    public function searchCategorie()
+    {
+        if(isset($_GET['search']))
+        {
             $display = new \Model\Boutique();
 
-            if(isset($_GET['prix']) && $_GET['prix'] === "croissant"){
-
+            if(isset($_GET['prix']) && $_GET['prix'] === "croissant")
+            {
                 $result = $display->orderPrice("ASC");
 
-                foreach ($result as $value){
-
+                foreach ($result as $value)
+                {
                     $_GET['id_produits'] = $value[0];
 
-                    echo '<section class="product-container flex-items">
-                    <section class="img-container">
-                        <img class="img-produits" src='. $value[3] .'>
-                        <section class="infos-hover">
-                            <a class="title-product" href="produit.php?id=' . $value[0] . '">
-                                <i class="fa fa-eye"></i>
-                                <p>En savoir plus</p>
-                            </a>
+                    echo ('
+                    <section class="product-container flex-items">
+                        <section class="img-container">
+                            <img class="img-produits" src='. $value[3] .'>
+                            <section class="infos-hover">
+                                <a class="title-product" href="produit.php?id=' . $value[0] . '"><i class="fa fa-eye"></i> <p>En savoir plus</p></a>
+                            </section>
                         </section>
-                    </section class="item-title-boutique">
-                    <a class="title-product" href="produit.php?id=' . $value[0] . '"><h2>' . ucfirst($value[1]) . '</h2></a>
-                    <p class="article-price">' . $value[2] . '€</p>
-                  </section>';
+                        <a class="title-product" href="produit.php?id=' . $value[0] . '"><h2>' . ucfirst($value[1]) . '</h2></a>
+                        <p class="article-price">' . $value[2] . '€</p>
+                  </section>');
                 }
             }
-            if(isset($_GET['prix']) && $_GET['prix'] === "decroissant"){
 
+            if(isset($_GET['prix']) && $_GET['prix'] === "decroissant")
+            {
                 $result = $display->orderPrice("DESC");
 
-                foreach ($result as $value){
-
+                foreach ($result as $value)
+                {
                     $_GET['id_produits'] = $value[0];
 
-                    echo '<section class="product-container flex-items">
-                    <section class="img-container">
-                        <img class="img-produits" src='. $value[3] .'>
-                        <section class="infos-hover">
-                            <a class="title-product" href="produit.php?id=' . $value[0] . '">
-                                <i class="fa fa-eye"></i>
-                                <p>En savoir plus</p>
-                            </a>
+                    echo ('
+                    <section class="product-container flex-items">
+                        <section class="img-container">
+                            <img class="img-produits" src='. $value[3] .'>
+                            <section class="infos-hover">
+                                <a class="title-product" href="produit.php?id=' . $value[0] . '">
+                                    <i class="fa fa-eye"></i>
+                                    <p>En savoir plus</p>
+                                </a>
+                            </section>
                         </section>
-                    </section class="item-title-boutique">
-                    <a class="title-product" href="produit.php?id=' . $value[0] . '"><h2>' . ucfirst($value[1]) . '</h2></a>
-                    <p class="article-price">' . $value[2] . '€</p>
-                  </section>';
+                        <a class="title-product" href="produit.php?id=' . $value[0] . '"><h2>' . ucfirst($value[1]) . '</h2></a>
+                        <p class="article-price">' . $value[2] . '€</p>
+                  </section>');
                 }
             }
-            if(isset($_GET['Choix']) != ($_GET['Choix'] ===  "Tous les produits")){
 
+            if(isset($_GET['Choix']) != ($_GET['Choix'] ===  "Tous les produits"))
+            {
                     $result = $display->searchCategorie($_GET['Choix']);
 
-                    foreach ($result as $value){
-
+                    foreach ($result as $value)
+                    {
                         $_GET['id_produits'] = $value[0];
 
-                        echo '<section class="product-container flex-items">
-                    <section class="img-container">
-                        <img class="img-produits" src='. $value[3] .'>
-                        <section class="infos-hover">
-                            <a class="title-product" href="produit.php?id=' . $value[0] . '">
-                                <i class="fa fa-eye"></i>
-                                <p>En savoir plus</p>
-                            </a>
-                        </section>
-                    </section class="item-title-boutique">
-                    <a class="title-product" href="produit.php?id=' . $value[0] . '"><h2>' . ucfirst($value[1]) . '</h2></a>
-                    <p class="article-price">' . $value[2] . '€</p>
-                  </section>';
+                        echo ('
+                        <section class="product-container flex-items">
+                            <section class="img-container">
+                                <img class="img-produits" src='. $value[3] .'>
+                                <section class="infos-hover">
+                                    <a class="title-product" href="produit.php?id=' . $value[0] . '">
+                                        <i class="fa fa-eye"></i>
+                                        <p>En savoir plus</p>
+                                    </a>
+                                </section>
+                            </section>
+                            <a class="title-product" href="produit.php?id=' . $value[0] . '"><h2>' . ucfirst($value[1]) . '</h2></a>
+                            <p class="article-price">' . $value[2] . '€</p>
+                  </section>');
                     }
             }
 
-            if(($_GET['Choix'] == "Tous les produits") && ($_GET['prix']) == "trier"){
-
+            if(($_GET['Choix'] == "Tous les produits") && ($_GET['prix']) == "trier")
+            {
                 $displayAll = new \Model\Boutique();
                 $displayAll->displayAllProducts();
             }
