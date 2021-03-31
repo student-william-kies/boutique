@@ -23,10 +23,10 @@
             <form action="paiement.php" method="post">
                 <label for="prix">
                     <p><strong>Total €</strong></p>
+                </label>
                     <?php
                     $displayCart->totalPrice();
                     ?>
-                </label>
             </form>
         </section>
     </section>

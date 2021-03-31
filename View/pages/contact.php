@@ -46,7 +46,7 @@
                 <section class="sav">
                     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                         <li class="nav-item" role="presentation"><button class="nav-link active" id="pills-mentions-legales-tab" data-bs-toggle="pill" data-bs-target="#pills-mentions-legales" type="button" role="tab" aria-controls="mentions-legales" aria-selected="true">Mentions légales</button></li>
-                        <li class="nav-item" role="presentation"><button class="nav-link" id="pills-cgv-tab" data-bs-toggle="pill" data-bs-target="#pills-cgv" type="button" role="tab" aria-controls="pills-cgv" aria-selected="false">CGU</button></li>
+                        <li class="nav-item" role="presentation"><button class="nav-link" id="pills-cgv-tab" data-bs-toggle="pill" data-bs-target="#pills-cgv" type="button" role="tab" aria-controls="pills-cgv" aria-selected="false">CGV</button></li>
                     </ul>
                     <section class="tab-content" id="pills-tabContent">
                         <section class="tab-pane fade show active" id="pills-mentions-legales" role="tabpanel" aria-labelledby="pills-mentions-legales-tab">
@@ -70,13 +70,29 @@
                         </section>
                         <section class="tab-pane fade" id="pills-cgv" role="tabpanel" aria-labelledby="pills-cgv-tab">
                             <h1>Conditions générales de vente</h1>
-                            <h2>Clause n°1 : Objet</h2>
-                            <p>Les conditions générales de vente décrites ci-après détaillent les droits et obligations de la SARL SHIN SEKAI et de son client
-                                dans le cadre de la vente de bien sur le site internet www.shin-sekai.fr.<br>
-                                Toute personne peut consulter les conditions générales de vente de la SARL SHIN SEKAI sur le site www.shin-sekai.fr.<br>
-                                Toute vente accomplie par la SARL SHIN SEKAI pour le compte d’un client implique donc que le client ait pris connaissance
-                                des présentes conditions générales de vente et qu’il adhère sans réserve à ces mêmes conditions.
-                                Le client renonce ainsi à toute application de ses éventuelles conditions générales d’achat.
+                            <h2>Objet</h2>
+                            <p>La SARL UNLEASHED-STORE propose sur son site internet des articles issus de la Japanimation et assure que tous ses produits sont authentiques
+                                et vendus dans leurs boîtes d’origine (pour les articles neufs).<br>
+                                La disponibilité des produits indiquée sur le site de la SARL UNLEASHED-STORE reste tributaire de l’état du stock.<br>
+                                En période de convention, les disponibilités indiquées sur le site internet ne seront plus garanties.<br>
+                                Le stock sera mis à jour par la SARL UNLEASHED-STORE dans les meilleurs délais.<br>
+                                Le même article ne pourra être vendu qu'une seule fois au même client.<br>
+                                Certains articles apparaissent sur le site internet en précommande.<br>
+                                La commande de ces produits donne lieu à une réservation qui est faite avec l’indication de leur date de réception prochaine par la SARL UNLEASHED-STORE.
+                            </p>
+                            <h2>Produits</h2>
+                            <p>La SARL UNLEASHED-STORE propose sur son site internet des articles issus de la Japanimation et assure que tous ses produits sont authentiques
+                                et vendus dans leurs boîtes d’origine.<br>
+                                La disponibilité des produits indiquée sur le site de la SARL UNLEASHED-STORE reste tributaire de l’état du stock.<br>
+                                En période de convention, les disponibilités indiquées sur le site internet ne seront plus garanties.<br>
+                                Le stock sera mis à jour par la SARL UNLEASHED-STORE dans les meilleurs délais.<br>
+                                Le même article ne pourra être vendu qu'une seule fois au même client.<br>
+                                Certains articles apparaissent sur le site internet en précommande.<br>
+                                La commande de ces produits donne lieu à une réservation qui est faite avec l’indication de leur date de réception prochaine par la SARL UNLEASHED-STORE.
+                            </p>
+                            <h2>Commande</h2>
+                            <p>
+                                Toute commande peut être passée après inscription du client sur le site de la SARL UNLEASHED-STORE 24h/24.
                             </p>
                         </section>
                     </section>

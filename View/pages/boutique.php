@@ -16,10 +16,6 @@
             <section class="main-content">
                 <section class="filters">
                     <h1 class="filter-title">FILTRES</h1>
-                    <form action="" method="get" class="search d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Recherche" aria-label="Search">
-                        <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
-                    </form><br>
                     <form action="boutique.php" method="get">
                         <section class="box">
                             <p>Univers</p>
