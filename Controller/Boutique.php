@@ -218,8 +218,8 @@ class Boutique{
 
                 echo " <section class='product-line'>
                         <img class='icon-img' src=" .$value['photo1']. ">
-                        <p>".$value['titre']."</p>
-                        <p>".$value['prix']."</p>
+                        <p>".ucfirst($value['titre'])."</p>
+                        <p class='price-line-product'>".$value['prix']."€</p>
                         <form method='post' action=''>
                             <input class='btn btn-primary' type='submit' name='delet' value='Supprimer du panier'>
                             <input type='hidden' name='hiddenAdd' value=" .$value['id_produits'].">
@@ -243,9 +243,7 @@ class Boutique{
 
             $i++;
         }
-
-        echo " <input type='text' name='prix' id='prix' value=' $price'> ";
-
+            echo " <input class='total-price' type='text' name='prix' id='prix' value=' $price' readonly> ";
     }
 }
 

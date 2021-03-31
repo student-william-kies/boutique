@@ -22,7 +22,7 @@
         <section class="form-paiement-section">
             <form action="paiement.php" method="post">
                 <label for="prix">
-                    <p><strong>Total</strong></p>
+                    <p><strong>Total €</strong></p>
                     <?php
 
                     $displayCart->totalPrice();
