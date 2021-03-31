@@ -6,6 +6,7 @@ require ('../../Model/Ordered.php');
 
 class Ordered extends Controller
 {
+
     public function GetingOrder()
     {
         $i = 0;
@@ -22,8 +23,6 @@ class Ordered extends Controller
                 $_SESSION['utilisateur']['id']);
 
             $i++;
-
-            var_dump($convert);
         }
     }
 
@@ -40,6 +39,6 @@ class Ordered extends Controller
             $price += intval($convert);
 
             $i++;
-        } 
+        }
     }
 }
