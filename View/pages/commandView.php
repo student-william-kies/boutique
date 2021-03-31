@@ -68,8 +68,8 @@ if (isset($_POST['logout'])){
                                 <p><strong>Adresse</strong> : ' . $order['adresse'] . '</p>
                                 <p><strong>Ville</strong> : ' . $order['ville'] . '</p>
                                 <p><strong>Code Postal</strong> : ' . $order['codep'] . '</p>
-                                <p><strong>Le produit</strong> : ' . $order['titre'] . '</p>
-                                <p><strong>Son prix :</strong> ' . $order['prix'] . '</p>
+                                <p><strong>Titre Produit</strong> : ' . $order['titre'] . '</p>
+                                <p><strong>Son Prix :</strong> ' . $order['prix'] . '€</p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

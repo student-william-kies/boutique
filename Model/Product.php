@@ -84,7 +84,7 @@ class Product extends \Model
         ]);
     }
 
-    public function createProducts($id_cat, $titre, $desc, $prix, $qteStock, $photo1, $photo2, $photo3) 
+    public function createProducts($id_cat, $titre, $desc, $prix, $qteStock, $photo1, $photo2, $photo3)
     {
         $query = $this -> pdo -> prepare("INSERT INTO produits (id_cat, titre, description, prix, quantite_stock, photo1, photo2, photo3)
                                                         VALUES (:id_cat, :titre, :description, :prix, :qteStock, :photo1, :photo2, :photo3)");
