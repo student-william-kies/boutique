@@ -20,7 +20,7 @@ class Boutique
     }
 
     /**
-     * Permet de gérer l'affichage des produits filtrés ou pas.
+     * Permet de gérer l'affichage des produits filtrés ou pas .
      */
     public function searchCategorie()
     {
