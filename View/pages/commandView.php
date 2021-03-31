@@ -21,6 +21,13 @@ if (isset($_POST['logout'])){
 <?php ob_start(); ?>
 
 <section class="container history__section">
+    <table class="table table-hover table-bordered text-center">
+        <thead>
+            <tr>
+                <th scope="col">Numéro de commande</th>
+                <th scope="col">Total de la commande</th>
+            </tr>
+        </thead>
         <?php
         $displayOrder = new \Model\Ordered();
         $allOrder = $displayOrder -> displayOrder($_SESSION['utilisateur']['id']);
@@ -30,23 +37,15 @@ if (isset($_POST['logout'])){
             foreach ($allOrder as $order)
             {
                 echo ('
-                <table class="table table-hover table-bordered text-center">
-                    <thead>
-                    <tr>
-                        <th scope="col">Numéro de commande</th>
-                        <th scope="col">Total de la commande</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        <form action="" method="get" xmlns="http://www.w3.org/1999/html">
-                           <tr>
-                               <td style="text-align: center;">#' . $order['id_commande'] . '</td>
-                               <td style="padding-left: 0.2%; text-align: center;">' . $order['prix'] . '€</td>
-                               <td style="padding-left: 0.2%; text-align: center;"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-eye"></i></button></td>
-                           </tr>
-                       </form>
-                    </tbody>
-                </table>
+                <tbody>
+                    <form action="" method="get" xmlns="http://www.w3.org/1999/html">
+                       <tr>
+                           <td style="text-align: center;">#' . $order['id_commande'] . '</td>
+                           <td style="padding-left: 0.2%; text-align: center;">' . $order['prix'] . '€</td>
+                           <td style="padding-left: 0.2%; text-align: center;"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-eye"></i></button></td>
+                       </tr>
+                   </form>
+                </tbody>
                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -82,6 +81,7 @@ if (isset($_POST['logout'])){
             echo $log = '<div class="alert alert-warning text-center" role="alert">Vous n\'avez toujours pas commander ?<a href="#" class="alert-link">Commander ici</a>, faites vite !</div>';
         }
         ?>
+    </table>
 </section>
 
 <?php $content = ob_get_clean(); ?>
